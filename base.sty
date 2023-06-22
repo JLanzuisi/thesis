@@ -1,0 +1,57 @@
+\ProvidesExplPackage {base} { 2023-06-08 } {}
+    {Base package for my thesis}
+
+\RequirePackage { geometry }
+\RequirePackage { setspace }
+\RequirePackage { unicode-math }
+\RequirePackage { microtype }
+\RequirePackage { enumitem }
+\RequirePackage { polyglossia }
+\RequirePackage { csquotes }
+\RequirePackage { biblatex }
+
+% Set page margins
+\geometry
+    {
+        includehead,
+        paper = letterpaper,
+        left = 3cm,
+        right = 2cm,
+        bottom = 2cm,
+        top = 2cm,
+    }
+
+% Set fonts
+\setmainfont
+    [
+        Extension = .otf,
+        UprightFont = *-Regular,
+        BoldFont = *-Bold,
+        ItalicFont = *-It,
+    ]
+    {
+        SourceSerif4
+    }
+\setmathfont
+    [
+        Extension = .otf,
+    ]
+    {
+        STIXTwoMath-Regular
+    }
+
+% Set basic spacing
+\setlength { \parindent } { 8.46pt }
+\setlength { \parskip } { 6pt }
+\onehalfspacing
+
+% Headers and footer
+\pagestyle{headings}
+\gdef\@oddhead{\hfil\thepage}
+
+% Language
+\setdefaultlanguage{spanish}
+
+% Bibliography
+\addbibresource{references.bib}
+\DeclareFieldFormat{title}{#1}

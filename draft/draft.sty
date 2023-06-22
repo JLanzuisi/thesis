@@ -1,0 +1,64 @@
+\ProvidesExplPackage{draft}{2023-06-08}{}
+    {Base package for my thesis}
+
+\renewcommand { \abstractname } { \textbf { Presentación } }
+
+\dim_zero_new:N \g__author_width
+
+\DeclareDocumentCommand { \setauthorwidth } {}
+{
+    \dim_set:Nn \g__author_width { ( \linewidth / 2 ) - 1em }
+}
+
+\ExplSyntaxOff
+\newcommand{\titletext}
+{
+    Proyecto de Grado:
+    \\
+    \textit{Titulo aqui.}
+}
+\newcommand{\authorstext}
+{
+    \textsc{Tutor}:\\ Jesús Eslay Nieto Martíner (\texttt{jnieto@usb.ve}).\\
+    \textsc{Estudiante}:\\ Jhonny Alexander Lanzuisi Berrizbeitia (\texttt{15-10759@usb.ve}).
+}
+\newcommand{\dependenciestext}
+{
+    Departamento de matematicas puras y aplicadas.\\
+    Coordinacion de matematicas.\\
+    Teoria de Conjuntos. Cardinales Grandes.\\
+}
+\newcommand{\datetext}
+{
+    \textit{Duración}. Tres trimestres académicos: Sep-Dic 2023 a Abr-Jul 2024.
+}
+\ExplSyntaxOn
+
+\title { \titletext }
+
+\author
+{
+    \setauthorwidth
+    \begin { minipage } [ t ] { \linewidth }
+        \small
+        \centering
+        \authorstext
+    \end { minipage }
+    \\[4em]
+    \begin { minipage } [ t ] { \linewidth }
+        \small
+        \centering
+        \dependenciestext
+    \end { minipage }
+}
+\date
+{
+    \small
+    \datetext
+}
+
+
+%\DeclareDocumentCommand { \maketitle } {}
+%{
+%    \thispagestyle{plain}
+%}

@@ -1,0 +1,29 @@
+OBJETIVOS
+
+3 desmotraciones del teorema de inconsistencia de Kunen
+
+JUSTIFICACION
+
+Problema abierto asociado al teorema.
+Condicion mas fuerte, relacionada con cardinales grandes, que impone AC
+
+METODOLOGIA
+
+Investigacion, papers y literatura.
+
+CRONOGRAMA
+
+Son 36 (3 trimestres) semanas o 24 (2 trimestres)
+
+1er trimestre: estudiar requisitos y preliminares. Primer avance con la seccion de preliminares?
+
+2do trimestre: estudiar papers y exposiciones alternativas del toerema. Segundo avance incluyendo el teorema de Kunen y sus demostraciones?
+
+3re trimestre: terminar tesis? 3er avance?
+
+BIBLIOGRAFIA
+
+Kanamori, the higher infinite seccion 23
+Jech, set theory seccion 17
+Kenneth Kunen, Elementary Embeddings and Infinitary Combinatorics (paper)
+Hamkins
