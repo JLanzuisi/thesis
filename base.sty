@@ -8,7 +8,9 @@
 \RequirePackage { enumitem }
 \RequirePackage { polyglossia }
 \RequirePackage { csquotes }
-\RequirePackage { biblatex }
+\RequirePackage [ sorting = none, ] { biblatex }
+\RequirePackage { xcolor }
+\RequirePackage { hyperref }
 
 % Set page margins
 \geometry
@@ -55,3 +57,90 @@
 % Bibliography
 \addbibresource{references.bib}
 \DeclareFieldFormat{title}{#1}
+
+% Hyperref
+\definecolor{linkcolor}{HTML}{990012}
+\hypersetup
+    {
+        colorlinks = true,
+        allcolors = linkcolor,
+    }
+
+% Theorems
+\newcounter{teolabelcount}
+\newcounter{proplabelcount}
+\newcounter{deflabelcount}
+\int_zero_new:N \g_base_teo_int
+\int_zero_new:N \g_base_prop_int
+\int_zero_new:N \g_base_def_int
+
+\cs_new:Npn \base_print_label:n #1 #2
+    {
+        \int_gincr:N #2
+        #1~\int_to_arabic:n { #2 }.~
+    }
+
+\cs_new:Npn \base_indent_begin:
+    {
+            \list {}
+            {
+                \setlength { \leftmargin } { 1cm }
+            }
+            \item
+    }
+
+\cs_new:Npn \base_indent_end:
+    {
+        \endlist
+    }
+
+\NewDocumentEnvironment { teo } { o }
+    {
+        \refstepcounter{teolabelcount}
+        \IfNoValueF { #1 } { \label { #1 } }
+        \base_indent_begin:
+        \base_print_label:n { Teorema } { \g_base_teo_int }
+    }
+    {
+        \base_indent_end:
+    }
+
+\NewDocumentEnvironment { prop } { o }
+    {
+        \refstepcounter{proplabelcount}
+        \IfNoValueF { #1 } { \label { #1 } }
+        \base_indent_begin:
+        \base_print_label:n { Proposición } { \g_base_prop_int }
+    }
+    {
+        \base_indent_end:
+    }
+
+\NewDocumentEnvironment { defi } { o }
+    {
+        \refstepcounter{deflabelcount}
+        \IfNoValueF { #1 } { \label { #1 } }
+        \base_indent_begin:
+        \base_print_label:n { Definición } { \g_base_def_int }
+    }
+    {
+        \base_indent_end:
+    }
+
+% macros
+\NewDocumentCommand { \model } { m }
+{
+    \mathcal { #1 }
+}
+\NewDocumentCommand { \set } { m }
+{
+    \left\{ #1 \right\}
+}
+\NewDocumentCommand { \lex } { m }
+{
+    \mathcal { #1 }
+}
+\NewDocumentCommand { \crit } { m }
+{
+    \mathrm { crit } ( #1 )
+}
