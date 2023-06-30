@@ -9,6 +9,16 @@
     \maketitle
     \thispagestyle{empty}
 
+    \pagebreak
+
+    {
+        \fontsize{70}{70}\selectfont This is a test
+    }
+
+    {
+        \normalsize This is a test
+    }
+
     \begin{abstract}
         A continuación se presentan los objetivos, metodología, justificación,
         cronograma e introducción en el marco del proyecto de grado del
@@ -32,35 +42,29 @@
     \begin{description}
         \let\olditem\item
         \renewcommand\item[1][]{\olditem[\normalfont #1.]}
-        \item[1er trimestre]
-            \begin{minipage}[t]{\dimexpr\linewidth-2cm\relax}
+        \item[1er trimestre]\hphantom{a}
                 \begin{description}
                     \item[Semanas 1-4] Búsqueda y recolección de la bibliografía.
                     \item[Semanas 5-8] Revisión de la bibliografía planteada.
                     \item[Semanas 9-12] Redacción de la introducción y el primer capítulo
                                         del trabajo de grado.
                 \end{description}
-            \end{minipage}
-        \item[2do trimestre]
-            \begin{minipage}[t]{\linewidth}
+        \item[2do trimestre]\hphantom{a}
                 \begin{description}
                     \item[Semanas 1-12] Redacción de los capítulos restantes del trabajo de grado
                 \end{description}
-            \end{minipage}
-        \item[3er trimestre]
-            \begin{minipage}[t]{\linewidth}
+        \item[3er trimestre]\hphantom{a}
                 \begin{description}
                     \item[Semanas 1-6] Revisión del borrador y redacción final del
                                        proyecto de grado.
                     \item[Semanas 7-12] Presentación y defensa.
                 \end{description}
-            \end{minipage}
     \end{description}
 
     \section{Justificación}
     El proyecto de grado se justifica considerando
     su relación con un problema abierto actualmente en el área,
-    que ataña a los cimientos de la teoría:
+    que atañe a los cimientos de la teoría de conjuntos:
     \begin{quote}
         ¿Existe una inmersión elemental $j\colon V\to V$ en ZF? (Ver la definición \ref{defi:embed}).
     \end{quote}
@@ -109,7 +113,6 @@
     \begin{defi}
         $\kappa$ es $\eta$-extensible si, y solo si, existe un $\zeta$ y una $j\colon V_{\kappa+\eta}\prec V_\zeta$
         tal que $\crit{j} = \kappa$ y $j(\kappa) > \eta$.
-        $\kappa$ es extensible si es $\eta$-extensible para todo $\eta>0$.
     \end{defi}
     \begin{defi}
         $\kappa$ es extensible si es $\eta$-extensible para todo $\eta>0$.
@@ -129,7 +132,7 @@
     \end{teo}
 
     El teorema anterior parece cuantificar universalmente sobre todas las inmersiones $j$,
-    lo cual no es formalizable es ZFC pues dicha colección es una clase propia. De aquí se sigue
+    lo cual no es formalizable en ZFC pues dicha colección es una clase propia. De aquí se sigue
     que el teorema \ref{eq:kunen_inc} es un esquema infinito de teoremas: uno por cada $j$ que se tome.
 
     Existen diversas demostraciones para el teorema \ref{eq:kunen_inc}, de las cuales se considerarán tres:

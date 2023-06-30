@@ -8,7 +8,15 @@
 \RequirePackage { enumitem }
 \RequirePackage { polyglossia }
 \RequirePackage { csquotes }
-\RequirePackage [ sorting = none, ] { biblatex }
+\RequirePackage 
+    [ 
+        sorting = none,
+        isbn = false,
+        url = false,
+        doi = false,
+        eprint = false,
+    ] 
+    { biblatex }
 \RequirePackage { xcolor }
 \RequirePackage { hyperref }
 
@@ -26,17 +34,23 @@
 % Set fonts
 \setmainfont
     [
-        Extension = .otf,
-        UprightFont = *-Regular,
-        BoldFont = *-Bold,
-        ItalicFont = *-It,
+        Kerning = On,
+        Renderer = HarfBuzz,
+        Extension = .ttf,
+        UprightFont = *-Roman,
+        BoldFont = *-Roman,
+        BoldFeatures = { RawFeature = { +axis = { wght = 700} } },
+        ItalicFont = *-Italic,
+        BoldItalicFont = *-Italic,
+        BoldItalicFeatures = { RawFeature = { +axis = { wght = 700} } },
     ]
     {
-        SourceSerif4
+        SourceSerif4Variable
     }
 \setmathfont
     [
         Extension = .otf,
+        Scale = 1.05,
     ]
     {
         STIXTwoMath-Regular
@@ -56,7 +70,6 @@
 
 % Bibliography
 \addbibresource{references.bib}
-\DeclareFieldFormat{title}{#1}
 
 % Hyperref
 \definecolor{linkcolor}{HTML}{990012}
