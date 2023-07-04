@@ -8,15 +8,7 @@
 \RequirePackage { enumitem }
 \RequirePackage { polyglossia }
 \RequirePackage { csquotes }
-\RequirePackage 
-    [ 
-        sorting = none,
-        isbn = false,
-        url = false,
-        doi = false,
-        eprint = false,
-    ] 
-    { biblatex }
+\RequirePackage { biblatex }
 \RequirePackage { xcolor }
 \RequirePackage { hyperref }
 
@@ -139,6 +131,18 @@
     {
         \base_indent_end:
     }
+
+% Sectioning commands
+\NewDocumentCommand { \Section } {}
+{
+    \@startsection
+    { section }
+    { 1 }
+    { 0mm }
+    { 1\baselineskip }
+    { 1\baselineskip }
+    { \normalfont\normalsize\bfseries }
+}
 
 % macros
 \NewDocumentCommand { \model } { m }
