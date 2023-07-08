@@ -9,6 +9,7 @@
     \maketitle
     \thispagestyle{empty}
 
+    \renewcommand{\abstractname}{\abstracttitle}
     \begin{abstract}
         A continuación se presentan los objetivos, metodología, justificación,
         cronograma e introducción en el marco del proyecto de grado del
@@ -114,9 +115,11 @@
     \begin{prop}
         Existe una inmersión elemental $j\colon V\to V$.
     \end{prop}
+    \goodbreak
 
     Kunen \cite{kunen_elementary_1971} demostraría después que dicha proposición es falsa
     en ZFC:
+    \nobreak
     \begin{teo}[eq:kunen_inc]
         Sea $j\colon V\prec M$. Entonces $M\neq V$.
     \end{teo}
@@ -140,9 +143,16 @@
     cierto el resultado de Kunen al prescindir del axioma de elección? 
 
     A modo de conclusión se consideran los avances recientes relacionados al problema abierto:
-    En la teoría de conjuntos Von Neumann–Bernays–Gödel (NBG) sin elección, se pueden definir los cardinales de Reinhardt como $\crit{j}$
-    donde $j\colon V\prec V$. Para intentar avanzar en la pregunta anterior,
-    Golberg \cite{goldberg_reinhardt_2021} propone en el contexto de NBG la noción de cardinal débilmente Reinhardt.
+    \begin{itemize}
+        \item
+        En la teoría de conjuntos Von Neumann–Bernays–Gödel (NBG) sin elección, se pueden definir los cardinales de Reinhardt como $\crit{j}$
+        donde $j\colon V\prec V$. Para intentar avanzar en la pregunta anterior,
+        Golberg \cite{goldberg_reinhardt_2021} propone en el contexto de NBG la noción de cardinal débilmente Reinhardt.
+        
+        \item
+        Generalizaciones del teorema \ref{eq:kunen_inc}, por ejemplo tomando $j\colon V\to V[G]$ con $V[G]$ una extensión genérica de forcing;
+        recopiladas y expandidas por Joel David Hamkins \cite{hamkins_generalizations_2012}.
+    \end{itemize}
     
     \Section{Objetivos}
     \begin{itemize}
@@ -156,5 +166,5 @@
     \nocite{kanamori_mathematical_1996}
     \singlespacing
     \sloppy
-    \printbibliography
+    \printbibliography[heading=mybib]
 \end{document}

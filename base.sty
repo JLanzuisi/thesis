@@ -26,26 +26,21 @@
 % Set fonts
 \setmainfont
     [
-        Kerning = On,
-        Renderer = HarfBuzz,
-        Extension = .ttf,
-        UprightFont = *-Roman,
-        BoldFont = *-Roman,
-        BoldFeatures = { RawFeature = { +axis = { wght = 700} } },
+        Extension = .otf,
+        UprightFont = *-Regular,
         ItalicFont = *-Italic,
-        BoldItalicFont = *-Italic,
-        BoldItalicFeatures = { RawFeature = { +axis = { wght = 700} } },
+        BoldFont = *-Bold,
+        BoldItalicFont = *-BoldItalic,
     ]
     {
-        SourceSerif4Variable
+        OldStandard
     }
 \setmathfont
     [
         Extension = .otf,
-        Scale = 1.05,
     ]
     {
-        STIXTwoMath-Regular
+        NewCMMath-Book
     }
 
 % Set basic spacing
@@ -141,7 +136,11 @@
     { 0mm }
     { 1\baselineskip }
     { 1\baselineskip }
-    { \normalfont\normalsize\bfseries }
+    {
+        \normalfont\normalsize
+        \addfontfeatures{LetterSpace=8}
+        \bfseries\MakeUppercase
+    }
 }
 
 % macros

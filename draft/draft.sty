@@ -1,7 +1,10 @@
 \ProvidesExplPackage{draft}{2023-06-08}{}
     {Base package for my thesis}
 
-\renewcommand { \abstractname } { \textbf { Presentación } }
+\newcommand { \abstracttitle }
+{
+    \addfontfeatures{LetterSpace=7.5} \bfseries \MakeUppercase { Presentación }
+}
 
 \dim_zero_new:N \g__author_width
 
@@ -14,11 +17,20 @@
 \newcommand{\titletext}
 {
     \bgroup
-        \scshape\normalfont
-        Presentación del Proyecto de Grado:
+        \normalsize
+        \itshape
+        \addfontfeatures{LetterSpace=7.5}
+        \MakeUppercase{Presentación del Proyecto de Grado:}
     \egroup
-    \\
-    \textit{Estudio comparativo de tres demostraciones del Teorema de Inconsistencia de Kunen.}
+    \\[3.5mm]
+    \bgroup
+        \Large
+        \begin{minipage}{.7\linewidth}
+            \centering
+            \itshape
+            Estudio comparativo de tres demostraciones del Teorema de Inconsistencia de Kunen.
+        \end{minipage}
+    \egroup
 }
 \newcommand{\authorstext}
 {
