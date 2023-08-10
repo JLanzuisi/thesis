@@ -1,3 +1,41 @@
 \ProvidesExplPackage{thesis}{2023-06-08}{}
     {Base package for my thesis}
 
+% macros
+\newcommand { \MainTitle }
+    {
+        Estudio~comparativo~de~tres~demostraciones~
+        del~teorema~de~inconsistencia~de~Kunen.
+    }
+
+\newcommand { \autor }
+    {
+        Jhonny~Lanzuisi~Berrizbeitia
+    }
+
+\newcommand { \tutor }
+    {
+        Jesús~Nieto~Martínez
+    }
+
+\newcommand { \coord }
+    {
+        Matemáticas
+    }
+
+\NewDocumentCommand { \model } { m }
+{
+    \mathcal { #1 }
+}
+\NewDocumentCommand { \set } { m }
+{
+    \left\{ #1 \right\}
+}
+\NewDocumentCommand { \lex } { m }
+{
+    \mathcal { #1 }
+}
+\NewDocumentCommand { \crit } { m }
+{
+    \mathrm { crit } ( #1 )
+}
