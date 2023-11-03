@@ -4,7 +4,7 @@ let
     tex = pkgs.texlive.combine { 
         inherit (pkgs.texlive) scheme-small
         lualatex-math enumitem csquotes biblatex
-        lipsum; 
+        lipsum pgf standalone;
     };
 in
     pkgs.mkShell { 
@@ -12,5 +12,6 @@ in
         buildInputs = [
             tex
             pkgs.biber
+            pkgs.entr
         ];
     }
