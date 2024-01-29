@@ -1,0 +1,119 @@
+% - Nociones de filtro, ultrafiltro, ideal y filtros k-completos.
+% - Conjuntos cerrados no acotados y estacionarios.
+% - Teoría de modelos, conceptos básicos.
+% - Inmersiones elementales y puntos críticos, haciendo mención de cardinales medibles.
+\chapter{Nociones básicas}
+
+Este capítulo establece varios conceptos básicos que serán necesarios
+más adelante. Las nociones de filtro, ideal, ultrafiltro y filtro $\kappa$-completo
+junto con los conjuntos no acotados y estacionarios componen las definiciones de
+conjuntos más elementales que harán falta.
+
+Luego, un rápido repaso de la teoría de modelos permitirá abordar las inmersiones
+elementales, que son una pieza central del teorema de Kunen.
+
+\section{Filtros e Ideales}
+
+Los filtros caracterizan a conjuntos \say{grandes} dentro
+de un conjunto dado $C$.
+\begin{defi}
+    Sea $C$ un conjunto no vacío. Un conjunto $F\subset \pwset{C}$ es un
+    \concept{filtro} si se cumplen las siguientes condiciones:
+    \begin{enumerate}[label=\alph*)]
+        \item $C\in F$ y $\emptyset\notin F$.
+        \item Si $X,Y\in F$ entonces $X\cap Y\in F$.
+        \item Si $X,Y\subset C$, $X\in F$ y $X\subset Y$ entonces $Y\in F$.
+    \end{enumerate}
+\end{defi}
+
+El concepto dual de un filtro es un ideal:
+si $F$ es un filtro sobre $C$ entonces el conjunto 
+$I=\set{ C - X \colon X\in F }$
+es un ideal. Los ideales caracterizan conjuntos ``pequeños".
+\begin{defi}
+    Sea $C$ un conjunto no vacío. Un conjunto $I\subset \pwset{C}$ es un
+    \concept{ideal} si se cumplen las siguientes condiciones:
+    \begin{enumerate}[label=\alph*)]
+        \item $\emptyset\in I$ y $C\notin I$.
+        \item Si $X,Y\in I$ entonces $X\cup Y\in I$.
+        \item Si $X,Y\subset C$, $X\in I$ y $Y\subset X$ entonces $Y\in I$.
+    \end{enumerate}
+\end{defi}
+
+Dado un filtro cualquiera $F$ es natural considerar el filtro más grande
+que contiene a $F$. Si dicho filtro no existe, $F$ es maximal y le llamamos ultrafiltro.
+Dicho de otra manera:
+
+\begin{defi}
+    Sea $F$ un filtro sobre $C$. $F$ es \concept{ultrafiltro} si, y solo si, es maximal.
+\end{defi}
+
+La siguiente es la última definición concerniente a filtros.
+
+\begin{defi}
+    Sea $\kappa$ un cardinal regular no numerable y $F$ un filtro sobre $C$.
+    $F$ es $\kappa$-completo siempre que dada una familia de conjuntos
+    $\set{X_\alpha\in F\colon \alpha<\kappa}$,
+    se tiene que
+    \[
+        \bigcap X_\alpha \in F.
+    \]
+\end{defi}
+
+\section{Conjuntos Estacionarios}
+
+Sea $C$ un conjunto y $X\subset C$, diremos que $X$ es \concept{no acotado}
+en $C$ si $\sup(X) = C$.
+Si $C$ es además un conjunto de ordinales, un ordinal límite $\alpha$ es
+\concept{punto límite} de $C$ si $\sup ( C \cap\alpha ) = \alpha$.
+\begin{defi}
+    Sea $\kappa$ un cardinal regular no numerable. Un conjunto $C\subset \kappa$
+    es \concept{cerrado no acotado} si $C$ es no acotado en $\kappa$ y contiene a
+    todos sus puntos límites menores que $\kappa$.
+    Un conjunto $S\subset\kappa$ es \concept{estacionario} si, para cada conjunto
+    cerrado no acotado $C$, se tiene $S\cap C\neq\emptyset$.
+\end{defi}
+
+\section{Teoría de Modelos}
+\label{sec:models}
+
+La teoría de modelos es un área relativamente joven \autocite[pág. 3]{chang_model_2012}.
+No obstante, su desarrollo ha sido crucial para la teoría de conjuntos y los
+cardinales grandes \autocite[pág. xv]{kanamori_higher_2009}.
+
+Se quiere definir lo que es un modelo para un lenguaje formal $\lex{L}$.
+Un lenguaje $\lex{L}$ es un conjunto de símbolos relacionales, funcionales y constantes.
+Los símbolos relacionales y funcionales pueden tener cualquier cantidad finita de argumentos,
+lo que se conoce usualmente como su aridad, excepto cero.
+
+Dado un conjunto cualquiera $A$, interesa darle significado a los símbolos de un
+lenguaje $\lex{L}$ en $A$. Esto se logra a través de una \concept{interpretación}, esto es,
+una correspondencia que asigna a cada relación $n$-aria $P$ una relación
+$R\subset A^n$, a cada función $m$-aria una función $G\colon A^m\to A$ y a cada
+constante $c$ un elemento $x\in A$.
+
+\begin{defi}\label{def:model}
+    Sea $\lex{L}$ un lenguaje formal. Un \concept{modelo} $\model{A}$ para $\lex{L}$ se define como,
+    \[
+        \model{A} = \op{A, \mathcal{I}}.
+    \]
+    Donde $A$, que es un conjunto cualquiera, es el \concept{universo} de $\model{A}$ y
+    $\mathcal{I}$ es una interpretación de los símbolos de $\lex{L}$ en $A$.
+\end{defi}
+
+Dada una sentencia $\phi$ de un lenguaje $\lex{L}$ y $\model{A}$ un modelo para $\lex{L}$,
+se escribirá $\model{A}\models\phi$ si la fórmula $\phi$ se satisface en $\model{A}$.
+Intuitivamente, la relación $\models$ quiere decir que $\phi$ es verdadera en el modelo.
+Una definición rigurosa de $\models$ es posible, y requiere inducción sobre la complejidad
+de $\phi$ (véase \autocite[\S 1.3]{chang_model_2012} ó \autocite[\S 12]{jech_set_2003}).
+
+Dados dos modelos $\model{A}, \model{B}$ se dirá que $\model{A}$ es \concept{elementalmente
+    equivalente} a $\model{B}$, en símbolos $\model{A}\equiv \model{B}$, si toda sentencia
+que es verdadera en $\model{A}$ lo es también en $\model{B}$ y viceversa.
+
+\note{Explicar un poco más que es $\lex{L}_\in$ y los $\in$-modelos}
+La definición \ref{def:model} esta dada en forma general. Normalmente interesarán modelos de $\lex{L}_\in$,
+el lenguaje de la teoría de conjuntos, o $\in$-modelos de la forma $\op{A,\in}$.
+
+\section{Inmersiones Elementales}
+\label{sec:elem-embed}

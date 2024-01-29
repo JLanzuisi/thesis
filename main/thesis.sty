@@ -23,9 +23,12 @@
         Matemáticas
     }
 
+\DeclareMathOperator{\Con}{Con}
+\DeclareMathOperator{\Crit}{crit}
+
 \NewDocumentCommand { \model } { m }
 {
-    \mathcal { #1 }
+    \mathfrak { #1 }
 }
 \NewDocumentCommand { \set } { m }
 {
@@ -37,5 +40,25 @@
 }
 \NewDocumentCommand { \crit } { m }
 {
-    \mathrm { crit } ( #1 )
+    \Crit (\, #1\, )
+}
+
+\NewDocumentCommand { \pwset } { m }
+{
+    \mathcal{P}(#1)
+}
+
+\NewDocumentCommand{ \concept } { m }
+{
+    \emph{ #1 }
+}
+
+\NewDocumentCommand{ \op } { m }
+{
+     \langle #1 \rangle
+}
+
+\NewDocumentCommand{ \con } { m }
+{
+    \Con ( #1 )
 }

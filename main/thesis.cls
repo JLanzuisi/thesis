@@ -14,15 +14,20 @@
 
 \RequirePackage { geometry }
 \RequirePackage { setspace }
-\RequirePackage { unicode-math }
 \RequirePackage { microtype }
 \RequirePackage { enumitem }
-\RequirePackage { polyglossia }
+\RequirePackage [ spanish ] { babel }
 \RequirePackage { csquotes }
 \RequirePackage { biblatex }
 \RequirePackage { xcolor }
 \RequirePackage { hyperref }
 \RequirePackage { graphicx }
+\RequirePackage { mathtools, amsthm }
+\RequirePackage { dirtytalk }
+\RequirePackage [ spanish ] { cleveref }
+\RequirePackage { epigraph }
+% Cref
+\crefname{section}{\S}{\S}
 
 % Set page margins
 \geometry
@@ -33,27 +38,15 @@
         right = 2cm,
         bottom = 2cm,
         top = 2cm,
+        marginparsep = 10pt,
+        marginparwidth = 2cm,
     }
 
 % Set fonts
-\setmainfont
-    [
-        Extension = .otf,
-        UprightFont = *-Regular,
-        ItalicFont = *-Italic,
-        BoldFont = *-Bold,
-        BoldItalicFont = *-BoldItalic,
-    ]
-    {
-        OldStandard
-    }
-\setmathfont
-    [
-        Extension = .otf,
-    ]
-    {
-        NewCMMath-Book
-    }
+\usepackage{libertinus}
+\usepackage[libertine, subscriptcorrection]{newtxmath}
+\usepackage[cal=boondoxo, frak=euler]{mathalfa}
+\usepackage[T1]{fontenc}
 
 % Set basic spacing
 \setlength { \parindent } { 8.46pt }
@@ -64,105 +57,70 @@
 \pagestyle{headings}
 \gdef\@oddhead{\hfil\thepage}
 
-% Language
-\setdefaultlanguage{spanish}
-
 % Bibliography
 \addbibresource{references.bib}
 
 % Hyperref
-\definecolor{linkcolor}{HTML}{990012}
 \hypersetup
     {
         colorlinks = true,
-        allcolors = linkcolor,
+        allcolors = black,
     }
 
 % Theorems
-\newcounter{teolabelcount}
-\newcounter{proplabelcount}
-\newcounter{deflabelcount}
-\int_zero_new:N \g_th_teo_int
-\int_zero_new:N \g_th_prop_int
-\int_zero_new:N \g_th_def_int
-
-\cs_new:Npn \th_print_label:n #1 #2
-    {
-        \int_gincr:N #2
-        #1~\int_to_arabic:n { #2 }.~
-    }
-
-\cs_new:Npn \th_indent_begin:
-    {
-            \list {}
-            {
-                \setlength { \leftmargin } { 1cm }
-            }
-            \item
-    }
-
-\cs_new:Npn \th_indent_end:
-    {
-        \endlist
-    }
-
-\NewDocumentEnvironment { teo } { o }
-    {
-        \refstepcounter{teolabelcount}
-        \IfNoValueF { #1 } { \label { #1 } }
-        \th_indent_begin:
-        \th_print_label:n { Teorema } { \g_base_teo_int }
-    }
-    {
-        \th_indent_end:
-    }
-
-\NewDocumentEnvironment { prop } { o }
-    {
-        \refstepcounter{proplabelcount}
-        \IfNoValueF { #1 } { \label { #1 } }
-        \th_indent_begin:
-        \th_print_label:n { Proposición } { \g_base_prop_int }
-    }
-    {
-        \th_indent_end:
-    }
-
-\NewDocumentEnvironment { defi } { o }
-    {
-        \refstepcounter{deflabelcount}
-        \IfNoValueF { #1 } { \label { #1 } }
-        \th_indent_begin:
-        \th_print_label:n { Definición } { \g_base_def_int }
-    }
-    {
-        \th_indent_end:
-    }
+\newtheoremstyle{defi}% hnamei
+    {.5\baselineskip}% hSpace abovei
+    {.5\baselineskip}% hSpace belowi
+    {}% hBody fonti
+    {}% hIndent amounti
+    {\scshape}% hTheorem head fonti
+    {.}% hPunctuation after theorem headi
+    {.5em}% hSpace after theorem headi
+    {}% hTheorem head spec (can be left empty, meaning ‘normal’)i
+\theoremstyle{defi}
+\newtheorem{defi}{Definición}[chapter]
 
 % Sectioning commands
-\NewDocumentCommand { \Section } {}
-{
-    \@startsection
-    { section }
-    { 1 }
-    { 0mm }
-    { 1\baselineskip }
-    { 1\baselineskip }
+\usepackage[explicit]{titlesec}
+\titleformat
+    {\chapter}
+    [display]
+    {\bfseries}
     {
-        \normalfont\normalsize
-        \addfontfeatures{LetterSpace=8}
-        \bfseries\MakeUppercase
+        \centering
+        \fontsize{14}{14}\selectfont
+        \textls{\MakeUppercase{Capítulo}}~\thechapter\\[10pt]
+        \fontsize{12}{12}\selectfont
+        \textls{\MakeUppercase{#1}}
     }
-}
+    {0ex}
+    {\centering}
+\titleformat{name=\chapter, numberless}
+    [block]
+    {\bfseries}
+    {\fontsize{14}{14}\selectfont\textls{\MakeUppercase{#1}}}
+    {0ex}
+    {\centering}
+\titleformat
+    {\section}
+    {\bfseries}
+    {\thesection\fontsize{12}{12}\selectfont\ #1}
+    {0ex}
+    {}
+\titleformat{name=\section, numberless}
+    [block]
+    {\bfseries}
+    {\fontsize{12}{12}\selectfont #1}
+    {0ex}
+    {}
 
+% USB logo
 \cs_set_eq:NN \latex_bfseries:D \bfseries
-\cs_set_eq:NN \fontspec_addfontfeatures:D \addfontfeatures
 
 \cs_new:Npn \th_uppercase_bold:n #1
     {
         \group_begin:
             \latex_bfseries:D
-            \fontspec_addfontfeatures:D { LetterSpace = 6 }
             \text_uppercase:n { #1 }
         \group_end:
     }
@@ -176,7 +134,7 @@
         \group_begin:
             \latex_centering:D
             \includegraphics[scale=.3]{usblogo} \\
-            \th_uppercase_bold:n { #1 }
+            \th_uppercase_bold:n { \textls { #1 } }
             \tex_par:D
         \group_end:
     }
@@ -195,5 +153,55 @@
     {
         \th_print_logo_head:n { #1 }
     }
+
+\NewDocumentCommand{ \ToC }{}
+    {
+        \chapter*{Índice~General}
+        \@starttoc{toc}
+    }
+
+% Notes
+\reversemarginpar
+\NewDocumentCommand{ \note }{ m }
+{
+    \marginpar 
+    { 
+        \color{blue}
+        \raggedleft
+        \sffamily
+        \scriptsize
+        #1
+        \PackageWarning{Notes}{Revisar~nota}
+    }
+}
+
+% Wrapping
+\newlength{\wrapwd}
+\NewDocumentCommand { \wrapto } { o o m }
+{
+    \IfNoValueTF { #1 }
+        { \setlength{\wrapwd}{.6\linewidth} }
+        { \setlength{\wrapwd}{#1} }
+    \IfNoValueTF { #2 }
+        { \let\wrapal\raggedright }
+        { \let\wrapal#2 }
+    \begin{minipage}{\wrapwd}
+        \wrapal
+        #3
+    \end{minipage}
+}
+
+% Conditionals
+\newif { \ifcaratula }
+\newif { \ifpaginatitulo }
+\newif { \ifresumen }
+\newif { \ifdedicatoria }
+\newif { \ifagradecimientos }
+\newif { \iftoc }
+\newif { \ifsimbolos }
+\newif { \ifabreviaturas }
+\newif { \ifintro }
+\newif { \ifbasicos }
+\newif { \ifreferencias }
 
 \RequirePackage{thesis}
