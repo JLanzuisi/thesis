@@ -16,7 +16,7 @@
 \RequirePackage { setspace }
 \RequirePackage { microtype }
 \RequirePackage { enumitem }
-\RequirePackage [ spanish ] { babel }
+\RequirePackage { polyglossia }
 \RequirePackage { csquotes }
 \RequirePackage { biblatex }
 \RequirePackage { xcolor }
@@ -26,6 +26,10 @@
 \RequirePackage { dirtytalk }
 \RequirePackage [ spanish ] { cleveref }
 \RequirePackage { epigraph }
+
+% Lang
+\setdefaultlanguage{spanish}
+
 % Cref
 \crefname{section}{\S}{\S}
 
@@ -43,10 +47,7 @@
     }
 
 % Set fonts
-\usepackage{libertinus}
-\usepackage[libertine, subscriptcorrection]{newtxmath}
-\usepackage[cal=boondoxo, frak=euler]{mathalfa}
-\usepackage[T1]{fontenc}
+\usepackage[default]{fontsetup}
 
 % Set basic spacing
 \setlength { \parindent } { 8.46pt }
