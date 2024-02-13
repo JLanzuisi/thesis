@@ -47,7 +47,8 @@
     }
 
 % Set fonts
-\usepackage[default]{fontsetup}
+\usepackage[default,varnothing]{fontsetup}
+\newfontface\titlefont{CMUSerif-BoldNonextended}[Scale=MatchUppercase, Letters=Uppercase]
 
 % Set basic spacing
 \setlength { \parindent } { 8.46pt }
@@ -74,7 +75,7 @@
     {.5\baselineskip}% hSpace belowi
     {}% hBody fonti
     {}% hIndent amounti
-    {\scshape}% hTheorem head fonti
+    {\scshape\addfontfeatures{LetterSpace=5}}% hTheorem head fonti
     {.}% hPunctuation after theorem headi
     {.5em}% hSpace after theorem headi
     {}% hTheorem head spec (can be left empty, meaning ‘normal’)i
@@ -86,68 +87,59 @@
 \titleformat
     {\chapter}
     [display]
-    {\bfseries}
+    {\titlefont}
     {
         \centering
         \fontsize{14}{14}\selectfont
-        \textls{\MakeUppercase{Capítulo}}~\thechapter\\[10pt]
+        \UpperCase{Capítulo}~\thechapter\\[10pt]
         \fontsize{12}{12}\selectfont
-        \textls{\MakeUppercase{#1}}
+        \UpperCase{#1}
     }
     {0ex}
     {\centering}
 \titleformat{name=\chapter, numberless}
     [block]
-    {\bfseries}
-    {\fontsize{14}{14}\selectfont\textls{\MakeUppercase{#1}}}
+    {\titlefont}
+    {\fontsize{14}{14}\selectfont\UpperCase{#1}}
     {0ex}
     {\centering}
 \titleformat
     {\section}
-    {\bfseries}
+    {\titlefont}
     {\thesection\fontsize{12}{12}\selectfont\ #1}
     {0ex}
     {}
 \titleformat{name=\section, numberless}
     [block]
-    {\bfseries}
+    {\titlefont}
     {\fontsize{12}{12}\selectfont #1}
     {0ex}
     {}
 
 % USB logo
-\cs_set_eq:NN \latex_bfseries:D \bfseries
-
-\cs_new:Npn \th_uppercase_bold:n #1
-    {
-        \group_begin:
-            \latex_bfseries:D
-            \text_uppercase:n { #1 }
-        \group_end:
-    }
-
-\cs_generate_variant:Nn \th_uppercase_bold:n { x }
-
 \cs_set_eq:NN \latex_centering:D \centering
 
 \cs_new:Npn \th_print_logo_head:n #1
     {
         \group_begin:
             \latex_centering:D
-            \includegraphics[scale=.3]{usblogo} \\
-            \th_uppercase_bold:n { \textls { #1 } }
+            \includegraphics[scale=.3]{resources/usblogo} \\
+            { \titlefont \UpperCase{#1} }
             \tex_par:D
+        \group_end:
+    }
+
+\NewDocumentCommand{ \UpperCase }{ m }
+    {
+        \group_begin:
+        \addfontfeatures{LetterSpace=10}
+        \text_uppercase:n { #1 }
         \group_end:
     }
 
 \NewDocumentCommand{ \UppercaseBold }{ m }
     {
-        \th_uppercase_bold:x { #1 }
-    }
-
-\NewDocumentCommand{ \UpperCase }{ m }
-    {
-        \text_uppercase:n { #1 }
+        { \titlefont\UpperCase{#1} }
     }
 
 \NewDocumentCommand{ \PrintUsbLogo }{ m }
