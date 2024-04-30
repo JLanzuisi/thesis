@@ -1,34 +1,20 @@
-\ProvidesExplClass{thesis}{29-07-2023}{}
-    {Main class for my thesis}
-
-\PassOptionsToClass
-    {
-        12pt,
-        letterpaper,
-        openany,
-        oneside,
-    }
-    {book}
-
-\LoadClass{book}
-
 \RequirePackage { geometry }
 \RequirePackage { setspace }
 \RequirePackage { microtype }
 \RequirePackage { enumitem }
-\RequirePackage { polyglossia }
+\RequirePackage [ spanish ] { babel }
 \RequirePackage { csquotes }
 \RequirePackage { biblatex }
 \RequirePackage { xcolor }
 \RequirePackage { hyperref }
 \RequirePackage { graphicx }
-\RequirePackage { mathtools, amsthm }
+\RequirePackage { mathtools, amsthm, amsfonts }
 \RequirePackage { dirtytalk }
 \RequirePackage [ spanish ] { cleveref }
 \RequirePackage { epigraph }
 
-% Lang
-\setdefaultlanguage{spanish}
+\ExplSyntaxOn
+\makeatletter
 
 % Cref
 \crefname{section}{\S}{\S}
@@ -47,8 +33,11 @@
     }
 
 % Set fonts
-\usepackage[default,varnothing]{fontsetup}
-\newfontface\titlefont{CMUSerif-BoldNonextended}[Scale=MatchUppercase, Letters=Uppercase]
+\usepackage[lf]{Baskervaldx} % lining figures
+\usepackage[bigdelims,vvarbb,baskervaldx]{newtxmath} % math italic letters from Nimbus Roman
+\usepackage[cal=boondoxo]{mathalfa} % mathcal from STIX, unslanted a bit
+\usepackage[scale=.9]{courierten}
+\newcommand{\titlefont}{\bfseries}
 
 % Set basic spacing
 \setlength { \parindent } { 8.46pt }
@@ -75,7 +64,7 @@
     {.5\baselineskip}% hSpace belowi
     {}% hBody fonti
     {}% hIndent amounti
-    {\scshape\addfontfeatures{LetterSpace=5}}% hTheorem head fonti
+    {\scshape}%\addfontfeatures{LetterSpace=5}}% hTheorem head fonti
     {.}% hPunctuation after theorem headi
     {.5em}% hSpace after theorem headi
     {}% hTheorem head spec (can be left empty, meaning ‘normal’)i
@@ -132,7 +121,7 @@
 \NewDocumentCommand{ \UpperCase }{ m }
     {
         \group_begin:
-        \addfontfeatures{LetterSpace=10}
+        %\addfontfeatures{LetterSpace=10}
         \text_uppercase:n { #1 }
         \group_end:
     }
@@ -157,8 +146,8 @@
 \reversemarginpar
 \NewDocumentCommand{ \note }{ m }
 {
-    \marginpar 
-    { 
+    \marginpar
+    {
         \color{blue}
         \raggedleft
         \sffamily
@@ -197,4 +186,67 @@
 \newif { \ifbasicos }
 \newif { \ifreferencias }
 
-\RequirePackage{thesis}
+% macros
+\newcommand { \MainTitle }
+    {
+        Estudio~comparativo~de~tres~demostraciones~
+        del~teorema~de~inconsistencia~de~Kunen.
+    }
+
+\newcommand { \autor }
+    {
+        Jhonny~Lanzuisi~Berrizbeitia
+    }
+
+\newcommand { \tutor }
+    {
+        Jesús~Nieto~Martínez
+    }
+
+\newcommand { \coord }
+    {
+        Matemáticas
+    }
+
+\DeclareMathOperator{\Con}{Con}
+\DeclareMathOperator{\Crit}{crit}
+
+\NewDocumentCommand { \model } { m }
+{
+    \mathfrak { #1 }
+}
+\NewDocumentCommand { \set } { m }
+{
+    \left\{ #1 \right\}
+}
+\NewDocumentCommand { \lex } { m }
+{
+    \mathcal { #1 }
+}
+\NewDocumentCommand { \crit } { m }
+{
+    \Crit (\, #1\, )
+}
+
+\NewDocumentCommand { \pwset } { m }
+{
+    \mathcal{P}(#1)
+}
+
+\NewDocumentCommand{ \concept } { m }
+{
+    \emph{ #1 }
+}
+
+\NewDocumentCommand{ \op } { m }
+{
+     \langle #1 \rangle
+}
+
+\NewDocumentCommand{ \con } { m }
+{
+    \Con ( #1 )
+}
+
+\makeatother
+\ExplSyntaxOff
