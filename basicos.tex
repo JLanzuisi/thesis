@@ -12,7 +12,7 @@ conjuntos más elementales que harán falta.
 Luego, un rápido repaso de la teoría de modelos permitirá abordar las inmersiones
 elementales, que son una pieza central del teorema de Kunen.
 
-\section{Filtros e Ideales}
+\section{Filtros}
 
 Los filtros caracterizan a conjuntos \say{grandes} dentro
 de un conjunto dado $C$.
@@ -26,20 +26,6 @@ de un conjunto dado $C$.
     \end{enumerate}
 \end{defi}
 
-El concepto dual de un filtro es un ideal:
-si $F$ es un filtro sobre $C$ entonces el conjunto 
-$I=\set{ C - X \colon X\in F }$
-es un ideal. Los ideales caracterizan conjuntos ``pequeños".
-\begin{defi}
-    Sea $C$ un conjunto no vacío. Un conjunto $I\subset \pwset{C}$ es un
-    \concept{ideal} si se cumplen las siguientes condiciones:
-    \begin{enumerate}[label=\alph*)]
-        \item $\emptyset\in I$ y $C\notin I$.
-        \item Si $X,Y\in I$ entonces $X\cup Y\in I$.
-        \item Si $X,Y\subset C$, $X\in I$ y $Y\subset X$ entonces $Y\in I$.
-    \end{enumerate}
-\end{defi}
-
 Dado un filtro cualquiera $F$ es natural considerar el filtro más grande
 que contiene a $F$. Si dicho filtro no existe, $F$ es maximal y le llamamos ultrafiltro.
 Dicho de otra manera:
@@ -48,10 +34,10 @@ Dicho de otra manera:
     Sea $F$ un filtro sobre $C$. $F$ es \concept{ultrafiltro} si, y solo si, es maximal.
 \end{defi}
 
-La siguiente es la última definición concerniente a filtros.
+La siguiente definición es central para la teoría de cardinales medibles.
 
 \begin{defi}
-    Sea $\kappa$ un cardinal regular no numerable y $F$ un filtro sobre $C$.
+    Sea $\kappa$ un cardinal regular y $F$ un filtro sobre $C$.
     $F$ es $\kappa$-completo siempre que dada una familia de conjuntos
     $\set{X_\alpha\in F\colon \alpha<\kappa}$,
     se tiene que
@@ -59,6 +45,43 @@ La siguiente es la última definición concerniente a filtros.
         \bigcap X_\alpha \in F.
     \]
 \end{defi}
+
+Un ejemplo que une los conceptos tratados hasta ahora es, como ya se mencionó,
+la definición de cardinal medible.
+
+\begin{defi}
+    Sea $\kappa > \omega$ un cardinal. $\kappa$ es \concept{medible} si existe
+    un ultrafiltro $\kappa\text{-completo}$ sobre $\kappa$.
+\end{defi}
+
+% \begin{defi}
+%     Sea $F$ un filtro sobre un cardinal $\kappa$. $F$ es \concept{normal}
+%     si, y solo si, es cerrado bajo intersecciónes diagonales:
+%     \[
+%         \text
+%         {
+%             Si $\op{X_\alpha\mid \alpha<\kappa}$ es una sucesión sobre $F$,
+%             $\dint_{\alpha<\kappa} X_\alpha \in F$.
+%         }
+%     \]
+% \end{defi}
+
+% \section{Ideales}
+
+% Un \concept{ideal} es el concepto dual de un filtro, en el sentido siguiente:
+% si $F$ es un filtro sobre $C$ entonces el conjunto
+% $I=\set{ C - X \colon X\in F }$
+% es un ideal. Los ideales caracterizan conjuntos ``pequeños''.
+% \begin{defi}
+%     Sea $C$ un conjunto no vacío. Un conjunto $I\subset \pwset{C}$ es un
+%     \concept{ideal} si se cumplen las siguientes condiciones:
+%     \begin{enumerate}[label=\alph*)]
+%         \item $\emptyset\in I$ y $C\notin I$.
+%         \item Si $X,Y\in I$ entonces $X\cup Y\in I$.
+%         \item Si $X,Y\subset C$, $X\in I$ y $Y\subset X$ entonces $Y\in I$.
+%     \end{enumerate}
+% \end{defi}
+
 
 \section{Conjuntos Estacionarios}
 
@@ -70,9 +93,18 @@ Si $C$ es además un conjunto de ordinales, un ordinal límite $\alpha$ es
     Sea $\kappa$ un cardinal regular no numerable. Un conjunto $C\subset \kappa$
     es \concept{cerrado no acotado} si $C$ es no acotado en $\kappa$ y contiene a
     todos sus puntos límites menores que $\kappa$.
-    Un conjunto $S\subset\kappa$ es \concept{estacionario} si, para cada conjunto
-    cerrado no acotado $C$, se tiene $S\cap C\neq\emptyset$.
+    Un conjunto $S\subset\kappa$ es \concept{estacionario} si para cada conjunto
+    cerrado no acotado $C$ se tiene $S\cap C\neq\emptyset$.
 \end{defi}
+
+Sea $\op{X_\alpha\colon \alpha<\kappa}$ una sucesión
+de subconjuntos de $\kappa$. La \concept{intersección diagonal} de
+$X_\alpha$ se define como:
+\[
+    \dint_{\alpha<\kappa}X_\alpha
+    =
+    \set{\epsilon<\kappa\colon\epsilon\in \bigcap_{\alpha<\epsilon}X_\alpha} .
+\]
 
 \section{Teoría de Modelos}
 \label{sec:models}

@@ -1,17 +1,26 @@
+\documentclass
+[
+  12pt,
+  letterpaper,
+  openany,
+  oneside,
+  draft
+]{book}
+
 \RequirePackage { geometry }
 \RequirePackage { setspace }
-\RequirePackage { microtype }
-\RequirePackage { enumitem }
 \RequirePackage [ spanish ] { babel }
+\RequirePackage [ tracking=smallcaps, babel=true, disable=ifdraft ] { microtype }
+\RequirePackage { enumitem }
 \RequirePackage { csquotes }
 \RequirePackage { biblatex }
 \RequirePackage { xcolor }
-\RequirePackage { hyperref }
 \RequirePackage { graphicx }
-\RequirePackage { mathtools, amsthm, amsfonts }
+\RequirePackage { mathtools, amsthm }
 \RequirePackage { dirtytalk }
-\RequirePackage [ spanish ] { cleveref }
 \RequirePackage { epigraph }
+\RequirePackage { hyperref }
+\RequirePackage [ spanish ] { cleveref }
 
 \ExplSyntaxOn
 \makeatletter
@@ -33,11 +42,15 @@
     }
 
 % Set fonts
-\usepackage[lf]{Baskervaldx} % lining figures
-\usepackage[bigdelims,vvarbb,baskervaldx]{newtxmath} % math italic letters from Nimbus Roman
-\usepackage[cal=boondoxo]{mathalfa} % mathcal from STIX, unslanted a bit
-\usepackage[scale=.9]{courierten}
-\newcommand{\titlefont}{\bfseries}
+\usepackage[T1]{fontenc}
+\usepackage{mlmodern}
+\usepackage[cal=boondoxo, calscaled=1.05, frak=euler]{mathalfa}
+% Patch bold font
+\renewcommand{\bfdefault}{b}
+\DeclareRobustCommand\bfseries
+        {\not@math@alphabet\bfseries\mathbf
+         \fontfamily{lmr}\fontseries\bfdefault\selectfont}
+\newcommand{\titlefont}{\bfseries\selectfont}
 
 % Set basic spacing
 \setlength { \parindent } { 8.46pt }
@@ -64,7 +77,7 @@
     {.5\baselineskip}% hSpace belowi
     {}% hBody fonti
     {}% hIndent amounti
-    {\scshape}%\addfontfeatures{LetterSpace=5}}% hTheorem head fonti
+    {\scshape}% hTheorem head fonti
     {.}% hPunctuation after theorem headi
     {.5em}% hSpace after theorem headi
     {}% hTheorem head spec (can be left empty, meaning ‘normal’)i
@@ -121,7 +134,7 @@
 \NewDocumentCommand{ \UpperCase }{ m }
     {
         \group_begin:
-        %\addfontfeatures{LetterSpace=10}
+        \lsstyle
         \text_uppercase:n { #1 }
         \group_end:
     }
@@ -146,15 +159,18 @@
 \reversemarginpar
 \NewDocumentCommand{ \note }{ m }
 {
-    \marginpar
+    \@ifclasswith{ book } { draft }
     {
-        \color{blue}
-        \raggedleft
-        \sffamily
-        \scriptsize
-        #1
-        \PackageWarning{Notes}{Revisar~nota}
-    }
+        \marginpar
+        {
+            \color{blue}
+            \raggedleft
+            \sffamily
+            \scriptsize
+            #1
+        }
+    } {}
+    \PackageWarning{Notes}{Revisar~nota}
 }
 
 % Wrapping
@@ -185,6 +201,31 @@
 \newif { \ifintro }
 \newif { \ifbasicos }
 \newif { \ifreferencias }
+
+\@ifclasswith{ book } { draft }
+{
+  \AddToHook{begindocument}
+  {
+    \newbox{\watermark}
+    \savebox{\watermark}
+    {
+      \rotatebox{45}
+      {
+        \scalebox{7}
+        {
+          \textcolor{red!10}{BORRADOR}
+        }
+      }
+    }
+    \AddToHook{ shipout/background }
+    {
+      \put (\paperwidth/2 - \wd\watermark/2,-\paperheight/2 - \ht\watermark/2)
+      {
+        \usebox{\watermark}
+      }
+    }
+  }
+}{}
 
 % macros
 \newcommand { \MainTitle }
@@ -235,7 +276,7 @@
 
 \NewDocumentCommand{ \concept } { m }
 {
-    \emph{ #1 }
+    \emph{#1}
 }
 
 \NewDocumentCommand{ \op } { m }
@@ -248,5 +289,10 @@
     \Con ( #1 )
 }
 
+\DeclareMathOperator*{ \dint } { \bigtriangleup }
+
 \makeatother
 \ExplSyntaxOff
+
+\DeclareDocumentCommand{ \LoadClass } { o m } {}
+\dump
