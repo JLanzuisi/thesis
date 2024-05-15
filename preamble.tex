@@ -7,6 +7,9 @@
   draft
 ]{book}
 
+\ExplSyntaxOn
+\makeatletter
+
 \RequirePackage { geometry }
 \RequirePackage { setspace }
 \RequirePackage [ spanish ] { babel }
@@ -21,9 +24,7 @@
 \RequirePackage { epigraph }
 \RequirePackage { hyperref }
 \RequirePackage [ spanish ] { cleveref }
-
-\ExplSyntaxOn
-\makeatletter
+\RequirePackage { lineno }
 
 % Cref
 \crefname{section}{\S}{\S}
@@ -83,6 +84,28 @@
     {}% hTheorem head spec (can be left empty, meaning ‘normal’)i
 \theoremstyle{defi}
 \newtheorem{defi}{Definición}[chapter]
+\newtheoremstyle{lem}% hnamei
+    {.5\baselineskip}% hSpace abovei
+    {.5\baselineskip}% hSpace belowi
+    {}% hBody fonti
+    {}% hIndent amounti
+    {\scshape}% hTheorem head fonti
+    {.}% hPunctuation after theorem headi
+    {.5em}% hSpace after theorem headi
+    {}% hTheorem head spec (can be left empty, meaning ‘normal’)i
+\theoremstyle{lem}
+\newtheorem{lem}{Lema}[chapter]
+\newtheoremstyle{teo}% hnamei
+    {.5\baselineskip}% hSpace abovei
+    {.5\baselineskip}% hSpace belowi
+    {}% hBody fonti
+    {}% hIndent amounti
+    {\scshape}% hTheorem head fonti
+    {.}% hPunctuation after theorem headi
+    {.5em}% hSpace after theorem headi
+    {}% hTheorem head spec (can be left empty, meaning ‘normal’)i
+\theoremstyle{teo}
+\newtheorem{teo}{Teorema}[chapter]
 
 % Sectioning commands
 \usepackage[explicit]{titlesec}
@@ -161,14 +184,12 @@
 {
     \@ifclasswith{ book } { draft }
     {
-        \marginpar
-        {
+        \begingroup
             \color{blue}
-            \raggedleft
             \sffamily
-            \scriptsize
-            #1
-        }
+            \small
+            \textlangle #1 \textrangle
+        \endgroup
     } {}
     \PackageWarning{Notes}{Revisar~nota}
 }
@@ -291,8 +312,10 @@
 
 \DeclareMathOperator*{ \dint } { \bigtriangleup }
 
-\makeatother
-\ExplSyntaxOff
+\@ifclasswith{ book } { draft } { \linenumbers } {}
 
 \DeclareDocumentCommand{ \LoadClass } { o m } {}
+
+\makeatother
+\ExplSyntaxOff
 \dump

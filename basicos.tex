@@ -14,8 +14,11 @@ elementales, que son una pieza central del teorema de Kunen.
 
 \section{Filtros}
 
+Esta sección se ocupa de dar las definiciones básicas de filtros,
+que serán necesarias a lo largo del texto.
 Los filtros caracterizan a conjuntos \say{grandes} dentro
 de un conjunto dado $C$.
+
 \begin{defi}
     Sea $C$ un conjunto no vacío. Un conjunto $F\subset \pwset{C}$ es un
     \concept{filtro} si se cumplen las siguientes condiciones:
@@ -26,13 +29,17 @@ de un conjunto dado $C$.
     \end{enumerate}
 \end{defi}
 
-Dado un filtro cualquiera $F$ es natural considerar el filtro más grande
-que contiene a $F$. Si dicho filtro no existe, $F$ es maximal y le llamamos ultrafiltro.
-Dicho de otra manera:
-
 \begin{defi}
-    Sea $F$ un filtro sobre $C$. $F$ es \concept{ultrafiltro} si, y solo si, es maximal.
+    Sea $F$ un filtro sobre $C$. $F$ es \concept{ultrafiltro} si, para todo $X\subset C$,
+    se tiene que $X\in F$ o $X-S\in F$.
 \end{defi}
+
+Una caracterizacion equivalente para ultrafiltros viene dada por la propiedad
+de maximalidad:
+
+\begin{lem}
+    Sea $F$ un filtro sobre $C$. $F$ es \concept{ultrafiltro} si, y solo si, es maximal.
+\end{lem}
 
 La siguiente definición es central para la teoría de cardinales medibles.
 
@@ -85,6 +92,11 @@ la definición de cardinal medible.
 
 \section{Conjuntos Estacionarios}
 
+El principal objetivo de esta sección es establecer un teorema
+de Solovay, acerca de particiones
+con conjuntos estacionarios, usando el \cref{teo:fodor}
+de Fodor.
+
 Sea $C$ un conjunto y $X\subset C$, diremos que $X$ es \concept{no acotado}
 en $C$ si $\sup(X) = C$.
 Si $C$ es además un conjunto de ordinales, un ordinal límite $\alpha$ es
@@ -94,17 +106,44 @@ Si $C$ es además un conjunto de ordinales, un ordinal límite $\alpha$ es
     es \concept{cerrado no acotado} si $C$ es no acotado en $\kappa$ y contiene a
     todos sus puntos límites menores que $\kappa$.
     Un conjunto $S\subset\kappa$ es \concept{estacionario} si para cada conjunto
-    cerrado no acotado $C$ se tiene $S\cap C\neq\emptyset$.
+    cerrado no acotado $C\subset\kappa$ se tiene $S\cap C\neq\emptyset$.
 \end{defi}
 
-Sea $\op{X_\alpha\colon \alpha<\kappa}$ una sucesión
-de subconjuntos de $\kappa$. La \concept{intersección diagonal} de
-$X_\alpha$ se define como:
-\[
-    \dint_{\alpha<\kappa}X_\alpha
-    =
-    \set{\epsilon<\kappa\colon\epsilon\in \bigcap_{\alpha<\epsilon}X_\alpha} .
-\]
+% Sea $\op{X_\alpha\colon \alpha<\kappa}$ una sucesión
+% de subconjuntos de $\kappa$. La \concept{intersección diagonal} de
+% $X_\alpha$ se define como:
+% \[
+%     \dint_{\alpha<\kappa}X_\alpha
+%     =
+%     \set{\epsilon<\kappa\colon\epsilon\in \bigcap_{\alpha<\epsilon}X_\alpha} .
+% \]
+
+\begin{defi}
+    Una función de ordinales $f$ en un conjunto $S$ es \concept{regresiva}, si
+    $f(\alpha)<\alpha$ para todo $\alpha\in S$.
+\end{defi}
+
+\begin{teo}\label{teo:fodor}
+    Sea $f$ una función regresiva en un conjunto estacionario $S\subset\kappa$.
+    Existe entonces un subconjunto $T\subset S$ y un $\gamma<\kappa$ tal que
+    $f(\alpha) = \gamma$ para todo $\alpha\in T$.
+\end{teo}
+
+El siguiente es un lema auxiliar, que será de ustilidad para el \cref{teo:solovay}.
+
+\begin{lem}
+    Sea $S\subset\kappa$ un conjunto estacionario y tal que todo $\alpha\in A$
+    es un cardinal regular no numerable. Entonces el conjunto
+    \[
+        T=\set{\alpha\in S\colon S\cap\alpha\;\text{no es un subconjunto estacionario de $\alpha$}}
+    \]
+    es estacionario en $\kappa$.
+\end{lem}
+
+\begin{teo}\label{teo:solovay}
+    Sea $\kappa$ un cardinal regular no numerable. Entonces cada subconjunto estacionario
+    de $\kappa$ es la unión disjunta de $\kappa$ subconjuntos estacionarios.
+\end{teo}
 
 \section{Teoría de Modelos}
 \label{sec:models}
@@ -144,7 +183,7 @@ Dados dos modelos $\model{A}, \model{B}$ se dirá que $\model{A}$ es \concept{el
 que es verdadera en $\model{A}$ lo es también en $\model{B}$ y viceversa.
 
 \note{Explicar un poco más que es $\lex{L}_\in$ y los $\in$-modelos}
-La definición \ref{def:model} esta dada en forma general. Normalmente interesarán modelos de $\lex{L}_\in$,
+La \cref{def:model} esta dada en forma general. Normalmente interesarán modelos de $\lex{L}_\in$,
 el lenguaje de la teoría de conjuntos, o $\in$-modelos de la forma $\op{A,\in}$.
 
 \section{Inmersiones Elementales}

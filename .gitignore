@@ -7,4 +7,6 @@
 *.blg
 *.xml
 *.out
+*.fmt
+out/
 !resources/*
