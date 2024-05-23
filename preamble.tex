@@ -86,6 +86,10 @@
 \newtheorem{defi}{Definición}[chapter]
 \newtheorem{lem}{Lema}[chapter]
 \newtheorem{teo}{Teorema}[chapter]
+\newtheorem{cor}{Corolario}[chapter]
+
+% QED symbol
+\renewcommand\qedsymbol{\rule{.30em}{1.9ex}}
 
 % Sectioning commands
 \usepackage[explicit]{titlesec}
@@ -295,17 +299,15 @@
     \Con ( #1 )
 }
 
-\NewDocumentCommand { \cna } {}
+\NewDocumentCommand { \cna } { m }
 {
-    c.\,n.\,a.
+    \str_if_eq:nnTF { #1 } { . } { c.\,n.\,a. } { c.\,n.\,a.#1 }
 }
 
 \DeclareMathOperator*{ \dint } { \bigtriangleup }
+\DeclareMathOperator*{ \cf } { cf }
 
 \@ifclasswith{ book } { draft } { \linenumbers } {}
-
-\DeclareDocumentCommand{ \LoadClass } { o m } {}
-
 \makeatother
 \ExplSyntaxOff
 \dump

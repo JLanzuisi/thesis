@@ -34,7 +34,7 @@ de un conjunto dado $C$.
     se tiene que $X\in F$ o $X-S\in F$.
 \end{defi}
 
-Una caracterizacion equivalente para ultrafiltros viene dada por la propiedad
+Una caracterización equivalente para ultrafiltros viene dada por la propiedad
 de maximalidad:
 
 \begin{teo}
@@ -61,35 +61,6 @@ la definición de cardinal medible.
     un ultrafiltro $\kappa\text{-completo}$ sobre $\kappa$.
 \end{defi}
 
-% \begin{defi}
-%     Sea $F$ un filtro sobre un cardinal $\kappa$. $F$ es \concept{normal}
-%     si, y solo si, es cerrado bajo intersecciónes diagonales:
-%     \[
-%         \text
-%         {
-%             Si $\op{X_\alpha\mid \alpha<\kappa}$ es una sucesión sobre $F$,
-%             $\dint_{\alpha<\kappa} X_\alpha \in F$.
-%         }
-%     \]
-% \end{defi}
-
-% \section{Ideales}
-
-% Un \concept{ideal} es el concepto dual de un filtro, en el sentido siguiente:
-% si $F$ es un filtro sobre $C$ entonces el conjunto
-% $I=\set{ C - X \colon X\in F }$
-% es un ideal. Los ideales caracterizan conjuntos ``pequeños''.
-% \begin{defi}
-%     Sea $C$ un conjunto no vacío. Un conjunto $I\subset \pwset{C}$ es un
-%     \concept{ideal} si se cumplen las siguientes condiciones:
-%     \begin{enumerate}[label=\alph*)]
-%         \item $\emptyset\in I$ y $C\notin I$.
-%         \item Si $X,Y\in I$ entonces $X\cup Y\in I$.
-%         \item Si $X,Y\subset C$, $X\in I$ y $Y\subset X$ entonces $Y\in I$.
-%     \end{enumerate}
-% \end{defi}
-
-
 \section{Conjuntos Estacionarios}
 
 El principal objetivo de esta sección es establecer un teorema
@@ -109,21 +80,107 @@ Si $C$ es además un conjunto de ordinales, un ordinal límite $\alpha$ es
     \cna{} $C\subset\kappa$ se tiene $S\cap C\neq\emptyset$.
 \end{defi}
 
-Sea $\op{X_\alpha\colon \alpha<\kappa}$ una sucesión
-de subconjuntos de $\kappa$. La \concept{intersección diagonal} de
-$X_\alpha$ se define como:
+Será de utilidad saber el comportamiento de los conjuntos \cna{} bajo intersecciones.
+Para este fin, definimos, dada $\op{X_\alpha\colon \alpha<\kappa}$ una sucesión
+de subconjuntos de $\kappa$, la \concept{intersección diagonal} de
+$X_\alpha$ como:
 \[
     \dint_{\alpha<\kappa}X_\alpha
     =
     \set{\epsilon<\kappa\colon\epsilon\in \bigcap_{\alpha<\epsilon}X_\alpha} .
 \]
 
-El siguiente teorema es un ejemplo útil del concepto de intersección diagonal.
-
-\begin{teo}
+\begin{teo}\label{teo:intersection-cna}
     Sea $\kappa$ un cardinal regular no numerable y $\set{C_\alpha}_{\alpha<\kappa}$ una familia
-    de
+    de \cna{} en $\kappa$, entonces:
+    \begin{enumerate}[label=\alph*)]
+        \item $C_\alpha\cap C_\beta$ es \cna{} ($\alpha,\beta < \kappa$).
+        \item $\bigcap_{\alpha<\kappa}C_\alpha$ es \cna.
+        \item $\dint_{\alpha<\kappa}C_\alpha$ es \cna.
+    \end{enumerate}
 \end{teo}
+
+\begin{proof}
+    Veamos cada parte por separado.
+
+    \begin{enumerate}[label=\alph*)]
+        \item\label{pr:intersection-simple-cna}
+            Es claro que $C\cap D$ es cerrado. Veamos que es no acotado.
+            Sea $\alpha<\kappa$. Dado que $C$ es no acotado, existe $\alpha_1\in C$
+            tal que $\alpha_1 > \alpha$. De la misma forma, existe $\alpha_2\in D$
+            tal que $\alpha_2 > \alpha_1$. Podemos seguir con este proceso para obtener
+            una sucesión creciente:
+            \[
+                \alpha < \alpha_1 < \alpha_2 < \dots
+            \]
+            Sea $\beta$ el límite de la sucesión de arriba.
+            Entonces $\beta < \kappa$ y $\beta\in C$ y $\beta\in D$.
+
+
+        \item\label{pr:intersection-cna}
+            La demostración será por inducción.
+            Sea $\lambda<\kappa$ y $\seq{C_\alpha\colon\alpha<\lambda}$
+            una sucesión de conjuntos \cna{} en $\kappa$.
+            Para los ordinales sucesores, podemos simplemente aplicar
+            el \cref{pr:intersection-simple-cna}.
+            Si $\lambda$ es ordinal límite, asumiremos que el teorema
+            es cierto para cada $\alpha<\lambda$. Podemos ahora sustituir
+            cada $C_\alpha$ por $\bigcap_{\xi\leq\alpha} C_\xi$ y obtenemos
+            una sucesión decreciente con la misma intersección. Entonces a partir de ahora:
+            \[
+                C_0 \subset C_1 \subset C_2 \subset \dots
+            \]
+            serán \cna{} y $C = \bigcap_{\alpha<\lambda} C_\alpha$.
+            Por la misma razón que el \cref{pr:intersection-simple-cna}, no es difícil
+            ver que $C$ es cerrado. Veamos que es no acotado. Sea $\alpha<\kappa$,
+            construiremos una sucesión de la siguiente forma: sea $\beta_0\in C_0$ mayor que
+            $\alpha$, y para cada $\xi<\gamma$ se tomará $\beta_\xi\in C_\xi$
+            tal que $\beta_xi > \sup\set{\beta_\nu\colon\nu<\xi}$.
+            Dado que $\kappa$ es regular y $\gamma<\kappa$, la sucesión que se acaba de
+            describir existe y su límite $\beta$ es menor que $\kappa$.
+            Para cada $\eta<\gamma$, $\beta$ es límite de una sucesión
+            $\seq{\beta_xi\colon\eta\leq\xi<\gamma}$ en $C_\eta$, por lo que
+            $\beta\in C_\eta$ y esto implica $\beta\in C$.
+
+
+        \item Llamemos $D$ a $\dint_{\alpha<\kappa}C_\alpha$. Veamos primero que $D$ es cerrado.
+            Sea entonces $\lambda<\kappa$ tal que $D\cap\lambda$
+            no está acotado en $\lambda$, esto es, que $\lambda$ es punto límite de $D$.
+            Tomemos $\beta\in\lambda$,
+            entonces existe $\epsilon\in\lambda\cap D$ tal que $\beta<\epsilon$ pues
+            $D\cap\lambda$ es no acotado.
+            Como $\epsilon\in D$, existe $C_\alpha$, con $\alpha<\epsilon<\lambda$,
+            al que $\epsilon$ pertenece.
+            Pero entonces, lo que hemos demostrado es que siempre que tomemos $\beta\in\lambda$
+            existe $\epsilon\in C_\alpha\cap\lambda$ que esta por encima de $\beta$ o, equivalentemente,
+            que $C_\alpha\cap\lambda$ es no acotado en $\lambda$.
+            Al ser $C_\alpha$ cerrado tenemos $\lambda\in C_\alpha$ y esto implica
+            $\lambda\in D$. Luego $D$ es cerrado.
+
+            Solo falta ver que $D$ es no acotado en $\kappa$.
+            Para esto notemos que, debido al \cref{pr:intersection-cna},
+            se puede reemplazar cada $C_\alpha$ por $\bigcap_{\xi\leq\alpha} C_\xi$
+            y obtenemos una sucesión decreciente $C_0\subset C_1\subset\dots$
+            que no cambia el valor de $D$.
+            Sea $\gamma\in\kappa$. Como cada $C_\alpha$ es no acotado en $\kappa$,
+            podemos construir una sucesión $\seq{\beta_n\colon n\in\omega}$ de la siguiente forma:
+            tomamos $\beta_0\in C_0$ mayor que $\gamma$, luego dado $\beta_n$, tomamos
+            $\beta_{n+1} \in C_{\beta_n}$ mayor que $\beta_n$. Llamemos $\beta = \lim_n\beta_n$
+            y tomemos $\xi<\beta$. Entonces existe $\beta_n>\xi$ y cada $\beta_k$ con $k>n$
+            pertenece a $C_{\beta_n}$, pues los $C_\alpha$ están encajados,
+            por lo que $\beta\in C_{\beta_n}$ y $\beta\in C_\xi$.
+            Pero esto muestra que $\beta\in D$ y que $D$ es no acotado.
+    % Queremos ver que $\alpha\in D$ y
+    % esto es equivale a que existe $\alpha<\lambda$ tal que $\lambda\in C_\alpha$.
+    \end{enumerate}
+\end{proof}
+
+El siguiente resultado se sigue del \cref{teo:intersection-cna}.
+
+\begin{cor}\label{cor:cna-stationary}
+    Sea $C$ un conjunto \cna{} en $\kappa$ y $E$ estacionario, también en $\kappa$.
+    Entonces $C\cap E$ es estacionario.
+\end{cor}
 
 \begin{defi}
     Una función de ordinales $f$ en un conjunto $S$ es \concept{regresiva}, si
@@ -131,22 +188,29 @@ El siguiente teorema es un ejemplo útil del concepto de intersección diagonal.
 \end{defi}
 
 \begin{teo}[Fodor]\label{teo:fodor}
-    Sea $f$ una función regresiva en un conjunto estacionario $S\subset\kappa$.
+    Sea $f$ una función regresiva en un conjunto estacionario $E\subset\kappa$.
     Entonces existe $\alpha\in\kappa$ tal que $f^{-1}(\set{\alpha})$ es estacionario.
 \end{teo}
 
 \begin{proof}
-    Supongamos, en busca de una contradicción, que $f^{-1}(\set{\alpha})$ no es estacionario.
-    Entonces existe
+    Supongamos, en busca de una contradicción, que $f^{-1}(\set{\alpha})$ no es estacionario
+    para todo $\alpha<\kappa$. Entonces existen conjuntos \cna{} $C_\alpha$ tales que
+    $C_\alpha\cap f^{-1}(\set{\alpha}) = \emptyset$. Si $D=\dint_{\alpha<\kappa} C_\alpha$,
+    entonces por el \cref{teo:intersection-cna}, $D$ es \cna{} en $\kappa$.
+    Pero entonces $D\cap E$ es estacionario (debido al \cref{cor:cna-stationary})
+    y podemos tomar $\gamma\in D\cap E$.
+    Como $\gamma\in E$, sea $\delta=f(\gamma)<\gamma$.
+    Entonces $\gamma\in f^{-1}(\set{\delta})\cap C_\delta$, lo cual es una contradicción.
 \end{proof}
 
-El siguiente es un lema auxiliar, que será de ustilidad para el \cref{teo:solovay}.
+El siguiente es un teorema auxiliar, que será de utilidad para el \cref{teo:solovay}.
 
 \begin{teo}\label{teo:stationary}
-    Sea $S\subset\kappa$ un conjunto estacionario y tal que todo $\alpha\in A$
-    es un cardinal regular no numerable. Entonces el conjunto
+    Sea $E\subset\kappa$ un conjunto estacionario en $\kappa$. Entonces el conjunto
     \[
-        T=\set{\alpha\in S\colon S\cap\alpha\;\text{no es un subconjunto estacionario de $\alpha$}}
+        T=\set{\lambda\in E\colon
+            \cf\lambda = \aleph_0 \lor
+            S\cap\alpha\;\text{no es un subconjunto estacionario de $\alpha$}}
     \]
     es estacionario en $\kappa$.
 \end{teo}
