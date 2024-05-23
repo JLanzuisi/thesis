@@ -37,9 +37,9 @@ de un conjunto dado $C$.
 Una caracterizacion equivalente para ultrafiltros viene dada por la propiedad
 de maximalidad:
 
-\begin{lem}
+\begin{teo}
     Sea $F$ un filtro sobre $C$. $F$ es \concept{ultrafiltro} si, y solo si, es maximal.
-\end{lem}
+\end{teo}
 
 La siguiente definición es central para la teoría de cardinales medibles.
 
@@ -103,47 +103,68 @@ Si $C$ es además un conjunto de ordinales, un ordinal límite $\alpha$ es
 \concept{punto límite} de $C$ si $\sup ( C \cap\alpha ) = \alpha$.
 \begin{defi}
     Sea $\kappa$ un cardinal regular no numerable. Un conjunto $C\subset \kappa$
-    es \concept{cerrado no acotado} si $C$ es no acotado en $\kappa$ y contiene a
+    es \concept{cerrado no acotado} (\cna) si $C$ es no acotado en $\kappa$ y contiene a
     todos sus puntos límites menores que $\kappa$.
     Un conjunto $S\subset\kappa$ es \concept{estacionario} si para cada conjunto
-    cerrado no acotado $C\subset\kappa$ se tiene $S\cap C\neq\emptyset$.
+    \cna{} $C\subset\kappa$ se tiene $S\cap C\neq\emptyset$.
 \end{defi}
 
-% Sea $\op{X_\alpha\colon \alpha<\kappa}$ una sucesión
-% de subconjuntos de $\kappa$. La \concept{intersección diagonal} de
-% $X_\alpha$ se define como:
-% \[
-%     \dint_{\alpha<\kappa}X_\alpha
-%     =
-%     \set{\epsilon<\kappa\colon\epsilon\in \bigcap_{\alpha<\epsilon}X_\alpha} .
-% \]
+Sea $\op{X_\alpha\colon \alpha<\kappa}$ una sucesión
+de subconjuntos de $\kappa$. La \concept{intersección diagonal} de
+$X_\alpha$ se define como:
+\[
+    \dint_{\alpha<\kappa}X_\alpha
+    =
+    \set{\epsilon<\kappa\colon\epsilon\in \bigcap_{\alpha<\epsilon}X_\alpha} .
+\]
+
+El siguiente teorema es un ejemplo útil del concepto de intersección diagonal.
+
+\begin{teo}
+    Sea $\kappa$ un cardinal regular no numerable y $\set{C_\alpha}_{\alpha<\kappa}$ una familia
+    de
+\end{teo}
 
 \begin{defi}
     Una función de ordinales $f$ en un conjunto $S$ es \concept{regresiva}, si
     $f(\alpha)<\alpha$ para todo $\alpha\in S$.
 \end{defi}
 
-\begin{teo}\label{teo:fodor}
+\begin{teo}[Fodor]\label{teo:fodor}
     Sea $f$ una función regresiva en un conjunto estacionario $S\subset\kappa$.
-    Existe entonces un subconjunto $T\subset S$ y un $\gamma<\kappa$ tal que
-    $f(\alpha) = \gamma$ para todo $\alpha\in T$.
+    Entonces existe $\alpha\in\kappa$ tal que $f^{-1}(\set{\alpha})$ es estacionario.
 \end{teo}
+
+\begin{proof}
+    Supongamos, en busca de una contradicción, que $f^{-1}(\set{\alpha})$ no es estacionario.
+    Entonces existe
+\end{proof}
 
 El siguiente es un lema auxiliar, que será de ustilidad para el \cref{teo:solovay}.
 
-\begin{lem}
+\begin{teo}\label{teo:stationary}
     Sea $S\subset\kappa$ un conjunto estacionario y tal que todo $\alpha\in A$
     es un cardinal regular no numerable. Entonces el conjunto
     \[
         T=\set{\alpha\in S\colon S\cap\alpha\;\text{no es un subconjunto estacionario de $\alpha$}}
     \]
     es estacionario en $\kappa$.
-\end{lem}
+\end{teo}
 
-\begin{teo}\label{teo:solovay}
+\begin{teo}[Solovay]\label{teo:solovay}
     Sea $\kappa$ un cardinal regular no numerable. Entonces cada subconjunto estacionario
     de $\kappa$ es la unión disjunta de $\kappa$ subconjuntos estacionarios.
 \end{teo}
+
+\begin{proof}
+    Sea $A$ un subconjunto estacionario de $\kappa$.
+    Por el \cref{teo:stationary}, asumiremos que el conjunto $W$
+    consistente de todos los $\alpha\in A$ tales que $\alpha$ es cardinal
+    regular y $A\cap\alpha$ no es estacionario en $\alpha$, es estacionario en $\kappa$.
+    Existe entonces un conjunto \cna{} $C_\alpha\subset\alpha$ tal que $A\cap C_\alpha = \emptyset$.
+    Notemos que, por definición, $W\subset A$ por lo que $C_\alpha\cap W=\emptyset$.
+    Sea $\seq{a_\xi^\alpha\colon\xi<\alpha}$ la enumeración creciente de $C_\alpha$,
+\end{proof}
 
 \section{Teoría de Modelos}
 \label{sec:models}

@@ -73,28 +73,6 @@
     }
 
 % Theorems
-\newtheoremstyle{defi}% hnamei
-    {.5\baselineskip}% hSpace abovei
-    {.5\baselineskip}% hSpace belowi
-    {}% hBody fonti
-    {}% hIndent amounti
-    {\scshape}% hTheorem head fonti
-    {.}% hPunctuation after theorem headi
-    {.5em}% hSpace after theorem headi
-    {}% hTheorem head spec (can be left empty, meaning ‘normal’)i
-\theoremstyle{defi}
-\newtheorem{defi}{Definición}[chapter]
-\newtheoremstyle{lem}% hnamei
-    {.5\baselineskip}% hSpace abovei
-    {.5\baselineskip}% hSpace belowi
-    {}% hBody fonti
-    {}% hIndent amounti
-    {\scshape}% hTheorem head fonti
-    {.}% hPunctuation after theorem headi
-    {.5em}% hSpace after theorem headi
-    {}% hTheorem head spec (can be left empty, meaning ‘normal’)i
-\theoremstyle{lem}
-\newtheorem{lem}{Lema}[chapter]
 \newtheoremstyle{teo}% hnamei
     {.5\baselineskip}% hSpace abovei
     {.5\baselineskip}% hSpace belowi
@@ -105,6 +83,8 @@
     {.5em}% hSpace after theorem headi
     {}% hTheorem head spec (can be left empty, meaning ‘normal’)i
 \theoremstyle{teo}
+\newtheorem{defi}{Definición}[chapter]
+\newtheorem{lem}{Lema}[chapter]
 \newtheorem{teo}{Teorema}[chapter]
 
 % Sectioning commands
@@ -234,7 +214,7 @@
       {
         \scalebox{7}
         {
-          \textcolor{red!10}{BORRADOR}
+          \textcolor{red!5}{BORRADOR}
         }
       }
     }
@@ -305,9 +285,19 @@
      \langle #1 \rangle
 }
 
+\NewDocumentCommand{ \seq } { m }
+{
+     \langle #1 \rangle
+}
+
 \NewDocumentCommand{ \con } { m }
 {
     \Con ( #1 )
+}
+
+\NewDocumentCommand { \cna } {}
+{
+    c.\,n.\,a.
 }
 
 \DeclareMathOperator*{ \dint } { \bigtriangleup }
