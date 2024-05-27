@@ -200,9 +200,8 @@
 \newif { \ifresumen }
 \newif { \ifdedicatoria }
 \newif { \ifagradecimientos }
+\newif { \iflistas }
 \newif { \iftoc }
-\newif { \ifsimbolos }
-\newif { \ifabreviaturas }
 \newif { \ifintro }
 \newif { \ifbasicos }
 \newif { \ifreferencias }
@@ -310,4 +309,7 @@
 \@ifclasswith{ book } { draft } { \linenumbers } {}
 \makeatother
 \ExplSyntaxOff
-\dump
+
+\ifdefined\initex
+    \dump
+\fi

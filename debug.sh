@@ -2,16 +2,14 @@
 
 set -ex
 
-mkdir -p out
-
-flags='-halt-on-error --interaction=nonstopmode --output-directory=out'
+flags='-halt-on-error --interaction=nonstopmode'
 mainfile='main.tex'
 
 # Dump the preamble to fmt
 gen_fmt() {
     if [ ! -f preamble.fmt ]; then
         echo Generating fmt file.
-        pdflatex -ini '&pdflatex' preamble.tex
+        pdflatex -ini '&pdflatex' '\def\initex{1}\input{preamble.tex}'
     fi
 }
 
@@ -30,7 +28,7 @@ quick_comp() {
 full_comp() {
     gen_fmt
     pdflatex --fmt=preamble -draftmode $flags $mainfile
-    biber --output-directory=out main
+    biber main
     pdflatex --fmt=preamble -draftmode $flags $mainfile
     pdflatex --fmt=preamble $flags $mainfile
 }
