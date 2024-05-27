@@ -5,35 +5,19 @@ set -ex
 flags='-halt-on-error --interaction=nonstopmode'
 mainfile='main.tex'
 
+# Clean up before anything
+git clean -fx
+rm main.pdf
+
 # Dump the preamble to fmt
-gen_fmt() {
-    if [ ! -f preamble.fmt ]; then
-        echo Generating fmt file.
-        pdflatex -ini '&pdflatex' '\def\initex{1}\input{preamble.tex}'
-    fi
-}
+echo Generating fmt file.
+pdflatex -ini '&pdflatex' '\def\initex{1}\input{preamble.tex}'
 
-# Clean up
-clean() {
-    git clean -fx
-    rm main.pdf
-}
+# Get the compilation started
+pdflatex --fmt=preamble -draftmode $flags $mainfile
+biber main
+pdflatex --fmt=preamble -draftmode $flags $mainfile
+pdflatex --fmt=preamble $flags $mainfile
 
-# Quick compile
-quick_comp() {
-    gen_fmt
-    fd '.*\.tex' | entr pdflatex --fmt=preamble $flags $mainfile
-}
-
-# Full compile (with bibiliopgraphy}
-full_comp() {
-    gen_fmt
-    pdflatex --fmt=preamble -draftmode $flags $mainfile
-    biber main
-    pdflatex --fmt=preamble -draftmode $flags $mainfile
-    pdflatex --fmt=preamble $flags $mainfile
-}
-
-clean
-full_comp
-quick_comp
+# Keep updating the pdf on file changes
+fd '.*\.tex' | entr pdflatex --fmt=preamble $flags $mainfile
