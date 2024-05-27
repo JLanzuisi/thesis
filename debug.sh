@@ -15,7 +15,8 @@ gen_fmt() {
 
 # Clean up
 clean() {
-    rm -rf out/* preamble.fmt
+    git clean -fx
+    rm main.pdf
 }
 
 # Quick compile
