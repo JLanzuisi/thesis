@@ -7,5 +7,6 @@
 *.xml
 *.out
 *.fmt
+*.zip
 out/
 !resources/*
