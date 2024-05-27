@@ -134,12 +134,12 @@ $X_\alpha$ como:
             Por la misma razón que el \cref{pr:intersection-simple-cna}, no es difícil
             ver que $C$ es cerrado. Veamos que es no acotado. Sea $\alpha<\kappa$,
             construiremos una sucesión de la siguiente forma: sea $\beta_0\in C_0$ mayor que
-            $\alpha$, y para cada $\xi<\gamma$ se tomará $\beta_\xi\in C_\xi$
-            tal que $\beta_xi > \sup\set{\beta_\nu\colon\nu<\xi}$.
-            Dado que $\kappa$ es regular y $\gamma<\kappa$, la sucesión que se acaba de
+            $\alpha$, y para cada $\xi<\lambda$ se tomará $\beta_\xi\in C_\xi$
+            tal que $\beta_\xi > \sup\set{\beta_\nu\colon\nu<\xi}$.
+            Dado que $\kappa$ es regular y $\lambda<\kappa$, la sucesión que se acaba de
             describir existe y su límite $\beta$ es menor que $\kappa$.
-            Para cada $\eta<\gamma$, $\beta$ es límite de una sucesión
-            $\seq{\beta_xi\colon\eta\leq\xi<\gamma}$ en $C_\eta$, por lo que
+            Para cada $\eta<\lambda$, $\beta$ es límite de una sucesión
+            $\seq{\beta_\xi\colon\eta\leq\xi<\lambda}$ en $C_\eta$, por lo que
             $\beta\in C_\eta$ y esto implica $\beta\in C$.
 
 
@@ -175,13 +175,6 @@ $X_\alpha$ como:
     \end{enumerate}
 \end{proof}
 
-El siguiente resultado se sigue del \cref{teo:intersection-cna}.
-
-\begin{cor}\label{cor:cna-stationary}
-    Sea $C$ un conjunto \cna{} en $\kappa$ y $E$ estacionario, también en $\kappa$.
-    Entonces $C\cap E$ es estacionario.
-\end{cor}
-
 \begin{defi}
     Una función de ordinales $f$ en un conjunto $S$ es \concept{regresiva}, si
     $f(\alpha)<\alpha$ para todo $\alpha\in S$.
@@ -195,25 +188,37 @@ El siguiente resultado se sigue del \cref{teo:intersection-cna}.
 \begin{proof}
     Supongamos, en busca de una contradicción, que $f^{-1}(\set{\alpha})$ no es estacionario
     para todo $\alpha<\kappa$. Entonces existen conjuntos \cna{} $C_\alpha$ tales que
-    $C_\alpha\cap f^{-1}(\set{\alpha}) = \emptyset$. Si $D=\dint_{\alpha<\kappa} C_\alpha$,
-    entonces por el \cref{teo:intersection-cna}, $D$ es \cna{} en $\kappa$.
-    Pero entonces $D\cap E$ es estacionario (debido al \cref{cor:cna-stationary})
-    y podemos tomar $\gamma\in D\cap E$.
-    Como $\gamma\in E$, sea $\delta=f(\gamma)<\gamma$.
-    Entonces $\gamma\in f^{-1}(\set{\delta})\cap C_\delta$, lo cual es una contradicción.
+    $C_\alpha\cap f^{-1}(\set{\alpha}) = \emptyset$, esto es,
+    que $f(\gamma)\neq\alpha$ para todo $\gamma\in E\cap C_\alpha$.
+    Si $D=\dint_{\alpha<\kappa} C_\alpha$,
+    por el \cref{teo:intersection-cna}, $D$ es \cna{} en $\kappa$.
+    Pero entonces $D\cap E\neq\emptyset$ y podemos tomar $\gamma\in D\cap E$,
+    luego, $f(\gamma)\neq\alpha$ para todo $\alpha<\gamma$
+    lo que implica $f(\gamma)\geq\gamma$ y esto es una contradicción.
 \end{proof}
 
 El siguiente es un teorema auxiliar, que será de utilidad para el \cref{teo:solovay}.
 
 \begin{teo}\label{teo:stationary}
-    Sea $E\subset\kappa$ un conjunto estacionario en $\kappa$. Entonces el conjunto
+    Sea $E\subset\kappa$ un conjunto estacionario en $\kappa$ y supongamos que todo
+    ordinal perteneciente a $E$ es regular no numerable. Entonces el conjunto
     \[
-        T=\set{\lambda\in E\colon
-            \cf\lambda = \aleph_0 \lor
-            S\cap\alpha\;\text{no es un subconjunto estacionario de $\alpha$}}
+        T=\set{\alpha\in E\colon
+            E\cap\alpha\;\text{no es un subconjunto estacionario de $\alpha$}}
     \]
     es estacionario en $\kappa$.
 \end{teo}
+
+\begin{proof}
+    Veamos que $T$ intersecta a todos los \cna{} de $\kappa$.
+    Sea $C$ \cna{} en $\kappa$ y $C'$ el subconjunto de los puntos límite de $C$.
+    Tenemos que $C'$ también es \cna{} en $\kappa$ por lo que podemos tomar
+    el menor $\alpha\in C'\cap E$.
+    Puesto que $\alpha$ es regular y punto límite de $C$, $C_\alpha\cap\alpha$ es un subconjunto
+    \cna{} de $\alpha$, como también lo es $C'\cap\alpha$. Dado que $\alpha$ es el elemento
+    más pequeño de $C'\cap E$, $C'\cap E\cap\alpha = \emptyset$. Esto último
+    dice que $E\cap\alpha$ es no estacionario en $\alpha$, y $\alpha\in T\cap C$.
+\end{proof}
 
 \begin{teo}[Solovay]\label{teo:solovay}
     Sea $\kappa$ un cardinal regular no numerable. Entonces cada subconjunto estacionario
