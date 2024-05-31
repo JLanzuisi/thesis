@@ -7,7 +7,7 @@ mainfile='main.tex'
 
 # Clean up before anything
 git clean -fx
-rm main.pdf
+rm -f main.pdf
 
 # Dump the preamble to fmt
 echo Generating fmt file.

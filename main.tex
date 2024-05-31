@@ -581,14 +581,37 @@ El siguiente es un teorema auxiliar, que será de utilidad para el \cref{teo:sol
     de $\kappa$ es la unión disjunta de $\kappa$ subconjuntos estacionarios.
 \end{teo}
 
+\newcommand{\seqa}{a_\xi^\alpha}
 \begin{proof}
-    Sea $A$ un subconjunto estacionario de $\kappa$.
+    Sea $E$ un subconjunto estacionario de $\kappa$.
     Por el \cref{teo:stationary}, asumiremos que el conjunto $W$
-    consistente de todos los $\alpha\in A$ tales que $\alpha$ es cardinal
-    regular y $A\cap\alpha$ no es estacionario en $\alpha$, es estacionario en $\kappa$.
-    Existe entonces un conjunto \cna{} $C_\alpha\subset\alpha$ tal que $A\cap C_\alpha = \emptyset$.
-    Notemos que, por definición, $W\subset A$ por lo que $C_\alpha\cap W=\emptyset$.
-    Sea $\seq{a_\xi^\alpha\colon\xi<\alpha}$ la enumeración creciente de $C_\alpha$,
+    consistente de todos los $\alpha\in E$ tales que $\alpha$ es cardinal
+    regular y $E\cap\alpha$ no es estacionario en $\alpha$, es estacionario en $\kappa$.
+    Existe entonces un conjunto \cna{} $C_\alpha\subset\alpha$ tal que $E\cap C_\alpha = \emptyset$,
+    pero $W\subset E$ por lo que $C_\alpha\cap W=\emptyset$.
+    Sea $\seq{\seqa\colon\xi<\alpha}$ una enumeración creciente de $C_\alpha$.
+    Se tiene entonces que $\lim_{\xi\to\alpha}\seqa = \alpha$ y $\seqa\notin W$ para todo $\xi, \alpha$.
+
+    Veamos, en primer lugar, que existe $\xi$ tal que, para todo $\eta<\kappa$, el conjunto:
+    \begin{equation}\label{eqn:solovay-stationary}
+        \set{\alpha\in W\colon \seqa\geq\eta}
+    \end{equation}
+    es estacionario. Si este no fuese el caso, para cada $\xi$ tendríamos un $\eta(\xi)$
+    y un conjunto \cna{} $C_\xi$, tal que $\seqa < \eta(\xi)$ para todo $\alpha\in W\cap C_\xi$, siempre que $\seqa$
+    este definida. Sea $C$ la intersección diagonal de los $C_\xi$. Entonces si $\alpha$ es un elemento de
+    $W\cap C$, se tiene que $\seqa < \eta(\xi)$ para todo $\xi<\alpha$. Consideremos ahora el conjunto $D$ de
+    los $\gamma\in C$ tales que $\eta(\xi)<\gamma$ para todo $\xi<\gamma$, este conjunto es \cna{}
+    y $W\cap D$ es estacionario. Sean $\alpha<\gamma$ dos ordinales en $W\cap D$,
+    si $\xi<\gamma$ entonces $\seqa<\eta(\xi)<\gamma$, lo cual implica que $a_\gamma^\alpha = \gamma$.
+    Pero esto es una contradicción puesto que $\gamma\in W$ y $a_\gamma^\alpha\notin W$.
+
+    Tenemos ahora $\xi$ tal que \labelcref{eqn:solovay-stationary} es estacionario.
+    Sea $f$ una función en $W$ definida por $f(\alpha)=\seqa$. Por la definición de $\seqa$
+    la función $f$ es regresiva, por lo que para cada $\eta<\kappa$ el \cref{teo:fodor} de Fodor
+    nos da un conjunto estacionario $E_\eta$ de \labelcref{eqn:solovay-stationary} y un $\gamma_\eta\geq\eta$
+    que es testigo de que $E_\eta$ sea estacionario.
+    Ahora, si $\gamma_\eta\neq\gamma_{\eta'}$ entonces $E_\eta\cap E_{\eta'} = \emptyset$ y, puesto que $\kappa$ es regular,
+    se tiene también $|\set{E_\eta\colon\eta<\kappa}| = |\set{\gamma_\eta\colon\eta<\kappa}| = \kappa$.
 \end{proof}
 
 \section{Teoría de Modelos}
@@ -628,12 +651,44 @@ Dados dos modelos $\model{A}, \model{B}$ se dirá que $\model{A}$ es \concept{el
     equivalente} a $\model{B}$, en símbolos $\model{A}\equiv \model{B}$, si toda sentencia
 que es verdadera en $\model{A}$ lo es también en $\model{B}$ y viceversa.
 
-\note{Explicar un poco más que es $\lex{L}_\in$ y los $\in$-modelos}
-La \cref{def:model} esta dada en forma general. Normalmente interesarán modelos de $\lex{L}_\in$,
+\note{Explicar un poco más que es $\lst$ y los $\in$-modelos}
+La \cref{def:model} esta dada en forma general. Normalmente interesarán modelos de $\lst$,
 el lenguaje de la teoría de conjuntos, o $\in$-modelos de la forma $\op{A,\in}$.
 
-\section{Inmersiones Elementales}
+\section{Ultrapotencias e Inmersiones Elementales}
 \label{sec:elem-embed}
+
+El objetivo de este capítulo es establecer los resultados básicos
+sobre las inmersiones elementales de modelos internos de ZF, pues son
+estas las protagonistas del teorema de Kunen que se demostrará en
+la siguiente parte.
+
+Se establecerá un también teorema de Scott\note{Citation needed} donde se muestra
+que la existencia de cardinales medibles implica $V\neq L$.
+Este resultado es útil, aunque no se cite directamente más adelante,
+por dos motivos. En primer lugar, porque es similar en espíritu a la demostración
+clásica del forcing, debida a Cohen, de que $V\neq L$ es relativamente consistente
+con ZF. En segundo lugar, porque su estructura se asemeja la teorema
+de Kunen, con la diferencia de que donde Scott trata la inconsistencia de cardinales
+medibles con $V=L$, Kunen se encarga de la inconsistencia de $j\colon V\embed V$
+con ZFC.
+
+\begin{defi}
+    Sean $\model{A} = \op{A,\dots}$ y $\model{B} = \op{B,\dots}$ dos modelos de un lenguaje $\lex{L}$.
+    Una función inyectiva $f\colon A\to B$ es una \concept{inmersión elemental},
+    denotado por $f\colon \model{A}\embed\model{B}$, si, y solo si, para cualquier fórmula
+    n-aria $\phi$ de $\lex{L}$ y $x_1,\dots,x_n \in A$,
+    \[
+        \model{A}\models\phi(x_1,\dots,x_n) \iff \model{B}\models\phi(f(x_1),\dots,f(x_n)).
+    \]
+\end{defi}
+
+Si $f$ de la definición anterior es la función identidad, diremos que $\model{A}$
+es una subestructura elemental de $\model{B}$ y se denotará por $\model{A}\embed\model{B}$.
+
+Como ya se mencionó en \cref{sec:models}, trabajaremos casi siempre con $\lst$,
+por lo que conviene desarrollar a partir de ahora las inmersiones elementales para este caso o, a lo sumo,
+para el caso de que $\lex{L}$ es una extensión de $\lst$.
 \fi
 % ------------------------------------------------------------------------------
 %                                 BACKMATTER.

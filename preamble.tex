@@ -253,62 +253,33 @@
         Matemáticas
     }
 
+\NewDocumentCommand { \StrIfEq } { m m m m }
+    {
+        \str_if_eq:nnTF { #1 } { #2 } { #3 } { #4 }
+    }
+
+\@ifclasswith{ book } { draft } { \linenumbers } {}
+
+\ExplSyntaxOff
+\makeatother
+
+\DeclareMathOperator*{\dint}{\bigtriangleup}
+\DeclareMathOperator*{\cf}{cf}
 \DeclareMathOperator{\Con}{Con}
 \DeclareMathOperator{\Crit}{crit}
 
-\NewDocumentCommand { \model } { m }
-{
-    \mathfrak { #1 }
-}
-\NewDocumentCommand { \set } { m }
-{
-    \left\{ #1 \right\}
-}
-\NewDocumentCommand { \lex } { m }
-{
-    \mathcal { #1 }
-}
-\NewDocumentCommand { \crit } { m }
-{
-    \Crit (\, #1\, )
-}
-
-\NewDocumentCommand { \pwset } { m }
-{
-    \mathcal{P}(#1)
-}
-
-\NewDocumentCommand{ \concept } { m }
-{
-    \emph{#1}
-}
-
-\NewDocumentCommand{ \op } { m }
-{
-     \langle #1 \rangle
-}
-
-\NewDocumentCommand{ \seq } { m }
-{
-     \langle #1 \rangle
-}
-
-\NewDocumentCommand{ \con } { m }
-{
-    \Con ( #1 )
-}
-
-\NewDocumentCommand { \cna } { m }
-{
-    \str_if_eq:nnTF { #1 } { . } { c.\,n.\,a. } { c.\,n.\,a.#1 }
-}
-
-\DeclareMathOperator*{ \dint } { \bigtriangleup }
-\DeclareMathOperator*{ \cf } { cf }
-
-\@ifclasswith{ book } { draft } { \linenumbers } {}
-\makeatother
-\ExplSyntaxOff
+\newcommand\model[1]{\mathfrak { #1 }}
+\newcommand\set[1]{\left\{ #1 \right\}}
+\newcommand\lex[1]{\mathcal { #1 }}
+\newcommand\crit[1]{\Crit (\, #1\, )}
+\newcommand\pwset[1]{\mathcal{P}(#1)}
+\newcommand\concept[1]{\emph{#1}}
+\newcommand\op[1]{\langle #1 \rangle}
+\newcommand\seq[1]{\langle #1 \rangle}
+\newcommand\con[1]{\Con ( #1 )}
+\newcommand\embed{\prec}
+\newcommand\lst{\lex{L}_\in}
+\newcommand\cna[1]{\StrIfEq{#1}{.}{c.\,n.\,a.}{c.\,n.\,a.#1}}
 
 \ifdefined\initex
     \dump
