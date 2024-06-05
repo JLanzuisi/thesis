@@ -73,15 +73,15 @@
     }
 
 % Theorems
-\newtheoremstyle{teo}% hnamei
-    {.5\baselineskip}% hSpace abovei
-    {.5\baselineskip}% hSpace belowi
-    {}% hBody fonti
-    {}% hIndent amounti
-    {\scshape}% hTheorem head fonti
-    {.}% hPunctuation after theorem headi
-    {.5em}% hSpace after theorem headi
-    {}% hTheorem head spec (can be left empty, meaning ‘normal’)i
+\newtheoremstyle{teo}% name
+    {.5\baselineskip}% Space above
+    {.5\baselineskip}% Space below
+    {}% Body font
+    {}% Indent amount
+    {\scshape}% Theorem head font
+    {.}% Punctuation after theorem head
+    {.5em}% Space after theorem head
+    {}% Theorem head spec (can be left empty, meaning ‘normal’)
 \theoremstyle{teo}
 \newtheorem{defi}{Definición}[chapter]
 \newtheorem{lem}{Lema}[chapter]
@@ -126,12 +126,10 @@
     {}
 
 % USB logo
-\cs_set_eq:NN \latex_centering:D \centering
-
 \cs_new:Npn \th_print_logo_head:n #1
     {
         \group_begin:
-            \latex_centering:D
+            \centering
             \includegraphics[scale=.3]{resources/usblogo} \\
             { \titlefont \UpperCase{#1} }
             \tex_par:D
@@ -195,16 +193,16 @@
 }
 
 % Conditionals
-\newif { \ifcaratula }
-\newif { \ifpaginatitulo }
-\newif { \ifresumen }
-\newif { \ifdedicatoria }
-\newif { \ifagradecimientos }
-\newif { \iflistas }
-\newif { \iftoc }
-\newif { \ifintro }
-\newif { \ifbasicos }
-\newif { \ifreferencias }
+\newif \ifcaratula
+\newif \ifpaginatitulo
+\newif \ifresumen
+\newif \ifdedicatoria
+\newif \ifagradecimientos
+\newif \iflistas
+\newif \iftoc
+\newif \ifintro
+\newif \ifbasicos
+\newif \ifreferencias
 
 \@ifclasswith{ book } { draft }
 {

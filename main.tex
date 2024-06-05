@@ -392,7 +392,7 @@ de un conjunto dado $C$.
     se tiene que $X\in F$ o $X-S\in F$.
 \end{defi}
 
-Una caracterización equivalente para ultrafiltros viene dada por la propiedad
+Una caracterización para ultrafiltros viene dada por la propiedad
 de maximalidad:
 
 \begin{teo}
@@ -651,9 +651,17 @@ Dados dos modelos $\model{A}, \model{B}$ se dirá que $\model{A}$ es \concept{el
     equivalente} a $\model{B}$, en símbolos $\model{A}\equiv \model{B}$, si toda sentencia
 que es verdadera en $\model{A}$ lo es también en $\model{B}$ y viceversa.
 
-\note{Explicar un poco más que es $\lst$ y los $\in$-modelos}
-La \cref{def:model} esta dada en forma general. Normalmente interesarán modelos de $\lst$,
-el lenguaje de la teoría de conjuntos, o $\in$-modelos de la forma $\op{A,\in}$.
+La \cref{def:model} esta dada en forma general. Normalmente interesarán modelos
+del lenguaje de la teoría de conjuntos, denotado $\lst$, el cual consiste de la lógica de
+primer orden con la relación de igualdad y el símbolo binario $\in$.
+Los $\in$-modelos de la forma $\op{A,\in}$, a los que denotaremos
+solamente por $A$, son los modelos de $\lst$ con los que se trabajará la mayoría del tiempo.
+Existe una clase de $\in$-modelos de gran importancia, que se definen a continuación.
+
+\begin{defi}
+    Un \concept{modelo interno} de ZF es un $\in$-modelo transitivo
+    donde se satisfacen los axiomas y que contiene a los ordinales.
+\end{defi}
 
 \section{Ultrapotencias e Inmersiones Elementales}
 \label{sec:elem-embed}
@@ -663,15 +671,15 @@ sobre las inmersiones elementales de modelos internos de ZF, pues son
 estas las protagonistas del teorema de Kunen que se demostrará en
 la siguiente parte.
 
-Se establecerá un también teorema de Scott\note{Citation needed} donde se muestra
+Se establecerá también un teorema de Scott\note{Citation needed} donde se muestra
 que la existencia de cardinales medibles implica $V\neq L$.
 Este resultado es útil, aunque no se cite directamente más adelante,
-por dos motivos. En primer lugar, porque es similar en espíritu a la demostración
-clásica del forcing, debida a Cohen, de que $V\neq L$ es relativamente consistente
-con ZF. En segundo lugar, porque su estructura se asemeja la teorema
+porque su estructura se asemeja al teorema
 de Kunen, con la diferencia de que donde Scott trata la inconsistencia de cardinales
 medibles con $V=L$, Kunen se encarga de la inconsistencia de $j\colon V\embed V$
-con ZFC.
+con ZFC. Ambos teoremas tratan de un implicación directa, a diferencia de los resultados
+típicos de la teoría de cardinales grandes que, normalmente, establecen resultados
+de consistencia relativa.
 
 \begin{defi}
     Sean $\model{A} = \op{A,\dots}$ y $\model{B} = \op{B,\dots}$ dos modelos de un lenguaje $\lex{L}$.
@@ -681,14 +689,36 @@ con ZFC.
     \[
         \model{A}\models\phi(x_1,\dots,x_n) \iff \model{B}\models\phi(f(x_1),\dots,f(x_n)).
     \]
+    Si $f$ es la función identidad, diremos que $\model{A}$
+    es una subestructura elemental de $\model{B}$ y se denotará por $\model{A}\embed\model{B}$.
 \end{defi}
 
-Si $f$ de la definición anterior es la función identidad, diremos que $\model{A}$
-es una subestructura elemental de $\model{B}$ y se denotará por $\model{A}\embed\model{B}$.
+Como ya se mencionó en \cref{sec:models}, trabajaremos casi siempre con $\lst$
+y $\in$-modelos, por lo que conviene desarrollar a partir de ahora las inmersiones
+elementales para este caso.
 
-Como ya se mencionó en \cref{sec:models}, trabajaremos casi siempre con $\lst$,
-por lo que conviene desarrollar a partir de ahora las inmersiones elementales para este caso o, a lo sumo,
-para el caso de que $\lex{L}$ es una extensión de $\lst$.
+Hace falta una pequeña disgresión para tratar el caso de inmersiones elementales
+entre clases propias transitivas. Es sabido que, en ZFC, no es posible formalizar
+el concepto de inmersión elemental para clases propias, pues esto requiere de teorías
+como la de Morse-Kelley. Dicho esto, lo que sí se puede formalizar en ZFC \note{citation needed}
+son las $\Sigma_n$-inmersiones entre clases propias transitivas.
+
+Las $\Sigma_n$-inmersiones son aquellas inmersiones que se satisfacen para las fórmulas $\Sigma_n$
+del lenguaje, haciendo referencia a la jerarquía de fórmulas de Levy. Para estos casos, al fijar
+un $n$, las $\Sigma_n$-inmersiones entre clases propias transitivas pueden formalizarse en ZFC.
+Más aún, es un resultado conocido\note{citation needed} que una $\Sigma_1$-inmersión
+entre modelos internos es también una $\Sigma_n$-inmersión. Teniendo todo esto en cuenta,
+a partir de ahora por inmersión elemental se referirá a $\Sigma_1$-inmersiones entre clases propias
+transitivas estructuradas por $\in$.
+
+Dada una inmersión elemental $j\colon A\to B$, un resultado sencillo de demostrar
+dice que $j(\alpha)>\alpha$ siempre que $\alpha$ sea un ordinal de $A$. La siguiented
+definición se sigue de este hecho.
+
+\begin{defi}
+    Sea $j\colon A\to B$ una inmersión elemental. El \concept{punto crítico} de $j$
+    es el menor ordinal $\alpha$ tal que $j(\alpha)>\alpha$.
+\end{defi}
 \fi
 % ------------------------------------------------------------------------------
 %                                 BACKMATTER.
