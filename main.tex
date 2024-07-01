@@ -313,40 +313,6 @@ de la potencia de dicho teorema, quedan aún preguntas por explorar.
 
 \section*{Jerarquía de los cardinales grandes.}
 
-\section*{Teoría de Conjuntos.}
-
-De todas las axiomatizaciones posibles para la teoría de conjuntos,
-se usará la de Zermelo-Fraenkel con el axioma de elección, tal como
-aparece en cualquiera de las referencias estándar
-\autocite{kunen_set_2013,jech_set_2003}. Quizás haga falta justificar un poco
-esta elección, puesto que existen muchas teoría de conjuntos posibles \autocite{ivorra_teorias_2013}.
-
-Discutir todas las teoría de conjuntos, desde la de Kaye-Foster hasta los nuevos fundamentos
-de Quine, por ejemplo, sería una tarea para un tratado de lógica matemática.
-Pero quizás si es conveniente justificar la elección de ZFC sobre NBG, que es
-la otra teoría de uso común.
-
-La principal diferencia entre ambas teorías es que NBG admite a las clases propias
-como objetos dentro de la teoría. Aunque esta mayor generalidad pueda parecer una ventaja,
-no lo será en lo que respecta al estudio del teorema de Kunen.
-Es sabido que NBG es una extensión conservativa de ZF,
-esto es, todo teorema de NBG que involucra solamente conjuntos es también demostrable en ZF
-\autocite[pág. 70]{jech_set_2003}.
-Se sigue que, siempre que consideremos conjuntos, las dos teorías son equivalentes.
-
-En los casos en los que aparezcan clases propias, como cuando se consideran estructuras
-cuyos dominios son clases, se restringirán de tal forma que el resultado sea formalizable
-en ZFC: por ejemplo usando el hecho de que la relación de satisfacción $\models$ (\cref{sec:models})
-es formalizable para clases cuando se restringe a las fórmulas $\Sigma_n$
-\autocite[pág. 186]{jech_set_2003}.
-
-Tenemos entonces que NBG no ofrece ninguna ventaja tangible sobre ZFC
-para el caso que se propone estudiar.
-Esto aunado al hecho de que la tradición conjuntista ha considerado ZFC
-como la teoría estándar, lleva a preferirla sobre otras.
-
-Se asume entonces familiaridad con las nociones más básicas de la teoría de conjuntos
-y de lógica de primer orden.
 \fi
 % ------------------------------------------------------------------------------
 %                                 MAINMATTER.
@@ -363,12 +329,18 @@ y de lógica de primer orden.
 \chapter{Nociones básicas}
 
 Este capítulo establece varios conceptos básicos que serán necesarios
-más adelante. Las nociones de filtro, ideal, ultrafiltro y filtro $\kappa$-completo
+más adelante. Las nociones de filtro, ultrafiltro y filtro $\kappa$-completo
 junto con los conjuntos no acotados y estacionarios componen las definiciones de
 conjuntos más elementales que harán falta.
-
 Luego, un rápido repaso de la teoría de modelos permitirá abordar las inmersiones
 elementales, que son una pieza central del teorema de Kunen.
+
+Es bien sabido que existen diversos sistemas axiomáticos
+con los cuales se puede desarrollar la teoría de conjuntos.
+En todo este texto, se usará el de Zermelo-Fraenkel con el axioma de elección, tal como
+aparece en cualquiera de las referencias estándar \autocite{kunen_set_2013,jech_set_2003}.
+Más aún, se asume familiaridad con las nociones elementales de la teoría de conjuntos
+y de la lógica de primer orden.
 
 \section{Filtros}
 
@@ -667,7 +639,7 @@ Existe una clase de $\in$-modelos de gran importancia, que se definen a continua
 \label{sec:elem-embed}
 
 El objetivo de este capítulo es establecer los resultados básicos
-sobre las inmersiones elementales de modelos internos de ZF
+sobre las inmersiones elementales de modelos internos de ZFC
 y demostrar el teorema \note{reference needed} que se usará en una de las demostraciones
 del teorema de Kunen.
 Se establecerá también un teorema de Scott\note{Citation needed} donde se muestra
@@ -685,42 +657,49 @@ que la existencia de cardinales medibles implica $V\neq L$.
     es una subestructura elemental de $\model{N}$ y se denotará por $\model{M}\embed\model{N}$.
 \end{defi}
 
-% Como ya se mencionó en \cref{sec:models}, trabajaremos casi siempre con $\lst$
-% y $\in$-modelos, por lo que conviene desarrollar a partir de ahora las inmersiones
-% elementales para este caso.
-
 Hace falta una pequeña disgresión para tratar el caso de inmersiones elementales
-entre clases propias transitivas. Es sabido que, en ZFC, no es posible formalizar
-el concepto de inmersión elemental para clases propias.
-Dicho esto, lo que sí se puede formalizar en ZFC \note{citation needed}
-son las $\Sigma_n$-inmersiones entre clases propias transitivas.
-
-Las $\Sigma_n$-inmersiones son aquellas inmersiones que se satisfacen para las fórmulas $\Sigma_n$
-del lenguaje, haciendo referencia a la jerarquía de fórmulas de Levy. Para estos casos, al fijar
-un $n$, las $\Sigma_n$-inmersiones entre clases propias transitivas pueden formalizarse en ZFC.
-Más aún, es un resultado conocido\note{citation needed} que una $\Sigma_1$-inmersión
-entre modelos internos es también una $\Sigma_n$-inmersión.
-Teniendo todo esto en cuenta,
-a partir de ahora el concepto de inmersión elemental se referirá a $\Sigma_1$-inmersiones entre clases propias
-transitivas estructuradas por $\in$.
+entre clases propias transitivas. Es sabido que en ZFC no es posible formalizar
+el concepto de inmersión elemental para clases propias, pues lo prohibe el teorema
+de la indefinibilidad de la verdad de Tarski.
+A partir de ahora la noción de inmersión elemental se trabajará de manera informal,
+pero sin olvidar que, en los contextos que será utilizada, puede ser formalizada
+en ZFC.
+\note{citar a kanamori y la referencia que el hace de Gaifman pag 46}.
 
 De la definición de inmersión elemental se sigue que estas preservan todas
 las operaciones conjuntistas que son absolutas para modelos transitivos.
-En particular, las inmersiones envían ordinales en ordinales.
+En particular, las inmersiones envían ordinales en ordinales y
+preservan su orden.
 
 \begin{teo}\label{teo:elem-embed-trivial}
-    Sea $j\colon M\embed N$, si $j$ deja fijos a todos los ordinales de $M$ entonces $j$
-    es la identidad en $M$.
+    Sean $M$ y $N$ modelos internos de ZFC y $j\colon M\embed N$.
+    Si $j$ no es la función identidad, existe un ordinal $\delta$
+    tal que $j(\delta)>\delta$.
 \end{teo}
 
 \begin{proof}
-    Puesto que $j$ deja fijos a los ordinales de $M$, se tiene $\rank(x) = \rank(j(x))$.
-    Se quiere demostrar que $j(x) = x$ para todo $x\in M$, se hará por inducción.
-    Supongamos que $j(y) = y$ para todo $y\in x$.
+    Primero, $j(\delta)$ nunca es estrictamente menor que $\delta$:
+    si este fuese el caso, podríamos tomar el menor $\delta$ con dicha propiedad
+    y puesto que $j(\delta) < \delta \in M$, y $M$ transitivo, se tendría
+    $j(\delta)\in M$ y al considerar ahora $j(j(\delta))$ se llega a la conclusión
+    $j(j(\delta)) < j(\delta)$, pues las inmersiones preservan el orden.
+
+    Sea ahora $j(\delta) = \delta$ para todo ordinal $\delta$.
+    Si $x\in M$ es un conjunto de ordinales, se sigue entonces que $j(x)=x$.
+    Sea $a\in M$ y $b$ la clausura transitiva de $a$ en $V$ (lo cual implica que también
+    lo es en $M$). Puesto que se tiene el axioma de elección, se puede identificar
+    a $b$ con un ordinal $\gamma$, sea $r$ la función testigo de este hecho.
+    Se define una relación binaria $R$ en $M$ dada por:
+    \[
+        \op{\alpha,\beta}\in R \iff r(\alpha)\in r(\beta),
+    \]
+
 \end{proof}
 
-A partir de ahora se consideraran solamente inmersiones elementales no triviales.
-Se tiene entonces que el \cref{teo:elem-embed-trivial} motiva la siguiente definción.
+A partir de ahora
+se considerarán solamente inmersiones elementales que no sean la identidad
+entre modelos internos de ZFC.
+Esto permite dar un nombre al $\delta$ del \cref{teo:elem-embed-trivial}.
 
 \begin{defi}
     Sea $j\colon M\to N$ una inmersión elemental. El \concept{punto crítico} de $j$
