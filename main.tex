@@ -642,8 +642,6 @@ El objetivo de este capítulo es establecer los resultados básicos
 sobre las inmersiones elementales de modelos internos de ZFC
 y demostrar el teorema \note{reference needed} que se usará en una de las demostraciones
 del teorema de Kunen.
-Se establecerá también un teorema de Scott\note{Citation needed} donde se muestra
-que la existencia de cardinales medibles implica $V\neq L$.
 
 \begin{defi}
     Sean $\model{M} = \op{M,\dots}$ y $\model{N} = \op{N,\dots}$ dos modelos de un lenguaje $\lex{L}$.
@@ -683,18 +681,16 @@ preservan su orden.
     y puesto que $j(\delta) < \delta \in M$, y $M$ transitivo, se tendría
     $j(\delta)\in M$ y al considerar ahora $j(j(\delta))$ se llega a la conclusión
     $j(j(\delta)) < j(\delta)$, pues las inmersiones preservan el orden.
-
     Sea ahora $j(\delta) = \delta$ para todo ordinal $\delta$.
     Si $x\in M$ es un conjunto de ordinales, se sigue entonces que $j(x)=x$.
-    Sea $a\in M$ y $b$ la clausura transitiva de $a$ en $V$ (lo cual implica que también
-    lo es en $M$). Puesto que se tiene el axioma de elección, se puede identificar
-    a $b$ con un ordinal $\gamma$, sea $r$ la función testigo de este hecho.
-    Se define una relación binaria $R$ en $M$ dada por:
-    \[
-        \op{\alpha,\beta}\in R \iff r(\alpha)\in r(\beta),
-    \]
-
+    Puesto que $M\models \text{AC}$ y $N\models \text{AC}$, todo $x\in M$ es un conjunto de ordinales
+    y $j(x)=x$ para todo $x\in M$, lo cual es una contradicción pues se asumió que $j$
+    no era la identidad.
 \end{proof}
+
+El teorema anterior se puede establecer también en ZF.
+En efecto, para este caso, basta con que $N\subseteq M$ ó $M\models \text{AC}$
+\note{poner cita del teorema del kanamori}.
 
 A partir de ahora
 se considerarán solamente inmersiones elementales que no sean la identidad
