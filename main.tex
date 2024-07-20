@@ -1,4 +1,4 @@
-% Incluye el preambulo.
+% Incluye el preámbulo.
 \IfFileExists{preamble.fmt}{}{\input{preamble.tex}}
 
 % Secciones a incluir.
@@ -145,7 +145,7 @@ WIP: DEDICATORIA.
 WIP: AGRADECIMIENTOS.
 \fi
 % ------------------------------------------------------------------------------
-% Listas de simbolos y abreviaturas.
+% Listas de símbolos y abreviaturas.
 % ------------------------------------------------------------------------------
 \iflistas
 \chapter*{Lista de Símbolos}
@@ -376,7 +376,7 @@ La siguiente definición es central para la teoría de cardinales medibles.
 \begin{defi}
     Sea $\kappa$ un cardinal regular y $F$ un filtro sobre $C$.
     $F$ es $\kappa$-completo siempre que dada una familia de conjuntos
-    $\set{X_\alpha\in F\colon \alpha<\kappa}$,
+    $\set{X_\alpha\in F\mid \alpha<\kappa}$,
     se tiene que
     \[
         \bigcap X_\alpha \in F.
@@ -411,13 +411,13 @@ Si $C$ es además un conjunto de ordinales, un ordinal límite $\alpha$ es
 \end{defi}
 
 Será de utilidad saber el comportamiento de los conjuntos \cna{} bajo intersecciones.
-Para este fin, definimos, dada $\op{X_\alpha\colon \alpha<\kappa}$ una sucesión
+Para este fin, definimos, dada $\op{X_\alpha\mid \alpha<\kappa}$ una sucesión
 de subconjuntos de $\kappa$, la \concept{intersección diagonal} de
 $X_\alpha$ como:
 \[
     \dint_{\alpha<\kappa}X_\alpha
     =
-    \set{\epsilon<\kappa\colon\epsilon\in \bigcap_{\alpha<\epsilon}X_\alpha} .
+    \set{\epsilon<\kappa\mid\epsilon\in \bigcap_{\alpha<\epsilon}X_\alpha} .
 \]
 
 \begin{teo}\label{teo:intersection-cna}
@@ -449,7 +449,7 @@ $X_\alpha$ como:
 
         \item\label{pr:intersection-cna}
             La demostración será por inducción.
-            Sea $\lambda<\kappa$ y $\seq{C_\alpha\colon\alpha<\lambda}$
+            Sea $\lambda<\kappa$ y $\seq{C_\alpha\mid\alpha<\lambda}$
             una sucesión de conjuntos \cna{} en $\kappa$.
             Para los ordinales sucesores, podemos simplemente aplicar
             el \cref{pr:intersection-simple-cna}.
@@ -465,11 +465,11 @@ $X_\alpha$ como:
             ver que $C$ es cerrado. Veamos que es no acotado. Sea $\alpha<\kappa$,
             construiremos una sucesión de la siguiente forma: sea $\beta_0\in C_0$ mayor que
             $\alpha$, y para cada $\xi<\lambda$ se tomará $\beta_\xi\in C_\xi$
-            tal que $\beta_\xi > \sup\set{\beta_\nu\colon\nu<\xi}$.
+            tal que $\beta_\xi > \sup\set{\beta_\nu\mid\nu<\xi}$.
             Dado que $\kappa$ es regular y $\lambda<\kappa$, la sucesión que se acaba de
             describir existe y su límite $\beta$ es menor que $\kappa$.
             Para cada $\eta<\lambda$, $\beta$ es límite de una sucesión
-            $\seq{\beta_\xi\colon\eta\leq\xi<\lambda}$ en $C_\eta$, por lo que
+            $\seq{\beta_\xi\mid\eta\leq\xi<\lambda}$ en $C_\eta$, por lo que
             $\beta\in C_\eta$ y esto implica $\beta\in C$.
 
 
@@ -493,7 +493,7 @@ $X_\alpha$ como:
             y obtenemos una sucesión decreciente $C_0\subset C_1\subset\dots$
             que no cambia el valor de $D$.
             Sea $\gamma\in\kappa$. Como cada $C_\alpha$ es no acotado en $\kappa$,
-            podemos construir una sucesión $\seq{\beta_n\colon n\in\omega}$ de la siguiente forma:
+            podemos construir una sucesión $\seq{\beta_n\mid n\in\omega}$ de la siguiente forma:
             tomamos $\beta_0\in C_0$ mayor que $\gamma$, luego dado $\beta_n$, tomamos
             $\beta_{n+1} \in C_{\beta_n}$ mayor que $\beta_n$. Llamemos $\beta = \lim_n\beta_n$
             y tomemos $\xi<\beta$. Entonces existe $\beta_n>\xi$ y cada $\beta_k$ con $k>n$
@@ -531,7 +531,7 @@ El siguiente es un teorema auxiliar, que será de utilidad para el \cref{teo:sol
     Sea $E\subset\kappa$ un conjunto estacionario en $\kappa$ y supongamos que todo
     ordinal perteneciente a $E$ es regular no numerable. Entonces el conjunto
     \[
-        T=\set{\alpha\in E\colon
+        T=\set{\alpha\in E\mid
             E\cap\alpha\;\text{no es un subconjunto estacionario de $\alpha$}}
     \]
     es estacionario en $\kappa$.
@@ -561,12 +561,12 @@ El siguiente es un teorema auxiliar, que será de utilidad para el \cref{teo:sol
     regular y $E\cap\alpha$ no es estacionario en $\alpha$, es estacionario en $\kappa$.
     Existe entonces un conjunto \cna{} $C_\alpha\subset\alpha$ tal que $E\cap C_\alpha = \emptyset$,
     pero $W\subset E$ por lo que $C_\alpha\cap W=\emptyset$.
-    Sea $\seq{\seqa\colon\xi<\alpha}$ una enumeración creciente de $C_\alpha$.
+    Sea $\seq{\seqa\mid\xi<\alpha}$ una enumeración creciente de $C_\alpha$.
     Se tiene entonces que $\lim_{\xi\to\alpha}\seqa = \alpha$ y $\seqa\notin W$ para todo $\xi, \alpha$.
 
     Veamos, en primer lugar, que existe $\xi$ tal que, para todo $\eta<\kappa$, el conjunto:
     \begin{equation}\label{eqn:solovay-stationary}
-        \set{\alpha\in W\colon \seqa\geq\eta}
+        \set{\alpha\in W\mid \seqa\geq\eta}
     \end{equation}
     es estacionario. Si este no fuese el caso, para cada $\xi$ tendríamos un $\eta(\xi)$
     y un conjunto \cna{} $C_\xi$, tal que $\seqa < \eta(\xi)$ para todo $\alpha\in W\cap C_\xi$, siempre que $\seqa$
@@ -583,7 +583,7 @@ El siguiente es un teorema auxiliar, que será de utilidad para el \cref{teo:sol
     nos da un conjunto estacionario $E_\eta$ de \labelcref{eqn:solovay-stationary} y un $\gamma_\eta\geq\eta$
     que es testigo de que $E_\eta$ sea estacionario.
     Ahora, si $\gamma_\eta\neq\gamma_{\eta'}$ entonces $E_\eta\cap E_{\eta'} = \emptyset$ y, puesto que $\kappa$ es regular,
-    se tiene también $|\set{E_\eta\colon\eta<\kappa}| = |\set{\gamma_\eta\colon\eta<\kappa}| = \kappa$.
+    se tiene también $|\set{E_\eta\mid\eta<\kappa}| = |\set{\gamma_\eta\mid\eta<\kappa}| = \kappa$.
 \end{proof}
 
 \section{Teoría de Modelos}
@@ -635,13 +635,11 @@ Existe una clase de $\in$-modelos de gran importancia, que se definen a continua
     donde se satisfacen los axiomas y que contiene a los ordinales.
 \end{defi}
 
-\section{Ultrapotencias e Inmersiones Elementales}
+\section{Inmersiones Elementales}
 \label{sec:elem-embed}
 
 El objetivo de este capítulo es establecer los resultados básicos
-sobre las inmersiones elementales de modelos internos de ZFC
-y demostrar el teorema \note{reference needed} que se usará en una de las demostraciones
-del teorema de Kunen.
+sobre las inmersiones elementales de modelos internos de ZFC.
 
 \begin{defi}
     Sean $\model{M} = \op{M,\dots}$ y $\model{N} = \op{N,\dots}$ dos modelos de un lenguaje $\lex{L}$.
@@ -655,9 +653,9 @@ del teorema de Kunen.
     es una subestructura elemental de $\model{N}$ y se denotará por $\model{M}\embed\model{N}$.
 \end{defi}
 
-Hace falta una pequeña disgresión para tratar el caso de inmersiones elementales
+Hace falta una pequeña digresión para tratar el caso de inmersiones elementales
 entre clases propias transitivas. Es sabido que en ZFC no es posible formalizar
-el concepto de inmersión elemental para clases propias, pues lo prohibe el teorema
+el concepto de inmersión elemental para clases propias, pues lo prohíbe el teorema
 de la indefinibilidad de la verdad de Tarski.
 A partir de ahora la noción de inmersión elemental se trabajará de manera informal,
 pero sin olvidar que, en los contextos que será utilizada, puede ser formalizada
@@ -701,6 +699,105 @@ Esto permite dar un nombre al $\delta$ del \cref{teo:elem-embed-trivial}.
     Sea $j\colon M\to N$ una inmersión elemental. El \concept{punto crítico} de $j$
     es el menor ordinal $\alpha$ tal que $j(\alpha)>\alpha$.
 \end{defi}
+
+\section{Ultrapotencias}
+Sea $I$ un conjunto no vacío, $U$ un ultrafiltro sobre $I$ y, para cada $i\in I$,
+sean $A_i$ conjuntos no vacíos. Dadas dos funciones $f$ y $g$ pertenecientes al producto
+cartesiano de los $A_i$, se define la relación de \concept{U-equivalencia}:
+\[
+    f=_U g \quad\text{si, y solo si,}\quad \set{i\in I\mid f(i)=g(i)}\in U.
+\]
+
+La relación anterior es una relación de equivalencia \autocite[Proposición 4.1.5]{chang_model_2012},
+por lo que podemos considerar la clase de equivalencia de una función dada $f$:
+\[
+    f_U = \set{g\in \prod_{i\in I} A_i\mid g=_U f},
+\]
+el \concept{ultraproducto} de los $A_i$ se define como el conjunto de todas las $f_U$,
+y lo denotamos por $\prod_U A_i$. En el caso de que los $A_i$ sean todos iguales, digamos que
+a un conjunto $A$, el ultraproducto se conoce como \concept{ultrapotencia} y se denota, naturalmente,
+por $\prod_U A$.
+
+Si en la construcción anterior, para cada $i\in I$, se consideran modelos $\model{A}_i$ entonces
+se puede contruir un modelo $\prod_U \model{A}_i$, al que llamaremos igualmente
+ultraproducto o ultrapotencia según sea el caso,
+haciendo de $\prod_U A_i$ el universo del modelo y dando una
+interpretación apropiada (es decir, definida en relación al ultrafiltro) a las relaciones,
+funciones n-arias y las constantes \autocite[Teorema 4.1.6]{chang_model_2012}, donde lo importante es que
+dicho modelo está bien definido. Conviene, sin embargo, enunciar el teorema fundamental de los
+ultraproductos, pues da la forma en la que podemos interpretar la satisfacción de fórmulas
+en estas estructuras.
+\begin{teo}\label{teo:ultraprod-fundamental}
+    Sea $\prod_U \model{A_i}$ un ultraproducto e $I$ su conjunto de índices.
+    Dada cualquier fórmula $\phi(x_1,\dots,x_n)$ del lenguaje y $(f_1)_U,\dots,(f_n)_U\in\prod_{i\in I} \model{A}_i$,
+    \[
+        \prod_U \model{A}_i\models\phi((f_1)_U,\dots,(f_n)_U)
+        \quad\text{si, y solo si,}\quad
+        \set{i\in I\mid \model{A}_i\models\phi(f_1(i),\dots,f_n(i))}\in U.
+    \]
+\end{teo}
+
+Como es usual para esta clase de teoremas en la teoría de modelos,
+el resultado anterior se demuestra haciendo inducción sobre la complejidad
+de $\phi$ \autocite[Teorema 4.1.9]{chang_model_2012}.
+El \cref{teo:ultraprod-fundamental} tiene varios corolarios importantes, de mayor
+utilidad será el hecho de que existe una inmersión elemental
+$j\colon \model{A}\embed\prod_U\model{A}$ \autocite[Corolario 4.1.13]{chang_model_2012},
+llamada normalmente inmersión canónica.
+En efecto, se define $j$
+para todo $\alpha\in\model{A}$ como la clase de equivalencia de la función constantemente
+igual a $\alpha$.
+
+La primera dificultad para extender el concepto de ultrapotencia al universo
+proviene de que, dada $f\colon I\to V$ y $U$ ultraproducto sobre $I$,
+la clase de equivalencia $f_U$ como se definió anteriormente es una clase propia.
+Esto motiva un pequeño ajuste a la definición:
+\[
+    \ecl{f} = \set{g \in f_U\mid \forall h (h\in f_U\implies \rank(g)\leq\rank(h))},
+\]
+es decir, por la clase de $f$ se entiende ahora el conjunto de las funciones
+de dicha clase con rango mínimo. Entonces, si $\alpha$ es el ordinal más pequeño para
+el que existe una función de rango $\alpha$ en $\ecl{f}$ esta clase de equivalencia estará
+contenida en $V_{\alpha+1}$ y será por tanto un conjunto. Se puede entonces definir
+el universo del modelo de ultraproducto que se busca como el conjunto de todas las $\ecl{f}$.
+Si a este universo le añadimos la relación $\in_U$ dada por:
+\[
+    \ecl{g} \in_U \ecl{f}
+    \quad\text{si, y solo si,}\quad
+    \set{i\in I\mid g(i)\in f(i)}\in U,
+\]
+se obtiene un modelo llamado ultrapotencia del universo
+y denotado por $\Ult(V,U)$.
+
+Vale la pena destacar que el \cref{teo:ultraprod-fundamental} sigue aplicando para
+$\Ult(V,U)$ con la acotación de que, puesto que ahora esta involucrada la relación
+de satisfacción para clases propias, debe ser interpretado como un esquema infinito de teoremas.
+
+La última herramienta teórica relacionada a ultrapotencias que será necesaria viene
+dada por el siguiente hecho, donde el una condición extra sobre $U$ da como resultado
+modelos bien fundados.
+
+\begin{teo}
+    Si $U$ es $\omega_1$-completo entonces $\in_U$ es una relación bien fundada.
+\end{teo}
+\begin{proof}
+    Para la implicación directa, sea $\seq{\ecl{f_n}\mid n<\omega}$ tal que
+    $\ecl{f_{n+1}}\in_U\ecl{f_n}$ para $n<\omega$,
+    entonces $\bigcap_n\set{i\in I\mid f_{n+1}(i)\in f_n(i)}\neq\emptyset$
+    da una sucesión infinita descendiente de $\in$.
+
+    Ahora, sean $\set{X_n\mid n\in\omega}$ subconjuntos de $U$ tales que
+    $\bigcap_{n<\omega} X_n\notin U$ entonces se definen $g_k\colon I\to V$
+    para $k<\omega$ de la siguiente forma:
+    \[
+        g_k(i) =
+        \begin{cases}
+          n-k\quad & \text{si $i\in(\bigcap_{m<n} X_m) - X_n$ y $n\geq k$,}\\
+          0\quad & \text{en cualquier otro caso.}
+        \end{cases}
+    \]
+\end{proof}
+
 \fi
 % ------------------------------------------------------------------------------
 %                                 BACKMATTER.

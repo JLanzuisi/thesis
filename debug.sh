@@ -2,8 +2,8 @@
 
 set -ex
 
-flags='-halt-on-error --interaction=nonstopmode'
-mainfile='main.tex'
+flags="-halt-on-error --interaction=nonstopmode"
+mainfile="main.tex"
 
 # Clean up before anything
 git clean -fx
@@ -11,7 +11,7 @@ rm -f main.pdf
 
 # Dump the preamble to fmt
 echo Generating fmt file.
-pdflatex -ini '&pdflatex' '\def\initex{1}\input{preamble.tex}'
+pdflatex $flags -ini '&pdflatex' '\def\initex{1}\input{preamble.tex}'
 
 # Get the compilation started
 pdflatex --fmt=preamble -draftmode $flags $mainfile
