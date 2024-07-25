@@ -679,11 +679,11 @@ preservan su orden.
     y puesto que $j(\delta) < \delta \in M$, y $M$ transitivo, se tendría
     $j(\delta)\in M$ y al considerar ahora $j(j(\delta))$ se llega a la conclusión
     $j(j(\delta)) < j(\delta)$, pues las inmersiones preservan el orden.
-    Sea ahora $j(\delta) = \delta$ para todo ordinal $\delta$.
-    Si $x\in M$ es un conjunto de ordinales, se sigue entonces que $j(x)=x$.
-    Puesto que $M\models \text{AC}$ y $N\models \text{AC}$, todo $x\in M$ es un conjunto de ordinales
-    y $j(x)=x$ para todo $x\in M$, lo cual es una contradicción pues se asumió que $j$
-    no era la identidad.
+    
+    Sea ahora $j(\delta) = \delta$ para todo ordinal $\delta$, $x\in M$ y $b = \tc(\set{x})$.
+    Dado que $M\models \text{AC}$, existe un ordinal $\gamma$ y
+    una biyección $e\colon\gamma\to b$.
+
 \end{proof}
 
 El teorema anterior se puede establecer también en ZF.
@@ -753,10 +753,10 @@ proviene de que, dada $f\colon I\to V$ y $U$ ultrafiltro sobre $I$,
 la clase de equivalencia $f_U$ como se definió anteriormente es una clase propia.
 Esto motiva un pequeño ajuste a la definición:
 \[
-    \ecl{f} = \set{g \in f_U\mid \forall h (h\in f_U\implies \rank(g)\leq\rank(h))},
+    \ecl{f} = \set{g \in f_U\mid \forall h\; (h\in f_U\implies \rank(g)\leq\rank(h))},
 \]
 es decir, por la clase de $f$ se entiende ahora el conjunto de las funciones
-de dicha clase con rango mínimo. Entonces, si $\alpha$ es el ordinal más pequeño para
+de $f_U$ con rango mínimo. Entonces, si $\alpha$ es el ordinal más pequeño para
 el que existe una función de rango $\alpha$ en $\ecl{f}$ esta clase de equivalencia estará
 contenida en $V_{\alpha+1}$ y será por tanto un conjunto. Se puede entonces definir
 el universo del modelo de ultraproducto que se busca como el conjunto de todas las $\ecl{f}$.
@@ -770,7 +770,7 @@ se obtiene un modelo llamado ultrapotencia del universo
 y denotado por $\Ult(V,U)$.
 
 Vale la pena destacar que el \cref{teo:ultraprod-fundamental} sigue aplicando para
-$\Ult(V,U)$ con la acotación de que, puesto que ahora esta involucrada la relación
+$\Ult(V,U)$ con la acotación de que, puesto que ahora está involucrada la relación
 de satisfacción para clases propias, debe ser interpretado como un esquema infinito de teoremas.
 
 La última herramienta teórica relacionada a ultrapotencias que será necesaria viene
