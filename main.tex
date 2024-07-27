@@ -679,16 +679,35 @@ preservan su orden.
     y puesto que $j(\delta) < \delta \in M$, y $M$ transitivo, se tendría
     $j(\delta)\in M$ y al considerar ahora $j(j(\delta))$ se llega a la conclusión
     $j(j(\delta)) < j(\delta)$, pues las inmersiones preservan el orden.
-    
-    Sea ahora $j(\delta) = \delta$ para todo ordinal $\delta$, $x\in M$ y $b = \tc(\set{x})$.
+
+    Sea $x\in M$ y $b = \tc(\set{x})$ su clausura transitiva en $V$.
+    Supongamos que $j(\delta) = \delta$ para todo ordinal $\delta\in M$.
+    Si $x\in M$ es un conjunto de ordinales entonces $j(x)=x$.
     Dado que $M\models \text{AC}$, existe un ordinal $\gamma$ y
-    una biyección $e\colon\gamma\to b$.
+    una biyección $e\in M$ que va de $\gamma$ sobre $b$.
+    Sea $E\in M$ la relación binaria sobre $\gamma$ definida de la siguiente forma,
+    \[
+        \op{\alpha, \beta}\in E\quad\text{si, y solo si,}\quad e(\alpha)\in e(\beta).
+    \]
+    Se puede identificar a $E$ con un conjunto de ordinales de la forma usual
+    para obtener $j(E)=E$. Puesto que todo subconjunto no vacío de $\gamma$
+    tiene un elemento $E$-minimal en V, se sigue que esto también ocurre en $M$ y $N$
+    y que $E$ esta bien fundada en ambos conjuntos.
+    Se pueden entonces usar el teorema de colapso de Mostowski para $\op{\gamma, E}$
+    tanto en $M$ como en $N$ para obtener un ismorfismo entre $\op{\gamma, E}$
+    y $\op{M,\in}$ donde $M$ es transitivo pero, como el isomorfismo antes mencionado
+    es único, este ha de ser la biyección $e$ y $\op{b,\in} = \op{M,\in}$.
 
+    Se sigue del párrafo anterior que $j(b)=b$, en efecto,
+    se tiene que $M$ se verifica la fórmula
+    que dice ``$\op{b,\in}$ es el colapso transitivo único de $\op{\gamma, E}$''.
+    Aplicando la elementaridad de $j$, se debe verificar en $N$ la fórmula
+    ``$\op{j(b),\in}$ es el colapso transitivo único de $\op{\gamma, j(E)}$'',
+    pero $j(E)=E$ y sabemos, por otro lado, que $\op{b,\in}$ es el colapso transitivo
+    de  $\op{\gamma, E}$ en $N$. Entonces $j(b)=b$ necesariamente.
+    Pero $x$ es definible como el elemento de mayor rango de $b$, por lo que también
+    $j(x) = x$. Es decir, $j$ es la función identidad.
 \end{proof}
-
-El teorema anterior se puede establecer también en ZF.
-En efecto, para este caso, basta con que $N\subseteq M$ ó $M\models \text{AC}$
-\note{poner cita del teorema del kanamori}.
 
 A partir de ahora
 se considerarán solamente inmersiones elementales que no sean la identidad
@@ -744,8 +763,8 @@ El \cref{teo:ultraprod-fundamental} tiene varios corolarios importantes, de mayo
 utilidad será el hecho de que existe una inmersión elemental
 $j\colon \model{A}\embed\prod_U\model{A}$ \autocite[Corolario 4.1.13]{chang_model_2012},
 llamada normalmente inmersión canónica.
-En efecto, se define $j$
-para todo $\alpha\in\model{A}$ como la clase de equivalencia de la función constantemente
+En efecto, se define $j(\alpha)$
+para $\alpha\in\model{A}$ como la clase de equivalencia de la función constantemente
 igual a $\alpha$.
 
 La primera dificultad para extender el concepto de ultrapotencia al universo
