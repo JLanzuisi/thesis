@@ -19,7 +19,7 @@
 \RequirePackage { biblatex }
 \RequirePackage { xcolor }
 \RequirePackage { graphicx }
-\RequirePackage { mathtools, amsthm }
+\RequirePackage { mathtools, amsthm, amssymb }
 \RequirePackage { dirtytalk }
 \RequirePackage { epigraph }
 \RequirePackage { hyperref }
@@ -44,13 +44,14 @@
 
 % Set fonts
 \usepackage[T1]{fontenc}
-\usepackage{mlmodern}
-\usepackage[cal=boondoxo, calscaled=1.05, frak=euler]{mathalfa}
+\usepackage[lf, semibold, scaled=1.05]{ebgaramond}
+\usepackage[ebgaramond]{newtxmath}
+\usepackage[cal=euler, calscaled=1.05, frak=euler]{mathalfa}
 % Patch bold font
-\renewcommand{\bfdefault}{b}
-\DeclareRobustCommand\bfseries
-        {\not@math@alphabet\bfseries\mathbf
-         \fontfamily{lmr}\fontseries\bfdefault\selectfont}
+% \renewcommand{\bfdefault}{b}
+% \DeclareRobustCommand\bfseries
+%         {\not@math@alphabet\bfseries\mathbf
+%          \fontfamily{lmr}\fontseries\bfdefault\selectfont}
 \newcommand{\titlefont}{\bfseries\selectfont}
 
 % Set basic spacing
@@ -275,7 +276,7 @@
 \newcommand\lex[1]{\mathcal { #1 }}
 \newcommand\crit[1]{\Crit (\, #1\, )}
 \newcommand\pwset[1]{\mathcal{P}(#1)}
-\newcommand\concept[1]{\emph{#1}}
+\newcommand\concept[1]{#1}
 \newcommand\op[1]{\langle #1 \rangle}
 \newcommand\seq[1]{\langle #1 \rangle}
 \newcommand\con[1]{\Con ( #1 )}

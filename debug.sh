@@ -6,7 +6,7 @@ flags="-halt-on-error --interaction=nonstopmode"
 mainfile="main.tex"
 
 # Clean up before anything
-git clean -fx
+# git clean -fx
 rm -f main.pdf
 
 # Dump the preamble to fmt
