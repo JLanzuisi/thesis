@@ -4,14 +4,15 @@
 % Secciones a incluir.
 \caratulafalse
 \paginatitulotrue
-\resumenfalse
+\resumentrue
 \dedicatoriafalse
 \agradecimientosfalse
 \listastrue
 \toctrue
-\introfalse
+\introtrue
 \referenciastrue
 \basicostrue
+\mainproofstrue
 
 \begin{document}
 % ------------------------------------------------------------------------------
@@ -73,7 +74,6 @@ WIP: CARATULA.
 % ------------------------------------------------------------------------------
 % Resumen.
 % ------------------------------------------------------------------------------
-% TODO: reescribir mencionando las 3 demostraciones
 \ifresumen\newpage
 \PrintUsbLogo
     {
@@ -103,29 +103,26 @@ WIP: CARATULA.
 
 \end{center}
 
-\note{El titulo menciona 3 demostraciones pero el resumen no dice cuales son.}
 El teorema de inconsistencia de Kunen, que establece la inexistencia en
 ZFC (teoría de conjuntos Zermelo-Fraenkel con el axioma de elección)
 de cualquier inmersión elemental $j\colon V\prec V$ y, por lo tanto, de los cardinales
-de Reinhardt, es un resultado central de la teoría de cardinales grandes.
-El teorema de Kunen da una cota superior para la jerarquía de los cardinales grandes.
+de Reinhardt, es un resultado central de la teoría de cardinales grandes
+debido a que establece una cota superior para dicha teoría.
 
 Se tratará el teorema mencionado a través de tres demostraciones, cada una de naturaleza
-distinta. El libro de Kanamori \autocite{cohen_independence_1964} es la referencia estándar
-en el estudio de los cardinales grandes y la fuente
-de dichas demostraciones.
+distinta: primero aquella dada por Kunen originalmente, relacionada a la combinatoria infinita,
+luego otra debida a Hugh Woodin concerniente a conjuntos estacionarios y finalmente una de
+Mikio Harada. El libro de Akihiro Kanamori \autocite{cohen_independence_1964} es la referencia
+estándar en el estudio de los cardinales grandes y la fuente de dichas demostraciones.
 
 Para poder estudiar el resultado de Kunen en profundidad,
 se divide el presente escrito en 3 capítulos más la introducción.
 En la introducción se discuten los antecedentes históricos y la importancia
 de este teorema.
 El primer capítulo consta de nociones básicas necesarias para su enunciación y demostración.
-El segundo capítulo introduce nociones también necesarias, pero ya no básicas, como los cardinales
-supercompáctos o extendibles.
-Para el tercer capítulo, se entra de lleno en el resultado de Kunen y sus demostraciones.
-
-Las conclusiones discuten las posibles vías de investigación y desarrollo en esta área,
-haciendo énfasis en un problema abierto asociado al teorema:
+El segundo capítulo se encarga de enunciar el teorema de Kunen y dar sus demostraciones.
+Finalmente, en el tercer capítulo, se discuten resultados recientes relacionados al teorema de Kunen
+y su problema abierto asociado:
 ¿Seguirá siendo cierto el resultado de Kunen si se prescinde del axioma de elección?
 
 \vspace{\fill}
@@ -207,7 +204,7 @@ fuertes para demostrar la existencia de cardinales mayores.
 El teorema de inconsistencia de Kunen es
 una cota superior que impone el axioma de elección a las
 hipótesis de cardinales grandes.
-Pero, ¿qué utilidad pueden tener los cardinales grandes?
+Vale la pena preguntarse: ¿Qué utilidad pueden tener los cardinales grandes?,
 ¿por qué interesa el resultado de Kunen?
 
 La principal razón por la que el estudio de estos conjuntos infinitos
@@ -235,8 +232,6 @@ La conexión importante es la siguiente:
 los cardinales grandes representan una instanciación de esta jerarquía.
 Podemos entonces, a través de ellos, estudiar este universo infinito de
 consistencia al que Gödel nos abrió las puertas.
-Convendría hablar un poco más en detalle sobre los cardinales grandes
-y su lugar en la tradición, empezada por Cantor, de la teoría de conjuntos.
 
 \section*{Cardinales Grandes. Extensión hasta la Inconsistencia.}
 
@@ -299,19 +294,17 @@ de esta teoría se dará considerando cardinales más
 débiles que el propuesto por Reinhardt,
 para evitar la inconsistencia.
 
-Al momento de demostrar su teorema, Kunen hace
+Al momento de demostrar este resultado, Kunen hace
 uso del axioma de elección. Como se verá
-más adelante, todas las demostraciones dadas aquí
+más adelante, todas las demostraciones dadas en este texto
 dependerán del axioma de elección.
-La pregunta natural es: ¿Realmente se necesita AC?
+Es natural entonces preguntarse: ¿Realmente se necesita AC?,
 ¿Es demostrable el teorema de Kunen en ZF?
 
 Esta última pregunta es, actualmente, un problema abierto.
 Lo que indica una posible vía por la que se puede desarrollar
 el estudio del resultado de Kunen, y muestra de que más allá
 de la potencia de dicho teorema, quedan aún preguntas por explorar.
-
-\section*{Jerarquía de los cardinales grandes.}
 
 \fi
 % ------------------------------------------------------------------------------
@@ -570,12 +563,12 @@ El siguiente es un teorema auxiliar, que será de utilidad para el \cref{teo:sol
     \end{equation}
     es estacionario. Si este no fuese el caso, para cada $\xi$ tendríamos un $\eta(\xi)$
     y un conjunto \cna{} $C_\xi$, tal que $\seqa < \eta(\xi)$ para todo $\alpha\in W\cap C_\xi$, siempre que $\seqa$
-    este definida. Sea $C$ la intersección diagonal de los $C_\xi$. Entonces si $\alpha$ es un elemento de
+    esté definida. Sea $C$ la intersección diagonal de los $C_\xi$. Entonces si $\alpha$ es un elemento de
     $W\cap C$, se tiene que $\seqa < \eta(\xi)$ para todo $\xi<\alpha$. Consideremos ahora el conjunto $D$ de
     los $\gamma\in C$ tales que $\eta(\xi)<\gamma$ para todo $\xi<\gamma$, este conjunto es \cna{}
     y $W\cap D$ es estacionario. Sean $\alpha<\gamma$ dos ordinales en $W\cap D$,
     si $\xi<\gamma$ entonces $\seqa<\eta(\xi)<\gamma$, lo cual implica que $a_\gamma^\alpha = \gamma$.
-    Pero esto es una contradicción puesto que $\gamma\in W$ y $a_\gamma^\alpha\notin W$.
+    Pero esto es una contradicción, puesto que $\gamma\in W$ y $a_\gamma^\alpha\notin W$.
 
     Tenemos ahora $\xi$ tal que \labelcref{eqn:solovay-stationary} es estacionario.
     Sea $f$ una función en $W$ definida por $f(\alpha)=\seqa$. Por la definición de $\seqa$
@@ -617,13 +610,13 @@ Dada una sentencia $\phi$ de un lenguaje $\lex{L}$ y $\model{A}$ un modelo para 
 se escribirá $\model{A}\models\phi$ si la fórmula $\phi$ se satisface en $\model{A}$.
 Intuitivamente, la relación $\models$ quiere decir que $\phi$ es verdadera en el modelo.
 Una definición rigurosa de $\models$ es posible, y requiere inducción sobre la complejidad
-de $\phi$ (véase \autocite[\S 1.3]{chang_model_2012} ó \autocite[\S 12]{jech_set_2003}).
+de $\phi$ (véase \autocite[\S 1.3]{chang_model_2012} o \autocite[\S 12]{jech_set_2003}).
 
 Dados dos modelos $\model{A}, \model{B}$ se dirá que $\model{A}$ es \concept{elementalmente
     equivalente} a $\model{B}$, en símbolos $\model{A}\equiv \model{B}$, si toda sentencia
 que es verdadera en $\model{A}$ lo es también en $\model{B}$ y viceversa.
 
-La \cref{def:model} esta dada en forma general. Normalmente interesarán modelos
+La \cref{def:model} está dada de manera general. Normalmente interesarán modelos
 del lenguaje de la teoría de conjuntos, denotado $\lst$, el cual consiste de la lógica de
 primer orden con la relación de igualdad y el símbolo binario $\in$.
 Los $\in$-modelos de la forma $\op{A,\in}$, a los que denotaremos
@@ -684,17 +677,17 @@ preservan su orden.
     Si $x\in M$ es un conjunto de ordinales entonces $j(x)=x$.
     Dado que $M\models \text{AC}$, existe un ordinal $\gamma$ y
     una biyección $e\in M$ que va de $\gamma$ sobre $b$.
-    Sea $E\in M$ la relación binaria sobre $\gamma$ definida de la siguiente forma,
+    Sea $E\in M$ la relación binaria sobre $\gamma$ definida por:
     \[
         \op{\alpha, \beta}\in E\quad\text{si, y solo si,}\quad e(\alpha)\in e(\beta).
     \]
     Se puede identificar a $E$ con un conjunto de ordinales de la forma usual
     para obtener $j(E)=E$. Puesto que todo subconjunto no vacío de $\gamma$
     tiene un elemento $E$-minimal en $V$, se sigue que esto también ocurre en $M$ y $N$
-    y que $E$ esta bien fundada en ambos conjuntos.
+    y que $E$ está bien fundada en ambos conjuntos.
     Se puede entonces usar el teorema de colapso de Mostowski para $\op{\gamma, E}$
     tanto en $M$ como en $N$ para obtener un isomorfismo entre $\op{\gamma, E}$
-    y $\op{M,\in}$ donde $M$ es transitivo pero, como el colapso transitivo
+    y $\op{M,\in}$ donde $M$ es transitivo, pero, como el colapso transitivo
     es único, debe ocurrir $b = M$.
 
     Se sigue del párrafo anterior que $j(b)=b$, en efecto,
@@ -737,7 +730,7 @@ Si en la construcción anterior, para cada $i\in I$, se consideran modelos $\mod
 se puede construir un modelo $\prod_U \model{A}_i$, al que llamaremos igualmente
 ultraproducto o ultrapotencia según sea el caso,
 haciendo de $\prod_U A_i$ el universo del modelo y dando una
-interpretación apropiada (es decir, definida en relación al ultrafiltro) a las relaciones,
+interpretación apropiada a las relaciones,
 funciones n-arias y las constantes \autocite[Definición 4.1.6]{chang_model_2012}, donde lo importante es que
 dicho modelo está bien definido \autocite[Proposición 4.1.7]{chang_model_2012}. Conviene, sin embargo, enunciar el teorema fundamental de los
 ultraproductos, pues da la forma en la que podemos interpretar la satisfacción de fórmulas
@@ -773,11 +766,11 @@ Esto motiva un pequeño ajuste a la definición:
 es decir, por la clase de $f$ se entiende ahora el conjunto de las funciones
 de $f_U$ con rango mínimo. Entonces, si $\alpha$ es el ordinal más pequeño para
 el que existe una función de rango $\alpha$ en $\ecl{f}$ esta clase de equivalencia estará
-contenida en $V_{\alpha+1}$ y será por tanto un conjunto. Se puede entonces definir
+contenida en $V_{\alpha+1}$ y será, por tanto, un conjunto. Se puede entonces definir
 el universo del modelo de ultraproducto que se busca como el conjunto de todas las $\ecl{f}$.
-Si a este universo le añadimos la relación $\in_U$ dada por:
+Si a este universo le añadimos la relación $\Eu$ dada por:
 \[
-    \ecl{g} \in_U \ecl{f}
+    \ecl{g} \Eu \ecl{f}
     \quad\text{si, y solo si,}\quad
     \set{i\in I\mid g(i)\in f(i)}\in U,
 \]
@@ -788,16 +781,16 @@ Vale la pena destacar que el \cref{teo:ultraprod-fundamental} sigue aplicando pa
 $\Ult(V,U)$ con la acotación de que, puesto que ahora está involucrada la relación
 de satisfacción para clases propias, debe ser interpretado como un esquema infinito de teoremas.
 
-La última herramienta teórica relacionada a ultrapotencias que será necesaria viene
-dada por los siguiente dos teoremas. Primero, una condición extra sobre $U$ da como resultado
-modelos bien fundados y, además, la relación $\in_U$ es tipo-conjunto.
+La última herramienta teórica relacionada con ultrapotencias que será necesaria viene
+dada por los siguientes dos teoremas. Primero, una condición extra sobre $U$ da como resultado
+modelos bien fundados y, además, la relación $\Eu$ es tipo-conjunto.
 
 \begin{teo}\label{teo:Eu-well-founded}
-    Si $U$ es $\omega_1$-completo entonces $\in_U$ es una relación bien fundada.
+    Si $U$ es $\omega_1$-completo entonces $\Eu$ es una relación bien fundada.
 \end{teo}
 \begin{proof}
     Para la implicación directa, sea $\seq{\ecl{f_n}\mid n<\omega}$ tal que
-    $\ecl{f_{n+1}}\in_U\ecl{f_n}$ para $n<\omega$,
+    $\ecl{f_{n+1}}\Eu\ecl{f_n}$ para $n<\omega$,
     entonces $\bigcap_n\set{i\in I\mid f_{n+1}(i)\in f_n(i)}\neq\emptyset$
     da una sucesión infinita descendiente de $\in$.
 
@@ -818,16 +811,16 @@ modelos bien fundados y, además, la relación $\in_U$ es tipo-conjunto.
         \bigcap_{m\leq k} X_m - \bigcap_{n\in\omega} X_n
         \in U,
     \]
-    para $k\in\omega$ y la sucesión $\seq{(g_n)_U^0\mid n\in\omega}$ es testigo de que $\in_U$
-    no esta bien fundada.
+    para $k\in\omega$ y la sucesión $\seq{(g_n)_U^0\mid n\in\omega}$ es testigo de que $\Eu$
+    no está bien fundada.
 \end{proof}
 
 \begin{teo}\label{teo:Eu-set-like}
-    La relación $\in_U$ es tipo-conjunto.
+    La relación $\Eu$ es tipo-conjunto.
 \end{teo}
 \begin{proof}
     \def\Ou{^0_U}
-    Sean $(g)\Ou, (f)\Ou\in \Ult(U,V)$ tales que $(g)\Ou \in_U (f)\Ou$ y $g_0\in(g)\Ou$.
+    Sean $(g)\Ou, (f)\Ou\in \Ult(U,V)$ tales que $(g)\Ou \Eu (f)\Ou$ y $g_0\in(g)\Ou$.
     Se define $g_1\colon S\to V$ mediante:
     \[
         g_1(i) =
@@ -837,7 +830,7 @@ modelos bien fundados y, además, la relación $\in_U$ es tipo-conjunto.
         \end{cases}
     \]
     Entonces $g_1\in (g)\Ou$ y $\rank(g_1)\leq\rank(f)$. Luego, $\rank((g)\Ou)\leq\rank(f)+1$,
-    y se tiene que $\set{(g)\Ou\mid (g)\Ou\in_U (f)\Ou}\subseteq V_{\rank(f)+2}$ es un conjunto.
+    y se tiene que $\set{(g)\Ou\mid (g)\Ou\Eu (f)\Ou}\subseteq V_{\rank(f)+2}$ es un conjunto.
 \end{proof}
 
 Se sigue de los teoremas \labelcref{teo:Eu-well-founded} y \labelcref{teo:Eu-set-like},
@@ -846,23 +839,122 @@ existe una clase transitiva $M_U$ y un isomorfismo $\pi_U$ tales que:
 \[
     \pi_U\colon\Ult(V,U)\to\op{M_U,\in},
 \]
-además, debido al teorema fundamental de los ultraproductos, $M_U$ es un modelo interno
+además, debido al \cref{teo:ultraprod-fundamental}, $M_U$ es un modelo interno
 de ZFC.
 
-A partir de ahora, se usará la notación $[f]_U$ para referirse a $\pi_U((f)_U^0)$
-con $f\colon S\to V$. En algunos casos, el ultrafiltro $U$ será claro dado el contexto,
-y se utilizará la notación $[f]$. Sea $f_x$ la función constantemente igual a $x$ y,
+A partir de ahora, se utilizará la notación $[f]_U$ para $\pi_U((f)_U^0)$
+con $f\colon S\to V$. En algunos casos, el ultrafiltro $U$ será claro dado el contexto
+y se prescindirá del subíndice. Sea $f_x$ la función constantemente igual a $x$ y,
 recordando el hecho de que existe una inmersión elemental $j$ de un modelo en su ultraproducto,
 sea $j_U\colon V\embed M_U$ definida, para $x\in V$, por:
 \[
     j_U(x) = [f_x]_U.
 \]
-La función $j_U$ es una inmersión de $V$ en $M_U$, debido al teorema fundamental.
+La función $j_U$ es una inmersión de $V$ en $M_U$, debido al \cref{teo:ultraprod-fundamental}.
 Lo anterior se resumirá de la siguiente forma:
 \[
     j_U\colon V\embed M_U\approxeq\Ult(U,V).
 \]
 
+Ahora que se tiene a disposición el modelo $\Ult(U,V)$ y su colapso transitivo,
+diversos resultados de la teoría de cardinales medibles pueden ser establecidos.
+De estos, quizás el de mayor importancia es aquel debido a Scott: si existe
+un cardinal medible entonces $V\neq L$. La demostración de este hecho se
+escapa del objetivo de este texto, sin embargo hace falta demostrar un
+último resultado referente a ultrapotencias que se usará más adelante.
+
+\begin{teo}
+    Sea $U$ un ultrafiltro $\omega_1$-completo sobre un conjunto $S$ y
+    $j\colon V\embed M_U\approxeq\Ult(U,V)$. Entonces,
+    \begin{enumerate}[label=\alph*)]
+        \item Sea $X$ tal que $j"X\in M$ y $Y\subseteq M$ para el cual $|Y|\leq|X|$,
+            entonces $Y\in M$.
+        \item Para cualquier ordinal $\gamma$, $j"\gamma\in M$ si, y solo si,
+            $\hbox{}^\gamma\kern-1pt M\subseteq M$.
+        \item $j"(|S|^+)\notin M$.
+    \end{enumerate}
+\end{teo}
+
+\begin{proof} Veamos cada parte por separado.
+    \begin{enumerate}[label=\alph*)]
+        \item Interpretemos a $Y$ como $\set{[f_x]\mid x\in X}$. Puesto que $j"X\in M$,
+            existe $h\colon S\to\pwset{X}$ tal que $[h]=j"X$. Se define $g\colon S\to V$
+            haciendo que $g(i)$ sea la función con dominio $h(i)$ que satisface
+            $g(i)(x) = f_x(i)$. Entonces $[g](j(x)) = [f_x]$ para cada $x\in X$ y
+            $\ran([g]) = Y$.
+        \item Esta parte se sigue de la parte anterior.
+        \item Sea $[f]\in M$. Si $A = \set{i\in S\mid |f(i)|\leq|S|}\in U$,
+            entonces existe $\alpha\in|S|^+ - \bigcup{f(i)\mid i\in A}$ tal que
+            $j(\alpha)\notin [f]$. De lo contrario, $B=\set{i\in S\mid |f(i)|>|S|}\in U$
+            y existe una función inyectiva $h$ en $B$ que satisface $h(i)\in f(i)$
+            para cada $i\in B$, y entonces $[h]\in[f]-j"V$. En cualquiera de los dos casos,
+            $[f]\neq j"(|S|^+)$.
+    \end{enumerate}
+\end{proof}
+
+\fi
+% ------------------------------------------------------------------------------
+% Cap 2: Teorema de Kunen.
+% ------------------------------------------------------------------------------
+\ifmainproofs
+\chapter{El teorema de inconsistencia de Kunen}
+
+En la introducción se hizo alusión a la jerarquía de los cardinales grandes,
+comenzando por los distintos tipos de inaccesibilidad hasta los diversos
+grados de compacidad. El siguiente teorema, mencionado ya numerosas veces a lo largo
+del texto, delimita la jerarquía de cardinales grandes de forma definitiva en ZFC.
+
+\begin{teo}[Kunen]\label{teo:kunen}
+    Si $j\colon V\embed M$, entonces $M\neq V$.
+\end{teo}
+
+\section{Demostración original del \cref{teo:kunen}}
+
+Hace falta establecer primero un resultado, debido a Erdös-Hajnal \autocite{erdos_problem_1966},
+sobre funciones $\omega$-Jónsson.
+
+\begin{defi}
+    Sea $x$ un conjunto de ordinales, $[x]^\omega = \set{y\subseteq x\mid \text{$y$ es de orden $\omega$}}$
+    y $f$ una función,
+    $f$ es $\omega$-Jónsson para $x$ si, y solo si,
+    $f\colon [x]^\omega\to x$ y para cualquier $y\subseteq x$
+    tal que $|y|=|x|$ se tiene $f"[y]^\omega = x$.
+\end{defi}
+
+\begin{teo}\label{teo:jonsson}
+    Sea $\lambda$ un cardinal infinito, entonces existe una función $\omega$-Jónsson para $\lambda$.
+\end{teo}
+
+\begin{proof}
+    Se demostrará el caso particular en el que $\lambda$ es un cardinal límite de cofinalidad $\omega$,
+    para el caso general véase \autocite[Teorema 23.13]{kanamori_higher_2009}.
+    Sea $\set{\op{x_\alpha,\gamma_\alpha}\mid \alpha < 2^\lambda}$ una enumeración del conjunto $[\lambda]^\lambda\times\lambda$.
+    Para $\alpha<\lambda$ se puede escoger $s_\alpha\in[x_\alpha]^\omega$ tal que $s_\alpha\neq s_\beta$ para $\beta<\alpha$,
+    debido a que $2^\lambda=\lambda^{\aleph_0}$. Entonces cualquier $f\colon[\lambda]^\omega\to\lambda$
+    tal que $f(s_\alpha)=\gamma_\alpha$ es $\omega$-Jónsson para $\lambda$.
+\end{proof}
+
+\begin{proof}[Demostración del \cref{teo:kunen} \autocite{kunen_elementary_1971}]
+    Sea $\kappa=\crit{j}$ y $j^n$ la $n$-ésima iteración de $j$: para $x\in V$, $j^0(x)=x$
+    y $j^{n+1}(x) = j(j^{n}(x))$. Sea $\lambda=\sup(\set{j^n(\kappa)\mid n\in\omega})$,
+    nótese que $j(\lambda)=\lambda$ pues $j(\set{j^n(\kappa)\mid n<\omega}) = \set{j^n(\kappa)\mid 1\leq n<\omega}$.
+    Además, como $\kappa$ es medible, en particular es inaccesible, y la elementaridad de $j$ implica que $j^n(\kappa)$
+    es inaccesible para todo $n\in\omega$ y $2^\lambda = \lambda^{\aleph_0}$, se puede aplicar entonces
+    el caso especial que se demostró del \cref{teo:jonsson}.
+    Para obtener que $V\neq M$ basta con establecer $j"\lambda\notin M$.
+
+    En busca de una contradicción, sea $j"\lambda\in M$ y $f$ una función $\omega$-Jónsson para $\lambda$.
+    En $M$, $j(f)$ es $\omega$-Jónsson para $j(\lambda)=\lambda$ y $j"\lambda\in[\lambda]^\lambda\cap M$.
+    Sea $s\in[j"\lambda]^\omega$. Exite entonces un $t\in[\lambda]^\omega$ tal que $j(t)=j"t=s$.
+    Se sigue que $j(f)(s) = j(f)j(s) = j(f)j(t) = j(f(t))\in j"\lambda$, pero esto implica
+    \[
+        \lambda = j(f)[j"\lambda]^\omega \subseteq j"\lambda
+    \]
+    que es imposible pues $\kappa\in\lambda- j"\lambda$.
+\end{proof}
+
+\section{Demostración de Hugh Woodin del \cref{teo:kunen}}
+\section{Demostración de Mikio Harada del \cref{teo:kunen}}
 \fi
 % ------------------------------------------------------------------------------
 %                                 BACKMATTER.
