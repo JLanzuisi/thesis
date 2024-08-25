@@ -19,15 +19,10 @@
 \RequirePackage { biblatex }
 \RequirePackage { xcolor }
 \RequirePackage { graphicx }
-\RequirePackage { mathtools, amsthm, amssymb }
-\RequirePackage { dirtytalk }
+\RequirePackage { amsthm }
 \RequirePackage { epigraph }
 \RequirePackage { hyperref }
-\RequirePackage [ spanish ] { cleveref }
 \RequirePackage { lineno }
-
-% Cref
-\crefname{section}{\S}{\S}
 
 % Set page margins
 \geometry
@@ -43,38 +38,21 @@
     }
 
 % Set fonts
-\usepackage[T1]{fontenc}
-\usepackage{gentium}
-%\usepackage[cochineal]{newtxmath}
-\usepackage{newpxmath}
-\usepackage[cal=euler, calscaled=1.05, frak=esstix]{mathalfa}
-\DeclareFontEncoding{LGR}{}{}
-\DeclareSymbolFont{mtgreekup}{LGR}{\familydefault}{\seriesdefault}{n}
-\DeclareMathSymbol{\alpha}{\mathalpha}{mtgreekup}{97}
-\DeclareMathSymbol{\beta}{\mathalpha}{mtgreekup}{98}
-\DeclareMathSymbol{\gamma}{\mathalpha}{mtgreekup}{103}
-\DeclareMathSymbol{\delta}{\mathalpha}{mtgreekup}{100}
-\DeclareMathSymbol{\epsilon}{\mathalpha}{mtgreekup}{101}
-\DeclareMathSymbol{\zeta}{\mathalpha}{mtgreekup}{122}
-\DeclareMathSymbol{\eta}{\mathalpha}{mtgreekup}{104}
-\DeclareMathSymbol{\theta}{\mathalpha}{mtgreekup}{106}
-\DeclareMathSymbol{\iota}{\mathalpha}{mtgreekup}{105}
-\DeclareMathSymbol{\kappa}{\mathalpha}{mtgreekup}{107}
-\DeclareMathSymbol{\lambda}{\mathalpha}{mtgreekup}{108}
-\DeclareMathSymbol{\mu}{\mathalpha}{mtgreekup}{109}
-\DeclareMathSymbol{\nu}{\mathalpha}{mtgreekup}{110}
-\DeclareMathSymbol{\xi}{\mathalpha}{mtgreekup}{120}
-\DeclareMathSymbol{\omicron}{\mathalpha}{mtgreekup}{111}
-\DeclareMathSymbol{\pi}{\mathalpha}{mtgreekup}{112}
-\DeclareMathSymbol{\rho}{\mathalpha}{mtgreekup}{114}
-\DeclareMathSymbol{\sigma}{\mathalpha}{mtgreekup}{115}
-\DeclareMathSymbol{\tau}{\mathalpha}{mtgreekup}{116}
-\DeclareMathSymbol{\upsilon}{\mathalpha}{mtgreekup}{117}
-\DeclareMathSymbol{\phi}{\mathalpha}{mtgreekup}{102}
-\DeclareMathSymbol{\chi}{\mathalpha}{mtgreekup}{113}
-\DeclareMathSymbol{\psi}{\mathalpha}{mtgreekup}{121}
-\DeclareMathSymbol{\omega}{\mathalpha}{mtgreekup}{119}
+\usepackage{fontspec}
+\setmainfont{NewCM10-Book.otf}
+[
+    BoldFont = NewCM10-Bold.otf,
+    ItalicFont = NewCM10-BookItalic.otf,
+]
+\usepackage{unicode-math}
+\setmathfont{NewCMMath-Book.otf}
+\setmathfont{TeX Gyre Termes Math}[range={up/{greek, Greek}, cal, \prod}]
+\setmathfont{Euler Math}[range={frak}]
 \newcommand{\titlefont}{\bfseries}
+
+% Cref
+\RequirePackage [ spanish ] { cleveref }
+\crefname{section}{\S}{\S}
 
 % Set basic spacing
 \setlength { \parindent } { 8.46pt }
@@ -228,31 +206,6 @@
 \newif \ifmainproofs
 \newif \ifreferencias
 
-% \@ifclasswith{ book } { draft }
-% {
-%   \AddToHook{begindocument}
-%   {
-%     \newbox{\watermark}
-%     \savebox{\watermark}
-%     {
-%       \rotatebox{45}
-%       {
-%         \scalebox{7}
-%         {
-%           \textcolor{red!5}{BORRADOR}
-%         }
-%       }
-%     }
-%     \AddToHook{ shipout/background }
-%     {
-%       \put (\paperwidth/2 - \wd\watermark/2,-\paperheight/2 - \ht\watermark/2)
-%       {
-%         \usebox{\watermark}
-%       }
-%     }
-%   }
-% }{}
-
 % macros
 \newcommand { \MainTitle }
     {
@@ -284,6 +237,57 @@
 
 \ExplSyntaxOff
 \makeatother
+
+\AddToHook{begindocument}{
+\let\oldalpha\alpha
+\def\alpha{{\symup\oldalpha}}
+\let\oldbeta\beta
+\def\beta{{\symup\oldbeta}}
+\let\oldgamma\gamma
+\def\gamma{{\symup\oldgamma}}
+\let\olddelta\delta
+\def\delta{{\symup\olddelta}}
+\let\oldepsilon\epsilon
+\def\epsilon{{\symup\oldepsilon}}
+\let\oldzeta\zeta
+\def\zeta{{\symup\oldzeta}}
+\let\oldeta\eta
+\def\eta{{\symup\oldeta}}
+\let\oldtheta\theta
+\def\theta{{\symup\oldtheta}}
+\let\oldiota\iota
+\def\iota{{\symup\oldiota}}
+\let\oldkappa\kappa
+\def\kappa{{\symup\oldkappa}}
+\let\oldlambda\lambda
+\def\lambda{{\symup\oldlambda}}
+\let\oldmu\mu
+\def\mu{{\symup\oldmu}}
+\let\oldnu\nu
+\def\nu{{\symup\oldnu}}
+\let\oldxi\xi
+\def\xi{{\symup\oldxi}}
+\let\oldomicron\omicron
+\def\omicron{{\symup\oldomicron}}
+\let\oldpi\pi
+\def\pi{{\symup\oldpi}}
+\let\oldrho\rho
+\def\rho{{\symup\oldrho}}
+\let\oldsigma\sigma
+\def\sigma{{\symup\oldsigma}}
+\let\oldtau\tau
+\def\tau{{\symup\oldtau}}
+\let\oldupsilon\upsilon
+\def\upsilon{{\symup\oldupsilon}}
+\let\oldphi\phi
+\def\phi{{\symup\oldphi}}
+\let\oldchi\chi
+\def\chi{{\symup\oldchi}}
+\let\oldpsi\psi
+\def\psi{{\symup\oldpsi}}
+\let\oldomega\omega
+\def\omega{{\symup\oldomega}}
+}
 
 \DeclareMathOperator*{\dint}{\bigtriangleup}
 \DeclareMathOperator*{\cf}{cf}

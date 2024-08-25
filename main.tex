@@ -1,5 +1,5 @@
 % Incluye el preámbulo.
-\IfFileExists{preamble.fmt}{}{\input{preamble.tex}}
+\input{preamble.tex}
 
 % Secciones a incluir.
 \caratulafalse
@@ -99,7 +99,7 @@ WIP: CARATULA.
         } \\
     Realizado por: \autor \\
     Con la asesoría de: \tutor \\[.5cm]
-    \UppercaseBold{Resúmen}
+    \UppercaseBold{Resumen}
 
 \end{center}
 
@@ -339,7 +339,7 @@ y de la lógica de primer orden.
 
 Esta sección se ocupa de dar las definiciones básicas de filtros,
 que serán necesarias a lo largo del texto.
-Los filtros caracterizan a conjuntos \say{grandes} dentro
+Los filtros caracterizan a conjuntos ``grandes'' dentro
 de un conjunto dado $C$.
 
 \begin{defi}
@@ -691,7 +691,7 @@ preservan su orden.
     es único, debe ocurrir $b = M$.
 
     Se sigue del párrafo anterior que $j(b)=b$, en efecto,
-    la elementaridad de $j$ junto con $j(E)=E$ y el hecho de que
+    la elementalidad de $j$ junto con $j(E)=E$ y el hecho de que
     $\op{b,\in}$ es el colapso transitivo único de $\op{\gamma, E}$
     tanto en $M$ como en $N$, obligan a que $j(b)=b$.
     Pero $x$ es definible como el elemento de mayor rango de $b$, por lo que también
@@ -853,19 +853,21 @@ sea $j_U\colon V\embed M_U$ definida, para $x\in V$, por:
 La función $j_U$ es una inmersión de $V$ en $M_U$, debido al \cref{teo:ultraprod-fundamental}.
 Lo anterior se resumirá de la siguiente forma:
 \[
-    j_U\colon V\embed M_U\approxeq\Ult(U,V).
+    j_U\colon V\embed M_U\approxeq\Ult(U,V),
 \]
+donde los subíndices se omitirán siempre que el ultrafiltro $U$ quede claro
+del contexto.
 
 Ahora que se tiene a disposición el modelo $\Ult(U,V)$ y su colapso transitivo,
 diversos resultados de la teoría de cardinales medibles pueden ser establecidos.
 De estos, quizás el de mayor importancia es aquel debido a Scott: si existe
 un cardinal medible entonces $V\neq L$. La demostración de este hecho se
-escapa del objetivo de este texto, sin embargo hace falta demostrar un
+escapa del objetivo de este texto, sin embargo, hace falta demostrar un
 último resultado referente a ultrapotencias que se usará más adelante.
 
 \begin{teo}
     Sea $U$ un ultrafiltro $\omega_1$-completo sobre un conjunto $S$ y
-    $j\colon V\embed M_U\approxeq\Ult(U,V)$. Entonces,
+    $j\colon V\embed M\approxeq\Ult(U,V)$. Entonces,
     \begin{enumerate}[label=\alph*)]
         \item Sea $X$ tal que $j"X\in M$ y $Y\subseteq M$ para el cual $|Y|\leq|X|$,
             entonces $Y\in M$.
@@ -938,14 +940,14 @@ sobre funciones $\omega$-Jónsson.
     Sea $\kappa=\crit{j}$ y $j^n$ la $n$-ésima iteración de $j$: para $x\in V$, $j^0(x)=x$
     y $j^{n+1}(x) = j(j^{n}(x))$. Sea $\lambda=\sup(\set{j^n(\kappa)\mid n\in\omega})$,
     nótese que $j(\lambda)=\lambda$ pues $j(\set{j^n(\kappa)\mid n<\omega}) = \set{j^n(\kappa)\mid 1\leq n<\omega}$.
-    Además, como $\kappa$ es medible, en particular es inaccesible, y la elementaridad de $j$ implica que $j^n(\kappa)$
+    Además, como $\kappa$ es medible, en particular es inaccesible, y la elementalidad de $j$ implica que $j^n(\kappa)$
     es inaccesible para todo $n\in\omega$ y $2^\lambda = \lambda^{\aleph_0}$, se puede aplicar entonces
     el caso especial que se demostró del \cref{teo:jonsson}.
     Para obtener que $V\neq M$ basta con establecer $j"\lambda\notin M$.
 
     En busca de una contradicción, sea $j"\lambda\in M$ y $f$ una función $\omega$-Jónsson para $\lambda$.
     En $M$, $j(f)$ es $\omega$-Jónsson para $j(\lambda)=\lambda$ y $j"\lambda\in[\lambda]^\lambda\cap M$.
-    Sea $s\in[j"\lambda]^\omega$. Exite entonces un $t\in[\lambda]^\omega$ tal que $j(t)=j"t=s$.
+    Sea $s\in[j"\lambda]^\omega$. Existe entonces un $t\in[\lambda]^\omega$ tal que $j(t)=j"t=s$.
     Se sigue que $j(f)(s) = j(f)j(s) = j(f)j(t) = j(f(t))\in j"\lambda$, pero esto implica
     \[
         \lambda = j(f)[j"\lambda]^\omega \subseteq j"\lambda
@@ -954,6 +956,18 @@ sobre funciones $\omega$-Jónsson.
 \end{proof}
 
 \section{Demostración de Hugh Woodin del \cref{teo:kunen}}
+\begin{proof}[Demostración del \cref{teo:kunen}]
+	Sea $\kappa=\crit{j}$ y $\lambda=\sup(\set{j^n(\kappa)\mid n\in\omega})$ igual que antes.
+	El \cref{teo:solovay} implica que existe $S\colon\kappa\to\pwset{\lambda^+}$ tal que
+	$\ran(S)$ es un partición de $\set{\xi < \lambda^+\mid \cf(\xi) = \omega}$.
+
+	Puesto que $j(\lambda)=\lambda$, se tiene $\lambda^+\leq j(\lambda^+) = {\lambda^+}^M\leq \lambda^+$
+	y entonces prevalece la igualdad. Por la elementalidad de $j$, $j(S)\colon j(\kappa)\to\pwset{\lambda^+}$ y
+	\[
+		(j(S)\subseteq\set{\xi < \lambda^+\mid \cf(\xi) = \omega}\,\text{es estacionario en $\lambda^+$})^M.
+	\]
+\end{proof}
+
 \section{Demostración de Mikio Harada del \cref{teo:kunen}}
 \fi
 % ------------------------------------------------------------------------------
