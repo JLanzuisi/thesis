@@ -904,15 +904,16 @@ escapa del objetivo de este texto, sin embargo, hace falta demostrar un
 En la introducción se hizo alusión a la jerarquía de los cardinales grandes,
 comenzando por los distintos tipos de inaccesibilidad hasta los diversos
 grados de compacidad. El siguiente teorema, mencionado ya numerosas veces a lo largo
-del texto, delimita la jerarquía de cardinales grandes de forma definitiva en ZFC.
+del texto, delimita la jerarquía de cardinales grandes en ZFC.
 
 \begin{teo}[Kunen]\label{teo:kunen}
     Si $j\colon V\embed M$, entonces $M\neq V$.
 \end{teo}
 
-\section{Demostración original del \cref{teo:kunen}}
-
-Hace falta establecer primero un resultado, debido a Erdös-Hajnal \autocite{erdos_problem_1966},
+La primera demostración del teorema que se verá es aquella
+del propio Kunen \autocite{kunen_elementary_1971}, adaptada
+por Kanamori \autocite{kanamori_higher_2009}. Pero primero,
+hace falta establecer un resultado, debido a Erdös-Hajnal \autocite{erdos_problem_1966},
 sobre funciones $\omega$-Jónsson.
 
 \begin{defi}
@@ -936,7 +937,7 @@ sobre funciones $\omega$-Jónsson.
     tal que $f(s_\alpha)=\gamma_\alpha$ es $\omega$-Jónsson para $\lambda$.
 \end{proof}
 
-\begin{proof}[Demostración del \cref{teo:kunen} \autocite{kunen_elementary_1971}]
+\begin{proof}[Primera demostración del \cref{teo:kunen}]
     Sea $\kappa=\crit{j}$ y $j^n$ la $n$-ésima iteración de $j$: para $x\in V$, $j^0(x)=x$
     y $j^{n+1}(x) = j(j^{n}(x))$. Sea $\lambda=\sup(\set{j^n(\kappa)\mid n\in\omega})$,
     nótese que $j(\lambda)=\lambda$ pues $j(\set{j^n(\kappa)\mid n<\omega}) = \set{j^n(\kappa)\mid 1\leq n<\omega}$.
@@ -955,20 +956,29 @@ sobre funciones $\omega$-Jónsson.
     que es imposible pues $\kappa\in\lambda- j"\lambda$.
 \end{proof}
 
-\section{Demostración de Hugh Woodin del \cref{teo:kunen}}
-\begin{proof}[Demostración del \cref{teo:kunen}]
+La siguiente demostración, debida a Hugh Woodin, apareció junto a otras en
+la decada de 1980. La existencia de particiones de conjuntos estacionarios
+bajo las condiciones del \cref{teo:solovay} es el hecho clave para la demostración.
+
+\begin{proof}[Segunda Demostración del \cref{teo:kunen}]
 	Sea $\kappa=\crit{j}$ y $\lambda=\sup(\set{j^n(\kappa)\mid n\in\omega})$ igual que antes.
 	El \cref{teo:solovay} implica que existe $S\colon\kappa\to\pwset{\lambda^+}$ tal que
-	$\ran(S)$ es un partición de $\set{\xi < \lambda^+\mid \cf(\xi) = \omega}$.
+	$\ran(S)$ es una partición de $\set{\xi < \lambda^+\mid \cf(\xi) = \omega}$ en subconjuntos
+	estacionarios en $\lambda^+$.
 
 	Puesto que $j(\lambda)=\lambda$, se tiene $\lambda^+\leq j(\lambda^+) = {\lambda^+}^M\leq \lambda^+$
 	y entonces prevalece la igualdad. Por la elementalidad de $j$, $j(S)\colon j(\kappa)\to\pwset{\lambda^+}$ y
 	\[
-		(j(S)\subseteq\set{\xi < \lambda^+\mid \cf(\xi) = \omega}\,\text{es estacionario en $\lambda^+$})^M.
+		(
+		    j(S)(\kappa)\subseteq\set{\xi < \lambda^+\mid \cf(\xi) = \omega}
+		    \,\text{es estacionario en $\lambda^+$}
+		)^M.
 	\]
+
+	Si $M=V$, entonces $j(S)(\kappa)$ es estacionario en $\lambda^+$ visto en el universo.
+	La $\lambda^+$-completitud de
 \end{proof}
 
-\section{Demostración de Mikio Harada del \cref{teo:kunen}}
 \fi
 % ------------------------------------------------------------------------------
 %                                 BACKMATTER.
