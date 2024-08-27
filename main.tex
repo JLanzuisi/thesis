@@ -14,6 +14,10 @@
 \basicostrue
 \mainproofstrue
 
+% TODO:
+% demostrar 0.1 del kanamori para citarlo en la demostración del teorema de Kunen
+% de Woodin.
+
 \begin{document}
 % ------------------------------------------------------------------------------
 %                                 FRONTMATTER.
@@ -967,7 +971,7 @@ bajo las condiciones del \cref{teo:solovay} es el hecho clave para la demostraci
 	estacionarios en $\lambda^+$.
 
 	Puesto que $j(\lambda)=\lambda$, se tiene $\lambda^+\leq j(\lambda^+) = {\lambda^+}^M\leq \lambda^+$
-	y entonces prevalece la igualdad. Por la elementalidad de $j$, $j(S)\colon j(\kappa)\to\pwset{\lambda^+}$ y
+	y prevalece la igualdad. Por la elementalidad de $j$, $j(S)\colon j(\kappa)\to\pwset{\lambda^+}$ y
 	\[
 		(
 		    j(S)(\kappa)\subseteq\set{\xi < \lambda^+\mid \cf(\xi) = \omega}
@@ -975,8 +979,17 @@ bajo las condiciones del \cref{teo:solovay} es el hecho clave para la demostraci
 		)^M.
 	\]
 
-	Si $M=V$, entonces $j(S)(\kappa)$ es estacionario en $\lambda^+$ visto en el universo.
-	La $\lambda^+$-completitud de
+	Si $M=V$, entonces $j(S)(\kappa)$ es estacionario en $\lambda^+$ visto en el universo y,
+	debido a la $\lambda^+$-completitud, $j(S)(\kappa)\cap S(\alpha_0)$ es estacionario en $\lambda^+$
+	para algún $\alpha_0<\kappa$. El conjunto
+	\[
+	    C = \set{\xi<\lambda^+\mid j(\xi)=\xi \land \cf(\xi)=\omega}
+	\]
+	es $\omega$-cerrado y no acotado en $\lambda^+$. Entonces, debido a \note{poner cita del teorema},
+	existe un $\xi_0\in (j(S)(\kappa)\cap S(\alpha_0))\cap C$. Pero,
+	$\xi_0 = j(\xi_0)\in j(S(\alpha_0)) = j(S)(\alpha_0)$ y entonces $\xi_0\in j(S)(\kappa)\cap j(S)(\alpha_0)$.
+	Esto último es imposible pues la elementalidad de $j$ implica que $j(S)$ consiste únicamente de conjuntos
+	disjuntos dos a dos.
 \end{proof}
 
 \fi
