@@ -151,15 +151,15 @@ WIP: AGRADECIMIENTOS.
 \iflistas
 \chapter*{Lista de Símbolos}
 
-En la lista siguiente, $C$ es un conjunto.
+En la lista siguiente, $C$ es un conjunto y $\gamma$ un ordinal.
 
 \begin{center}
     \begin{tabular}{cl}
         Símbolo & Significado \\
         \hline\noalign{\smallskip}
         $\pwset{C}$ & Conjunto de partes.\\
-        $\sup(C)$ & Supremo, es decir, $\bigcup C$.\\
-        $\cf C$ & Cofinalidad
+        $\sup(\gamma)$ & Supremo, es decir, $\bigcup \gamma$.\\
+        $\cf\gamma$ & Cofinalidad de $\gamma$.
     \end{tabular}
 \end{center}
 
@@ -358,7 +358,7 @@ de un conjunto dado $C$.
 
 \begin{defi}
     Sea $F$ un filtro sobre $C$. $F$ es \concept{ultrafiltro} si, para todo $X\subset C$,
-    se tiene que $X\in F$ o $X-S\in F$.
+    se tiene que $X\in F$ o $C-X\in F$.
 \end{defi}
 
 Una caracterización para ultrafiltros viene dada por la propiedad
@@ -402,7 +402,8 @@ Si $C$ es además un conjunto de ordinales, un ordinal límite $\alpha$ es
 \begin{defi}
     Sea $\kappa$ un cardinal regular no numerable. Un conjunto $C\subset \kappa$
     es \concept{cerrado no acotado} (\cna) si $C$ es no acotado en $\kappa$ y contiene a
-    todos sus puntos límites menores que $\kappa$.
+    todos sus puntos límites menores que $\kappa$. En particular, un conjunto es $\nu$-cerrado
+    para $\nu<\kappa$ si contiene a todos sus puntos límite menores que $\kappa$ de cofinalidad $\nu$.
     Un conjunto $S\subset\kappa$ es \concept{estacionario} si para cada conjunto
     \cna{} $C\subset\kappa$ se tiene $S\cap C\neq\emptyset$.
 \end{defi}
@@ -498,6 +499,15 @@ $X_\alpha$ como:
             por lo que $\beta\in C_{\beta_n}$ y $\beta\in C_\xi$.
             Pero esto muestra que $\beta\in D$ y que $D$ es no acotado.
     \end{enumerate}
+\end{proof}
+
+\begin{teo}\label{teo:stationary-intersect}
+    Sea $\lambda>\omega$ regular y $\nu<\lambda$ también regular.
+    Si $S\subseteq\set{\xi<\lambda\mid \cf\xi=\omega}$ es estacionario en $\lambda$
+    y $C$ es un conjunto $\nu$-cerrado no acotado en $\lambda$, entonces $S\cap C\neq\emptyset$.
+\end{teo}
+
+\begin{proof}
 \end{proof}
 
 \begin{defi}
@@ -890,7 +900,7 @@ escapa del objetivo de este texto, sin embargo, hace falta demostrar un
             $\ran([g]) = Y$.
         \item Esta parte se sigue de la parte anterior.
         \item Sea $[f]\in M$. Si $A = \set{i\in S\mid |f(i)|\leq|S|}\in U$,
-            entonces existe $\alpha\in|S|^+ - \bigcup{f(i)\mid i\in A}$ tal que
+            entonces existe $\alpha\in|S|^+ - \bigcup\set{f(i)\mid i\in A}$ tal que
             $j(\alpha)\notin [f]$. De lo contrario, $B=\set{i\in S\mid |f(i)|>|S|}\in U$
             y existe una función inyectiva $h$ en $B$ que satisface $h(i)\in f(i)$
             para cada $i\in B$, y entonces $[h]\in[f]-j"V$. En cualquiera de los dos casos,
@@ -913,6 +923,8 @@ del texto, delimita la jerarquía de cardinales grandes en ZFC.
 \begin{teo}[Kunen]\label{teo:kunen}
     Si $j\colon V\embed M$, entonces $M\neq V$.
 \end{teo}
+
+\section{Demostración de Kunen}
 
 La primera demostración del teorema que se verá es aquella
 del propio Kunen \autocite{kunen_elementary_1971}, adaptada
@@ -960,21 +972,23 @@ sobre funciones $\omega$-Jónsson.
     que es imposible pues $\kappa\in\lambda- j"\lambda$.
 \end{proof}
 
+\section{Demostración de Woodin}
+
 La siguiente demostración, debida a Hugh Woodin, apareció junto a otras en
-la decada de 1980. La existencia de particiones de conjuntos estacionarios
+la década de 1980. La existencia de particiones de conjuntos estacionarios
 bajo las condiciones del \cref{teo:solovay} es el hecho clave para la demostración.
 
 \begin{proof}[Segunda Demostración del \cref{teo:kunen}]
 	Sea $\kappa=\crit{j}$ y $\lambda=\sup(\set{j^n(\kappa)\mid n\in\omega})$ igual que antes.
 	El \cref{teo:solovay} implica que existe $S\colon\kappa\to\pwset{\lambda^+}$ tal que
-	$\ran(S)$ es una partición de $\set{\xi < \lambda^+\mid \cf(\xi) = \omega}$ en subconjuntos
+	$\ran(S)$ es una partición de $\set{\xi < \lambda^+\mid \cf\xi = \omega}$ en subconjuntos
 	estacionarios en $\lambda^+$.
 
 	Puesto que $j(\lambda)=\lambda$, se tiene $\lambda^+\leq j(\lambda^+) = {\lambda^+}^M\leq \lambda^+$
 	y prevalece la igualdad. Por la elementalidad de $j$, $j(S)\colon j(\kappa)\to\pwset{\lambda^+}$ y
 	\[
 		(
-		    j(S)(\kappa)\subseteq\set{\xi < \lambda^+\mid \cf(\xi) = \omega}
+		    j(S)(\kappa)\subseteq\set{\xi < \lambda^+\mid \cf\xi = \omega}
 		    \,\text{es estacionario en $\lambda^+$}
 		)^M.
 	\]
@@ -983,15 +997,35 @@ bajo las condiciones del \cref{teo:solovay} es el hecho clave para la demostraci
 	debido a la $\lambda^+$-completitud, $j(S)(\kappa)\cap S(\alpha_0)$ es estacionario en $\lambda^+$
 	para algún $\alpha_0<\kappa$. El conjunto
 	\[
-	    C = \set{\xi<\lambda^+\mid j(\xi)=\xi \land \cf(\xi)=\omega}
+	    C = \set{\xi<\lambda^+\mid j(\xi)=\xi \land \cf\xi=\omega}
 	\]
-	es $\omega$-cerrado y no acotado en $\lambda^+$. Entonces, debido a \note{poner cita del teorema},
+	es $\omega$-cerrado y no acotado en $\lambda^+$. Se sigue del \cref{teo:stationary-intersect} que
 	existe un $\xi_0\in (j(S)(\kappa)\cap S(\alpha_0))\cap C$. Pero,
 	$\xi_0 = j(\xi_0)\in j(S(\alpha_0)) = j(S)(\alpha_0)$ y entonces $\xi_0\in j(S)(\kappa)\cap j(S)(\alpha_0)$.
 	Esto último es imposible pues la elementalidad de $j$ implica que $j(S)$ consiste únicamente de conjuntos
 	disjuntos dos a dos.
 \end{proof}
 
+\section{Demostración de Harada}
+
+La siguiente, y última, demostración que se dará del teorema de Kunen es una versión simplificada
+por Kanamori~\autocite{kanamori_higher_2009} de una demostración de Mikio Harada.
+
+\begin{proof}[Tercera Demostración del \cref{teo:kunen}]
+    Sea $\lambda$ igual que antes y asumamos, en busca de una contradicción, que $j"\lambda\in M$.
+    Nótese que dada cualquier biyección $g\colon 2^\lambda\to\pwset{\lambda}$ se tiene que
+    $j"\lambda\in\pwset{\lambda}^M = \ran(j(g))$ y se puede considerar el ordinal $\sigma$ más
+    pequeño tal que existe una función intectiva $F\colon\sigma\to\pwset{\lambda}$ para la cual
+    $j"\lambda\in \ran(j(F))$. Tomemos una $F$ como la anterior y llamemos $S=\ran(F)$.
+    Se define ahora un ultrafiltro $U$ de la siguiente forma:
+    \[
+        X\in U\quad\text{si, y solo si,}\quad X\subseteq S \,\land\, j"\lambda\in j(X).
+    \]
+    Tal como esta definido, $U$ es $\omega_1$-completo y se puede tomar la inmersión canónica:
+    \[
+        i\colon V\embed N\approxeq\Ult(V, U).
+    \]
+\end{proof}
 \fi
 % ------------------------------------------------------------------------------
 %                                 BACKMATTER.
