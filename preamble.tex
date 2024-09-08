@@ -19,7 +19,7 @@
 \RequirePackage { biblatex }
 \RequirePackage { xcolor }
 \RequirePackage { graphicx }
-\RequirePackage { amsthm }
+\RequirePackage { amsthm, mathtools }
 \RequirePackage { epigraph }
 \RequirePackage { hyperref }
 \RequirePackage { lineno }
@@ -303,7 +303,16 @@
 \newcommand\set[1]{\left\{ #1 \right\}}
 \newcommand\lex[1]{\mathcal { #1 }}
 \newcommand\crit[1]{\Crit (\, #1\, )}
-\newcommand\pwset[1]{\mathcal{P}(#1)}
+\makeatletter
+\newcommand\pwset[2][]
+{
+    \ifnum\pdf@strcmp{\detokenize{#1}}{}=0\relax
+        \mathcal{P}(#2)
+    \else
+        \mathcal{P}_{#1}(#2)
+    \fi
+}
+\makeatother
 \newcommand\concept[1]{#1}
 \newcommand\op[1]{\langle #1 \rangle}
 \newcommand\seq[1]{\langle #1 \rangle}
