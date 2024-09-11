@@ -1008,8 +1008,38 @@ bajo las condiciones del \cref{teo:solovay} es el hecho clave para la demostraci
 
 \section{Demostración de Harada}
 
-La siguiente, y última, demostración que se dará del teorema de Kunen es una versión simplificada
+La última demostración que se dará del teorema de Kunen es una versión simplificada
 por Kanamori~\autocite{kanamori_higher_2009} de una demostración de Mikio Harada.
+Antes de poder entrar de lleno en dicha demostración, hará falta desarrollar
+un poco la teoría de filtros normales.
+
+Sea $\kappa$ un cardinal arbitrario, $S$ un conjunto y $F$ un filtro sobre $\pwset[\kappa]{S}$.
+Si $\seq{X_i\mid i\in S}\in {}^S\pwset{\pwset S}$ entonces su intersección diagonal viene
+dada por $\set{x\in\pwset{S}\mid x\in\bigcap_{i\in x} X_i}$ y se denota por $\dint_{i\in S} X_i$.
+
+\begin{defi}
+    Sean $\kappa, F$ y $S$ igual que en el párrafo anterior.
+    $F$ es fino si, y solo si, $F$ es $\kappa$-completo y, para cualquier $i\in S$,
+    $\set{x\in\pwset[\kappa]{S}\mid i\in x}\in F$.
+    $F$ es normal si, y solo si, $F$ es fino y, para cualquier sucesión $\seq{X_i\mid i\in S}$,
+    $\dint_{i\in S} X_i\in F$.
+\end{defi}
+
+La siguiente es una adaptación del concepto de conjunto estacionario al
+contexto actual.
+
+\begin{defi}
+    Sea $F$ un filtro sobre un conjunto $I$, $X$ es $F$-estacionario si, y solo si,
+    $X\cap Z\neq\emptyset$ para todo $Z\in F$.
+\end{defi}
+
+Para los filtros normales se tiene un resultado similar al \cref{teo:fodor} de Fodor.
+
+\begin{teo}
+    Un filtro $F$ sobre $\pwset[\kappa]{S}$ es normal si, y solo si,
+    siempre que $X$ sea $F$-estacionario y $f$ una función de elección para $X$,
+    existe un $s\in S$ tal que $f^{-1}(\set{s})$ es $F$-estacionario.
+\end{teo}
 
 \begin{proof}[Tercera Demostración del \cref{teo:kunen}]
     Sea $\lambda$ igual que antes y asumamos, en busca de una contradicción, que $j"\lambda\in M$.
