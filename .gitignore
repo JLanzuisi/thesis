@@ -8,5 +8,6 @@
 *.out
 *.fmt
 *.zip
+*.pdf
 out/
 !resources/*
