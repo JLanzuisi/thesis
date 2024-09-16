@@ -18,4 +18,4 @@ To get the final document, a couple more calls to `pdflatex`
 are needed, as well as a call to `biber` for bibliographies.
 And this whole endevour as a correct order in which to call the
 binaries (isn't LaTeX lovely?).
-This is somewhat automated in `debug.sh`, so take a look at the script.
+This is somewhat automated in `build.sh`, so take a look at the script.
