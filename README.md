@@ -3,10 +3,13 @@ Files related to my undergraduate thesis in mathematics
 
 ## Compilation
 
-The preamble uses the `pdftex` engine, so the following compiles the document:
+The `main.tex` uses the `luatex` engine with the `LaTeX` format,
+so the following compiles the document:
 ```
-pdflatex main.tex
+lualatex main.tex
 ```
+given all used packages are installed and the TeX distribution is relatively
+up to date.
 
 Of course, LaTeX being how it is, this is not a full compilation,
 but it is good enough to make simple edits.
