@@ -109,7 +109,7 @@ WIP: CARATULA.
 
 El teorema de inconsistencia de Kunen, que establece la inexistencia en
 ZFC (teoría de conjuntos Zermelo-Fraenkel con el axioma de elección)
-de cualquier inmersión elemental $j\colon V\prec V$ y, por lo tanto, de los cardinales
+de cualquier inmersión elemental $j\colon V\embed V$ y, por lo tanto, de los cardinales
 de Reinhardt, es un resultado central de la teoría de cardinales grandes
 debido a que establece una cota superior para dicha teoría.
 
@@ -149,7 +149,7 @@ WIP: AGRADECIMIENTOS.
 % Listas de símbolos y abreviaturas.
 % ------------------------------------------------------------------------------
 \iflistas
-\chapter*{Lista de Símbolos}
+\ChapterNoNumber{Lista de Símbolos}
 
 En la lista siguiente, $C$ es un conjunto y $\gamma$ un ordinal.
 
@@ -159,12 +159,13 @@ En la lista siguiente, $C$ es un conjunto y $\gamma$ un ordinal.
         \hline\noalign{\smallskip}
         $\pwset{C}$ & Conjunto de partes.\\
         $\sup(\gamma)$ & Supremo, es decir, $\bigcup \gamma$.\\
-        $\cf\gamma$ & Cofinalidad de $\gamma$.
+        $\cf(\gamma)$ & Cofinalidad de $\gamma$.\\
+        $\ot(\gamma)$ & Tipo de orden de $\gamma$.
     \end{tabular}
 \end{center}
 
 \newpage
-\chapter*{Lista de Abreviaturas}
+\ChapterNoNumber{Lista de Abreviaturas}
 
 \begin{center}
     \begin{tabular}{cl}
@@ -184,6 +185,10 @@ En la lista siguiente, $C$ es un conjunto y $\gamma$ un ordinal.
 % ------------------------------------------------------------------------------
 \iftoc \ToC \fi
 % ------------------------------------------------------------------------------
+%                                 MAINMATTER.
+% ------------------------------------------------------------------------------
+\mainmatter
+% ------------------------------------------------------------------------------
 % Introducción.
 % ------------------------------------------------------------------------------
 %     - Conceptos básicos de teoría de conjuntos. Establecer la teoría de conjuntos en la que se va a trabajar y establecer notación.
@@ -192,13 +197,14 @@ En la lista siguiente, $C$ es un conjunto y $\gamma$ un ordinal.
 % de la jerarquía: de los cardinales medibles para arriba. Quizás dar un breve resúmen
 % de como es la jerarquía por debajo. (Los grafos que tiene Ivorra en CG podrían usarse)
 \ifintro
-\chapter*{Introducción}
+\ChapterNoNumber{Introducción}
+\thispagestyle{empty}
 
 \epigraph
 {
 Del paraíso que Cantor ha creado para nosotros, nadie ha de expulsarnos.
 }
-{David Hilbert. \autocite[pág 170]{hilbert_uber_1926}}
+{David Hilbert. \autocite[170]{hilbert_uber_1926}}
 
 Las hipótesis de cardinales grandes son los axiomas matemáticos
 más fuertes jamás postulados: estipulan la existencia de conjuntos
@@ -255,7 +261,7 @@ introduce los cardinales medibles y con ellos la primera
 pregunta sobre la jerarquía de los cardinales grandes:
 ¿Es el primer cardinal inaccesible también medible?
 El desarrollo de los cardinales grandes dependerá a partir de este
-momento de la incorporación de la teoría de modelos (\cref{sec:models}) en las matemáticas.
+momento de la incorporación de la teoría de modelos (\ref{sec:models}) en las matemáticas.
 
 La generalización de la lógica de primer orden, obtenida al
 permitir una cantidad infinita de operaciones lógicas,
@@ -281,13 +287,13 @@ Solovay y Reinhardt comienzan a postular
 hipótesis de cardinales grandes aún más fuertes
 que las anteriores.
 Al poner en el centro el concepto de inmersión elemental
-(\cref{sec:elem-embed}),
+(\ref{sec:elem-embed}),
 nacen las nociones de cardinal supercompácto y extendible.
 
 Reinhardt \autocite{reinhardt_ackermanns_1970},
 generalizando su concepto de extendibilidad,
 propone el mayor principio de reflección posible:
-la existencia de una inmersión elemental $j\colon V\prec V$
+la existencia de una inmersión elemental $j\colon V\embed V$
 y la consideración de $\crit{j}$ como cardinal grande.
 
 Es aquí que irrumpe el resultado de Kunen,
@@ -312,10 +318,6 @@ de la potencia de dicho teorema, quedan aún preguntas por explorar.
 
 \fi
 % ------------------------------------------------------------------------------
-%                                 MAINMATTER.
-% ------------------------------------------------------------------------------
-\mainmatter
-% ------------------------------------------------------------------------------
 % Cap 1: Preliminares.
 % ------------------------------------------------------------------------------
 \ifbasicos
@@ -324,6 +326,7 @@ de la potencia de dicho teorema, quedan aún preguntas por explorar.
 % - Teoría de modelos, conceptos básicos.
 % - Inmersiones elementales y puntos críticos, haciendo mención de cardinales medibles.
 \chapter{Nociones básicas}
+\thispagestyle{empty}
 
 Este capítulo establece varios conceptos básicos que serán necesarios
 más adelante. Las nociones de filtro, ultrafiltro y filtro $\kappa$-completo
@@ -349,7 +352,7 @@ de un conjunto dado $C$.
 \begin{defi}
     Sea $C$ un conjunto no vacío. Un conjunto $F\subset \pwset{C}$ es un
     \concept{filtro} si se cumplen las siguientes condiciones:
-    \begin{enumerate}[label=\alph*)]
+    \begin{enumerate}[label=(\roman*)]
         \item $C\in F$ y $\emptyset\notin F$.
         \item Si $X,Y\in F$ entonces $X\cap Y\in F$.
         \item Si $X,Y\subset C$, $X\in F$ y $X\subset Y$ entonces $Y\in F$.
@@ -392,7 +395,7 @@ la definición de cardinal medible.
 
 El principal objetivo de esta sección es establecer un teorema
 de Solovay, acerca de particiones
-con conjuntos estacionarios, usando el \cref{teo:fodor}
+con conjuntos estacionarios, usando el teorema \ref{teo:fodor}
 de Fodor.
 
 Sea $C$ un conjunto y $X\subset C$, diremos que $X$ es \concept{no acotado}
@@ -421,17 +424,15 @@ $X_\alpha$ como:
 \begin{teo}\label{teo:intersection-cna}
     Sea $\kappa$ un cardinal regular no numerable y $\set{C_\alpha}_{\alpha<\kappa}$ una familia
     de \cna{} en $\kappa$, entonces:
-    \begin{enumerate}[label=\alph*)]
+    \begin{enumerate}[label=(\roman*)]
         \item $C_\alpha\cap C_\beta$ es \cna{} ($\alpha,\beta < \kappa$).
         \item $\bigcap_{\alpha<\kappa}C_\alpha$ es \cna.
         \item $\dint_{\alpha<\kappa}C_\alpha$ es \cna.
     \end{enumerate}
 \end{teo}
 
-\begin{proof}
-    Veamos cada parte por separado.
-
-    \begin{enumerate}[label=\alph*)]
+\begin{proof}\phantom{a}
+    \begin{enumerate}[label=(\roman*)]
         \item\label{pr:intersection-simple-cna}
             Es claro que $C\cap D$ es cerrado. Veamos que es no acotado.
             Sea $\alpha<\kappa$. Dado que $C$ es no acotado, existe $\alpha_1\in C$
@@ -450,7 +451,7 @@ $X_\alpha$ como:
             Sea $\lambda<\kappa$ y $\seq{C_\alpha\mid\alpha<\lambda}$
             una sucesión de conjuntos \cna{} en $\kappa$.
             Para los ordinales sucesores, podemos simplemente aplicar
-            el \cref{pr:intersection-simple-cna}.
+            \ref{pr:intersection-simple-cna}.
             Si $\lambda$ es ordinal límite, asumiremos que el teorema
             es cierto para cada $\alpha<\lambda$. Podemos ahora sustituir
             cada $C_\alpha$ por $\bigcap_{\xi\leq\alpha} C_\xi$ y obtenemos
@@ -459,7 +460,7 @@ $X_\alpha$ como:
                 C_0 \subset C_1 \subset C_2 \subset \dots
             \]
             serán \cna{} y $C = \bigcap_{\alpha<\lambda} C_\alpha$.
-            Por la misma razón que el \cref{pr:intersection-simple-cna}, no es difícil
+            Por la misma razón que \ref{pr:intersection-simple-cna}, no es difícil
             ver que $C$ es cerrado. Veamos que es no acotado. Sea $\alpha<\kappa$,
             construiremos una sucesión de la siguiente forma: sea $\beta_0\in C_0$ mayor que
             $\alpha$, y para cada $\xi<\lambda$ se tomará $\beta_\xi\in C_\xi$
@@ -486,7 +487,7 @@ $X_\alpha$ como:
             $\lambda\in D$. Luego $D$ es cerrado.
 
             Solo falta ver que $D$ es no acotado en $\kappa$.
-            Para esto notemos que, debido al \cref{pr:intersection-cna},
+            Para esto notemos que, debido a \ref{pr:intersection-cna},
             se puede reemplazar cada $C_\alpha$ por $\bigcap_{\xi\leq\alpha} C_\xi$
             y obtenemos una sucesión decreciente $C_0\subset C_1\subset\dots$
             que no cambia el valor de $D$.
@@ -503,7 +504,7 @@ $X_\alpha$ como:
 
 \begin{teo}\label{teo:stationary-intersect}
     Sea $\lambda>\omega$ regular y $\nu<\lambda$ también regular.
-    Si $S\subseteq\set{\xi<\lambda\mid \cf\xi=\omega}$ es estacionario en $\lambda$
+    Si $S\subseteq\set{\xi<\lambda\mid \cf(\xi)=\omega}$ es estacionario en $\lambda$
     y $C$ es un conjunto $\nu$-cerrado no acotado en $\lambda$, entonces $S\cap C\neq\emptyset$.
 \end{teo}
 
@@ -526,13 +527,13 @@ $X_\alpha$ como:
     $C_\alpha\cap f^{-1}(\set{\alpha}) = \emptyset$, esto es,
     que $f(\gamma)\neq\alpha$ para todo $\gamma\in E\cap C_\alpha$.
     Si $D=\dint_{\alpha<\kappa} C_\alpha$,
-    por el \cref{teo:intersection-cna}, $D$ es \cna{} en $\kappa$.
+    por \ref{teo:intersection-cna}, $D$ es \cna{} en $\kappa$.
     Pero entonces $D\cap E\neq\emptyset$ y podemos tomar $\gamma\in D\cap E$,
     luego, $f(\gamma)\neq\alpha$ para todo $\alpha<\gamma$
     lo que implica $f(\gamma)\geq\gamma$ y esto es una contradicción.
 \end{proof}
 
-El siguiente es un teorema auxiliar, que será de utilidad para el \cref{teo:solovay}.
+El siguiente es un teorema auxiliar, que será de utilidad para \ref{teo:solovay}.
 
 \begin{teo}\label{teo:stationary}
     Sea $E\subset\kappa$ un conjunto estacionario en $\kappa$ y supongamos que todo
@@ -563,7 +564,7 @@ El siguiente es un teorema auxiliar, que será de utilidad para el \cref{teo:sol
 \newcommand{\seqa}{a_\xi^\alpha}
 \begin{proof}
     Sea $E$ un subconjunto estacionario de $\kappa$.
-    Por el \cref{teo:stationary}, asumiremos que el conjunto $W$
+    Por \ref{teo:stationary}, asumiremos que el conjunto $W$
     consistente de todos los $\alpha\in E$ tales que $\alpha$ es cardinal
     regular y $E\cap\alpha$ no es estacionario en $\alpha$, es estacionario en $\kappa$.
     Existe entonces un conjunto \cna{} $C_\alpha\subset\alpha$ tal que $E\cap C_\alpha = \emptyset$,
@@ -584,10 +585,10 @@ El siguiente es un teorema auxiliar, que será de utilidad para el \cref{teo:sol
     si $\xi<\gamma$ entonces $\seqa<\eta(\xi)<\gamma$, lo cual implica que $a_\gamma^\alpha = \gamma$.
     Pero esto es una contradicción, puesto que $\gamma\in W$ y $a_\gamma^\alpha\notin W$.
 
-    Tenemos ahora $\xi$ tal que \labelcref{eqn:solovay-stationary} es estacionario.
+    Tenemos ahora $\xi$ tal que \ref{eqn:solovay-stationary} es estacionario.
     Sea $f$ una función en $W$ definida por $f(\alpha)=\seqa$. Por la definición de $\seqa$
-    la función $f$ es regresiva, por lo que para cada $\eta<\kappa$ el \cref{teo:fodor} de Fodor
-    nos da un conjunto estacionario $E_\eta$ de \labelcref{eqn:solovay-stationary} y un $\gamma_\eta\geq\eta$
+    la función $f$ es regresiva, por lo que para cada $\eta<\kappa$ el teorema \ref{teo:fodor} de Fodor
+    nos da un conjunto estacionario $E_\eta$ de \ref{eqn:solovay-stationary} y un $\gamma_\eta\geq\eta$
     que es testigo de que $E_\eta$ sea estacionario.
     Ahora, si $\gamma_\eta\neq\gamma_{\eta'}$ entonces $E_\eta\cap E_{\eta'} = \emptyset$ y, puesto que $\kappa$ es regular,
     se tiene también $|\set{E_\eta\mid\eta<\kappa}| = |\set{\gamma_\eta\mid\eta<\kappa}| = \kappa$.
@@ -596,9 +597,9 @@ El siguiente es un teorema auxiliar, que será de utilidad para el \cref{teo:sol
 \section{Teoría de Modelos}
 \label{sec:models}
 
-La teoría de modelos es un área relativamente joven \autocite[pág. 3]{chang_model_2012}.
+La teoría de modelos es un área relativamente joven \autocite[3]{chang_model_2012}.
 No obstante, su desarrollo ha sido crucial para la teoría de conjuntos y los
-cardinales grandes \autocite[pág. xv]{kanamori_higher_2009}.
+cardinales grandes \autocite[xv]{kanamori_higher_2009}.
 
 Se quiere definir lo que es un modelo para un lenguaje formal $\lex{L}$.
 Un lenguaje $\lex{L}$ es un conjunto de símbolos relacionales, funcionales y constantes.
@@ -630,7 +631,7 @@ Dados dos modelos $\model{A}, \model{B}$ se dirá que $\model{A}$ es \concept{el
     equivalente} a $\model{B}$, en símbolos $\model{A}\equiv \model{B}$, si toda sentencia
 que es verdadera en $\model{A}$ lo es también en $\model{B}$ y viceversa.
 
-La \cref{def:model} está dada de manera general. Normalmente interesarán modelos
+La definición \ref{def:model} está dada de manera general. Normalmente interesarán modelos
 del lenguaje de la teoría de conjuntos, denotado $\lst$, el cual consiste de la lógica de
 primer orden con la relación de igualdad y el símbolo binario $\in$.
 Los $\in$-modelos de la forma $\op{A,\in}$, a los que denotaremos
@@ -666,7 +667,7 @@ el concepto de inmersión elemental para clases propias, pues lo prohíbe el teo
 de la indefinibilidad de la verdad de Tarski.
 A partir de ahora la noción de inmersión elemental se trabajará de manera informal,
 pero sin olvidar que, en los contextos que será utilizada, puede ser formalizada
-en ZFC \autocite[pág. 45-46]{kanamori_higher_2009}.
+en ZFC \autocite[45-46]{kanamori_higher_2009}.
 
 De la definición de inmersión elemental se sigue que estas preservan todas
 las operaciones conjuntistas que son absolutas para modelos transitivos.
@@ -715,12 +716,15 @@ preservan su orden.
 A partir de ahora
 se considerarán solamente inmersiones elementales que no sean la identidad
 entre modelos internos de ZFC.
-Esto permite dar un nombre al $\delta$ del \cref{teo:elem-embed-trivial}.
+Esto permite dar un nombre al $\delta$ de \ref{teo:elem-embed-trivial}.
 
 \begin{defi}
-    Sea $j\colon M\to N$ una inmersión elemental. El \concept{punto crítico} de $j$
+    Sea $j\colon M\embed N$ una inmersión elemental. El \concept{punto crítico} de $j$
     es el menor ordinal $\alpha$ tal que $j(\alpha)>\alpha$.
 \end{defi}
+
+El siguiente es un resultado que será de importancia para la tercera
+demostración del Teorema de Kunen, en el capítulo \ref{cap:teorema-kunen}.
 
 \section{Ultrapotencias}
 Sea $I$ un conjunto no vacío, $U$ un ultrafiltro sobre $I$ y, para cada $i\in I$,
@@ -762,7 +766,7 @@ en estas estructuras.
 Como es usual para esta clase de teoremas en la teoría de modelos,
 el resultado anterior se demuestra haciendo inducción sobre la complejidad
 de $\phi$ \autocite[Teorema 4.1.9]{chang_model_2012}.
-El \cref{teo:ultraprod-fundamental} tiene varios corolarios importantes, de mayor
+El teorema \ref{teo:ultraprod-fundamental} tiene varios corolarios importantes, de mayor
 utilidad será el hecho de que existe una inmersión elemental
 $j\colon \model{A}\embed\prod_U\model{A}$ \autocite[Corolario 4.1.13]{chang_model_2012},
 llamada normalmente inmersión canónica.
@@ -791,7 +795,7 @@ Si a este universo le añadimos la relación $\Eu$ dada por:
 se obtiene un modelo
 denotado por $\Ult(V,U)$.
 
-Vale la pena destacar que el \cref{teo:ultraprod-fundamental} sigue aplicando para
+Vale la pena destacar que \ref{teo:ultraprod-fundamental} sigue aplicando para
 $\Ult(V,U)$ con la acotación de que, puesto que ahora está involucrada la relación
 de satisfacción para clases propias, debe ser interpretado como un esquema infinito de teoremas.
 
@@ -847,13 +851,13 @@ modelos bien fundados y, además, la relación $\Eu$ es tipo-conjunto.
     y se tiene que $\set{(g)\Ou\mid (g)\Ou\Eu (f)\Ou}\subseteq V_{\rank(f)+2}$ es un conjunto.
 \end{proof}
 
-Se sigue de los teoremas \labelcref{teo:Eu-well-founded} y \labelcref{teo:Eu-set-like},
+Se sigue de los teoremas \ref{teo:Eu-well-founded} y \ref{teo:Eu-set-like},
 usando el teorema de colapso de Mostowski, que si $U$ es $\omega_1$-completo
 existe una clase transitiva $M_U$ y un isomorfismo $\pi_U$ tales que:
 \[
     \pi_U\colon\Ult(V,U)\to\op{M_U,\in},
 \]
-además, debido al \cref{teo:ultraprod-fundamental}, $M_U$ es un modelo interno
+además, debido a \ref{teo:ultraprod-fundamental}, $M_U$ es un modelo interno
 de ZFC.
 
 A partir de ahora, se utilizará la notación $[f]_U$ para $\pi_U((f)_U^0)$
@@ -864,7 +868,7 @@ sea $j_U\colon V\embed M_U$ definida, para $x\in V$, por:
 \[
     j_U(x) = [f_x]_U.
 \]
-La función $j_U$ es una inmersión de $V$ en $M_U$, debido al \cref{teo:ultraprod-fundamental}.
+La función $j_U$ es una inmersión de $V$ en $M_U$, debido a \ref{teo:ultraprod-fundamental}.
 Lo anterior se resumirá de la siguiente forma:
 \[
     j_U\colon V\embed M_U\approxeq\Ult(U,V),
@@ -879,10 +883,10 @@ un cardinal medible entonces $V\neq L$. La demostración de este hecho se
 escapa del objetivo de este texto, sin embargo, hace falta demostrar un
 último resultado referente a ultrapotencias que se usará más adelante.
 
-\begin{teo}
+\begin{teo}\label{teo:ultrafilters-omega1}
     Sea $U$ un ultrafiltro $\omega_1$-completo sobre un conjunto $S$ y
     $j\colon V\embed M\approxeq\Ult(U,V)$. Entonces,
-    \begin{enumerate}[label=\alph*)]
+    \begin{enumerate}[label=(\roman*)]
         \item Sea $X$ tal que $j"X\in M$ y $Y\subseteq M$ para el cual $|Y|\leq|X|$,
             entonces $Y\in M$.
         \item Para cualquier ordinal $\gamma$, $j"\gamma\in M$ si, y solo si,
@@ -891,8 +895,8 @@ escapa del objetivo de este texto, sin embargo, hace falta demostrar un
     \end{enumerate}
 \end{teo}
 
-\begin{proof} Veamos cada parte por separado.
-    \begin{enumerate}[label=\alph*)]
+\begin{proof}\phantom{a}
+    \begin{enumerate}[label=(\roman*)]
         \item Interpretemos a $Y$ como $\set{[f_x]\mid x\in X}$. Puesto que $j"X\in M$,
             existe $h\colon S\to\pwset{X}$ tal que $[h]=j"X$. Se define $g\colon S\to V$
             haciendo que $g(i)$ sea la función con dominio $h(i)$ que satisface
@@ -914,6 +918,8 @@ escapa del objetivo de este texto, sin embargo, hace falta demostrar un
 % ------------------------------------------------------------------------------
 \ifmainproofs
 \chapter{El teorema de inconsistencia de Kunen}
+\label{cap:teorema-kunen}
+\thispagestyle{empty}
 
 En la introducción se hizo alusión a la jerarquía de los cardinales grandes,
 comenzando por los distintos tipos de inaccesibilidad hasta los diversos
@@ -953,13 +959,13 @@ sobre funciones $\omega$-Jónsson.
     tal que $f(s_\alpha)=\gamma_\alpha$ es $\omega$-Jónsson para $\lambda$.
 \end{proof}
 
-\begin{proof}[Primera demostración del \cref{teo:kunen}]
+\begin{proof}[Primera demostración de \ref{teo:kunen}]
     Sea $\kappa=\crit{j}$ y $j^n$ la $n$-ésima iteración de $j$: para $x\in V$, $j^0(x)=x$
     y $j^{n+1}(x) = j(j^{n}(x))$. Sea $\lambda=\sup(\set{j^n(\kappa)\mid n\in\omega})$,
     nótese que $j(\lambda)=\lambda$ pues $j(\set{j^n(\kappa)\mid n<\omega}) = \set{j^n(\kappa)\mid 1\leq n<\omega}$.
     Además, como $\kappa$ es medible, en particular es inaccesible, y la elementalidad de $j$ implica que $j^n(\kappa)$
     es inaccesible para todo $n\in\omega$ y $2^\lambda = \lambda^{\aleph_0}$, se puede aplicar entonces
-    el caso especial que se demostró del \cref{teo:jonsson}.
+    el caso especial que se demostró de \ref{teo:jonsson}.
     Para obtener que $V\neq M$ basta con establecer $j"\lambda\notin M$.
 
     En busca de una contradicción, sea $j"\lambda\in M$ y $f$ una función $\omega$-Jónsson para $\lambda$.
@@ -976,19 +982,19 @@ sobre funciones $\omega$-Jónsson.
 
 La siguiente demostración, debida a Hugh Woodin, apareció junto a otras en
 la década de 1980. La existencia de particiones de conjuntos estacionarios
-bajo las condiciones del \cref{teo:solovay} es el hecho clave para la demostración.
+bajo las condiciones de \ref{teo:solovay} es el hecho clave para la demostración.
 
-\begin{proof}[Segunda Demostración del \cref{teo:kunen}]
+\begin{proof}[Segunda Demostración de \ref{teo:kunen}]
 	Sea $\kappa=\crit{j}$ y $\lambda=\sup(\set{j^n(\kappa)\mid n\in\omega})$ igual que antes.
-	El \cref{teo:solovay} implica que existe $S\colon\kappa\to\pwset{\lambda^+}$ tal que
-	$\ran(S)$ es una partición de $\set{\xi < \lambda^+\mid \cf\xi = \omega}$ en subconjuntos
+	El teorema \ref{teo:solovay} implica que existe $S\colon\kappa\to\pwset{\lambda^+}$ tal que
+	$\ran(S)$ es una partición de $\set{\xi < \lambda^+\mid \cf(\xi) = \omega}$ en subconjuntos
 	estacionarios en $\lambda^+$.
 
 	Puesto que $j(\lambda)=\lambda$, se tiene $\lambda^+\leq j(\lambda^+) = {\lambda^+}^M\leq \lambda^+$
 	y prevalece la igualdad. Por la elementalidad de $j$, $j(S)\colon j(\kappa)\to\pwset{\lambda^+}$ y
 	\[
 		(
-		    j(S)(\kappa)\subseteq\set{\xi < \lambda^+\mid \cf\xi = \omega}
+		    j(S)(\kappa)\subseteq\set{\xi < \lambda^+\mid \cf(\xi) = \omega}
 		    \,\text{es estacionario en $\lambda^+$}
 		)^M.
 	\]
@@ -997,12 +1003,12 @@ bajo las condiciones del \cref{teo:solovay} es el hecho clave para la demostraci
 	debido a la $\lambda^+$-completitud, $j(S)(\kappa)\cap S(\alpha_0)$ es estacionario en $\lambda^+$
 	para algún $\alpha_0<\kappa$. El conjunto
 	\[
-	    C = \set{\xi<\lambda^+\mid j(\xi)=\xi \land \cf\xi=\omega}
+	    C = \set{\xi<\lambda^+\mid j(\xi)=\xi \land \cf(\xi)=\omega}
 	\]
-	es $\omega$-cerrado y no acotado en $\lambda^+$. Se sigue del \cref{teo:stationary-intersect} que
+	es $\omega$-cerrado y no acotado en $\lambda^+$. Se sigue de \ref{teo:stationary-intersect} que
 	existe un $\xi_0\in (j(S)(\kappa)\cap S(\alpha_0))\cap C$. Pero,
 	$\xi_0 = j(\xi_0)\in j(S(\alpha_0)) = j(S)(\alpha_0)$ y entonces $\xi_0\in j(S)(\kappa)\cap j(S)(\alpha_0)$.
-	Esto último es imposible pues la elementalidad de $j$ implica que $j(S)$ consiste únicamente de conjuntos
+	Esto último es imposible, pues la elementalidad de $j$ implica que $j(S)$ consiste únicamente de conjuntos
 	disjuntos dos a dos.
 \end{proof}
 
@@ -1013,6 +1019,7 @@ por Kanamori~\autocite{kanamori_higher_2009} de una demostración de Mikio Harad
 Antes de poder entrar de lleno en dicha demostración, hará falta desarrollar
 un poco la teoría de filtros normales.
 
+Es necesario, en primer lugar, redefinir la noción de intersección diagonal.
 Sea $\kappa$ un cardinal arbitrario, $S$ un conjunto y $F$ un filtro sobre $\pwset[\kappa]{S}$.
 Si $\seq{X_i\mid i\in S}\in {}^S\pwset{\pwset S}$ entonces su intersección diagonal viene
 dada por $\set{x\in\pwset{S}\mid x\in\bigcap_{i\in x} X_i}$ y se denota por $\dint_{i\in S} X_i$.
@@ -1021,41 +1028,237 @@ dada por $\set{x\in\pwset{S}\mid x\in\bigcap_{i\in x} X_i}$ y se denota por $\di
     Sean $\kappa, F$ y $S$ igual que en el párrafo anterior.
     $F$ es fino si, y solo si, $F$ es $\kappa$-completo y, para cualquier $i\in S$,
     $\set{x\in\pwset[\kappa]{S}\mid i\in x}\in F$.
-    $F$ es normal si, y solo si, $F$ es fino y, para cualquier sucesión $\seq{X_i\mid i\in S}$,
-    $\dint_{i\in S} X_i\in F$.
+    $F$ es normal si, y solo si, $F$ es fino y, para cualquier sucesión
+    $\seq{X_i\mid i\in S}\in {}^SF$, $\dint_{i\in S} X_i\in F$.
 \end{defi}
+
+La definición anterior es equivalente \autocite[Ejercicio 22.5]{kanamori_higher_2009}
+a la definición usual de filtro normal, esta es, aquella donde no se añade
+la caracterización de finura \autocite[52]{kanamori_higher_2009}.
+En vista de este hecho, se tiene el siguiente teorema.
+
+\begin{teo}\label{teo:exists-k}
+    Sea $j\colon V\embed M$ y $\kappa=\crit{j}$. Se define un ultrafiltro $U$
+    de la siguiente forma:
+    \[
+        X\in U\quad\text{si, y solo si,}\quad X\subseteq \kappa \,\land\, j"\kappa\in j(X),
+    \]
+    Entonces existe una inmersión elemental $k\colon M_U\embed M$ tal que $k\circ j_U = j$.
+\end{teo}
+
+\begin{proof}
+    Sea $k\colon M_U\embed M$ dada por $k([f]_U)=j(f)(\kappa)$. Entonces, para
+    cualquier fórmula $\phi(v_1,\dots,v_n)$
+    \begin{align*}
+        M_U \models\phi[[f_1]_U,\dots,[f_n]_U]
+        &\quad\text{si, y solo si,}\quad
+        \set{\xi<\kappa\mid\phi[f_1(\xi),\dots,f_n(\xi)]} \in U \\
+        &\quad\text{si, y solo si,}\quad
+        M \models \phi[j(f_1)(k),\dots,j(f_n)(\kappa)]
+    \end{align*}
+    por la definción de $U$. Entonces, $k$ es elemental y es claro que $k\circ j_U=j$.
+\end{proof}
 
 La siguiente es una adaptación del concepto de conjunto estacionario al
 contexto actual.
 
 \begin{defi}
-    Sea $F$ un filtro sobre un conjunto $I$, $X$ es $F$-estacionario si, y solo si,
+    Sea $F$ un filtro sobre un conjunto $I$, $X\subseteq I$ es $F$-estacionario si, y solo si,
     $X\cap Z\neq\emptyset$ para todo $Z\in F$.
 \end{defi}
 
-Para los filtros normales se tiene un resultado similar al \cref{teo:fodor} de Fodor.
+Para los filtros normales se tiene un resultado similar a \ref{teo:fodor}.
 
-\begin{teo}
+\begin{teo}\label{teo:normal-fodor}
     Un filtro $F$ sobre $\pwset[\kappa]{S}$ es normal si, y solo si,
     siempre que $X$ sea $F$-estacionario y $f$ una función de elección para $X$,
     existe un $s\in S$ tal que $f^{-1}(\set{s})$ es $F$-estacionario.
 \end{teo}
 
-\begin{proof}[Tercera Demostración del \cref{teo:kunen}]
-    Sea $\lambda$ igual que antes y asumamos, en busca de una contradicción, que $j"\lambda\in M$.
+\begin{proof}
+    Para la primera implicación, supongamos que $f^{-1}(\set{s})$ no es $F$-estacionario
+    para ningún $s\in S$ de tal forma que $\pwset[\kappa]{S}-f^{-1}(\set{s}) \in F$.
+    Entonces $\dint_{s\in S}\pwset[\kappa]{S}-f^{-1}(\set{s})\in F$ por normalidad
+    y $X\cap \dint_{s\in S}\pwset[\kappa]{S}-f^{-1}(\set{s})\neq\emptyset$
+    pues $X$ es $F$-estacionario. Lo último implica que existe
+    $x\in X\cap \dint_{s\in S}\pwset[\kappa]{S}-f^{-1}(\set{s})$
+    pero entonces $f(x)\neq s$ para todo $s\in x$ o,
+    $f(x)\notin x$, lo cual es imposible, pues $f$ es función de elección para $X$.
+
+    En el sentido contrario, si existe $\seq{X_i\mid i\in S}\in {}^SF$ tal que
+    $\dint_{i\in S} X_i \notin F$ entonces $\pwset[\kappa]{S} - \dint_{i\in S} X_i$
+    es $F$-estacionario. Definimos una función $g$ sobre este conjunto de la siguiente
+    forma: $g(x)$ es el menor $s$ tal que $s\notin X_s$. Se sigue que $g$ es función
+    de elección para $X$ y $g^{-1}({s})\cap X_s=\emptyset$ para todo $s\in S$, que es
+    imposible, pues $g^{-1}({s})$ es $F$-estacionario por hipótesis.
+\end{proof}
+
+Es posible construir inmersiones partiendo de ultrafiltros normales,
+cuyas propiedades serán centrales para el argumento de Harada que se dará más adelante.
+Sea $\kappa\leq\gamma$ y $U$ un ultrafiltro normal sobre $\pwset[\kappa]{\gamma}$.
+Debido a que esto implica $\kappa > \omega$, $U$ es $\omega_1$-completo y podemos tomar
+la inmersión canónica $j_U\colon V\embed M_U\approxeq\Ult(V,U)$.
+Sea $\id\colon\pwset[\kappa]{\gamma}\to\pwset[\kappa]{\gamma}$ la función identidad, entonces:
+\begin{enumerate}[label=(\roman*)]
+    \item $[\id]_U = j_U"\gamma$ y ${}^\gamma M_U\subset M_U$.
+    \item $\crit{j_U} = \kappa$ y $\gamma < j_U(\kappa)$.
+\end{enumerate}
+
+Para (\textsc{i}), $[\id]_U \subseteq j_U"\gamma$ se sigue de la finura de $U$ y
+\ref{teo:normal-fodor} da la otra contención. El hecho de que ${}^\gamma M_U\subset M_U$
+se sigue ahora de \ref{teo:ultrafilters-omega1}. Para (\textsc{ii}), $\crit{j_U}\geq\kappa$
+es consecuencia de la $\kappa$-completitud. También, $\ot([\id]_U) < j_U(\kappa)$ pertenece
+a $M_U$ debido a que $\set{x\subset\gamma\mid\ot(x)<\kappa}\in U$ y
+$\gamma=\ot(j_U"\gamma)=\ot([\id]_U)$.
+
+\begin{teo}\label{teo:ultrafilter}
+    Sea $\kappa<\gamma$, $U$ ultrafiltro sobre $\pwset[\kappa]{\gamma}$,
+    $j\colon V\embed M\approxeq\Ult(V, U)$ y $|\gamma|=\lambda$. Entonces,
+    para $\alpha\leq\gamma$,
+    \[
+        j"\alpha=[\seq{x\cap \alpha\mid x\in\pwset[\kappa]{\lambda}}]_U
+        \quad\text{y}\quad
+        \alpha = [\seq{\ot(x\cap \alpha)\mid x\in\pwset[\kappa]{\lambda}}]_U.
+    \]
+\end{teo}
+
+\begin{proof}
+La normalidad de $U$, como se mostró antes, implica $j"\gamma = [\id]_U$.
+Nótese ahora que, para $\alpha\leq\gamma$, $j"\alpha=j"\gamma\cap j(\alpha)$
+y $\alpha=\ot(j"\alpha)$.
+\end{proof}
+
+\begin{proof}[Tercera Demostración de \ref{teo:kunen}]
+    Sea $\kappa=\crit{j}$, $j^n$ la $n$-ésima iteración de $j$,
+    y $\lambda=\sup(\set{j^n(\kappa)\mid n\in\omega})$; igual que antes.
+    Asumamos, en busca de una contradicción, que $j"\lambda\in M$.
     Nótese que dada cualquier biyección $g\colon 2^\lambda\to\pwset{\lambda}$ se tiene que
     $j"\lambda\in\pwset{\lambda}^M = \ran(j(g))$ y se puede considerar el ordinal $\sigma$ más
-    pequeño tal que existe una función intectiva $F\colon\sigma\to\pwset{\lambda}$ para la cual
+    pequeño tal que existe una función inyectiva $F\colon\sigma\to\pwset{\lambda}$ para la cual
     $j"\lambda\in \ran(j(F))$. Tomemos una $F$ como la anterior y llamemos $S=\ran(F)$.
     Se define ahora un ultrafiltro $U$ de la siguiente forma:
     \[
         X\in U\quad\text{si, y solo si,}\quad X\subseteq S \,\land\, j"\lambda\in j(X).
     \]
-    Tal como esta definido, $U$ es $\omega_1$-completo y se puede tomar la inmersión canónica:
+    Tal como está definido, $U$ es $\omega_1$-completo y se puede tomar la inmersión canónica:
     \[
         i\colon V\embed N\approxeq\Ult(V, U).
     \]
+
+    Es ahora que la teoría de ultrafiltros normales cobra relevancia: si $\id$
+    es la identidad en $S$, la definción de $U$ implica, sucesivamente:
+    \begin{enumerate}[label=(\roman*)]
+        \item $i"\lambda = [\id]_U$ por lo que $i"\lambda\in\ran(i(F))$,
+        \item $\alpha = [\seq{\ot(x\cap\alpha)\mid x\in S}]_U$ para $\alpha<\lambda$ y
+        \item $i\rest(\lambda+1) = j\rest(\lambda+1)$,
+    \end{enumerate}
+    donde (\textsc{i}) y (\textsc{ii}) se siguen de \ref{teo:ultrafilter} y la discusión
+    posterior. Para (\textsc{iii}), se define $k\colon N\to M$ como
+    $k([j]_U) = j(f)(j"\lambda)$ y entonces $k$ es elemental y $k\circ i = j$
+    por \ref{teo:exists-k}; además, $k(\alpha)=\alpha$ para $\alpha<\lambda$ por
+    (\textsc{ii}).
+
+    La introducción de la ultrapotencia $\Ult(V, U)$ proporciona la estructura necesaria:
+    debido a \ref{teo:ultrafilters-omega1}(\textsc{ii}), $i"\lambda\in N$ implica que
+    $\pwset{\lambda}^N = \pwset{\lambda}$ y también $i\rest V_\lambda\in N$ puesto que
+    $\lambda$ es un cardinal límite fuerte. Ahora para cualquier $X\in\pwset{\lambda}$,
+    $i(X) = \bigcup_{\alpha<\lambda} i(X\cap\alpha)$ pues $i(\lambda)=\lambda$ y se sigue
+    que $i"\pwset{\lambda} = \set{\bigcup_{\alpha<\lambda} i(X\cap\alpha)\mid
+    X\in\pwset{\lambda}}\in N$. Apelando nuevamente a \ref{teo:ultrafilters-omega1}(\textsc{ii})
+    se sigue que $N$ tiene todas las enumeraciones de $\pwset{\lambda}^N=\pwset{\lambda}$ y,
+    por lo tanto,
+    \begin{equation}\label{eq:2-lambda}
+        2^\lambda = (2^\lambda)^N = i(2^\lambda).
+    \end{equation}
+
+    Ahora pueden usarse las propiedades de $\sigma$ para obtener una contradicción.
+    Las definiciones dadas anteriormente implican que $\sigma$ es un cardinal y
+    $|S|=\sigma\leq 2^\lambda$. \ref{teo:ultrafilters-omega1}(\textsc{iii}) implica
+    $i"\sigma^+\notin N$, pero dado que $i"\pwset{\lambda}\in N$, se sigue de
+    \ref{teo:ultrafilters-omega1}(\textsc{i})(\textsc{ii}) que $2^\lambda<\sigma^+$.
+    Se tiene, por tanto, que $2^\lambda = \sigma$. Pero entonces
+    $i(\sigma)=\sigma$ por \ref{eq:2-lambda} de tal forma que $i(\sigma)=\sup(i"\sigma)$.
+    Puesto que $i"\lambda\in\ran(i(F))$ por (\textsc{i})
+    se sigue que $i"\lambda\in\ran(i(F)\rest i(\alpha)) = \ran(i(F\rest\alpha))$ para algún
+    $\alpha<\sigma$. Finalmente, $j"\lambda\in\ran(j(F\rest\alpha))$ por definición de $U$
+    e $i$, lo cual contradice la minimalidad de $\sigma$.
 \end{proof}
+
+\section{Las tres demostraciones, contrapuestas}
+
+Todos los argumentos expuestos hasta ahora para demostrar el teorema de Kunen:
+el del propio Kunen, el de Woodin y el de Harada; tienen en común el uso,
+de forma fundamental, del axioma de elección para obtener un buen orden
+de $\pwset{\lambda}$. Un poco más de detalle sobre esto se dará en la próximo
+capítulo, pero vale la pena mencionar la similitud más importante
+que poseé dicho trío de razonamientos.
+
+Las similitudes, en principio, terminan allí y las demostraciones tanto de Kunen
+como de Woodin son en esencia distintas a la Harada.
+En efecto, los primeros hacen uso de contingencias combinatorias
+(las funciones $\omega$-Jónsson en el caso de Kunen,
+las particiones de conjuntos estacionarios para Woodin)
+para obtener la contradicción buscada, mientras que el segundo
+apela a la estructura intrínseca de las inmersiones elementales.
+
+En este sentido, el argumento de Harada es a la vez (y quizás, paradójicamente)
+el más complejo y el más convincente, pues no usa casi ninguna construcción
+ajena a los conceptos fundamentales que están en juego: inmersiones elementales
+y ultrapotencias.
+
+Sin embargo, no conviene descartar, en base a lo anteriormente dicho,
+los razonamientos de Kunen ni de Woodin. Por su parte, el de Kunen poseé
+la virtud de ser el más sencillo de los tres, en el sentido de poseer
+la menor cantidad de requisitos teóricos. Por otro lado, el de Woodin
+poseé importancia histórica pues ayudó a cimentar el resultado
+de Kunen.
+
+Además, e independientemente de las valoraciones aquí hechas,
+cada demostración tiene valor matématico intrínseco en tanto
+que ilustran vías distintas por las que se puede llegar al mismo
+resultado: la delimitación de la empresa de los cardinales grandes
+en la teoría de conjuntos.
+
+\chapter{El axioma de elección}
+\thispagestyle{empty}
+
+\epigraph
+{
+    El axioma de elección es obviamente cierto;
+    el principio de buena ordenación obviamente falso;
+    y ¿quién podrá decir algo sobre el lema de Zorn?
+}
+{Jerry L. Bona. \autocite[150]{schechter_handbook_1997}}
+
+El axioma de elección, que postula la existencia,
+para cada conjunto, de una función de elección,
+es de naturaleza distinta a los demás axiomas en ZFC.
+En efecto, los otros axiomas establecen la existencia
+de ciertos conjuntos y explican como se construyen dichos
+conjuntos. El axioma de elección no da ningún tipo de información
+sobre la función cuya existencia afirma.
+
+Desde su concepción este axioma ha sido, y, en algunos casos,
+sigue siendo, objeto de polémica y discusión entre los matemáticos.
+Es cierto que con el tiempo las polémica han disminuído, y el último
+axioma de la teoría de conjuntos es aceptado hoy en día por la mayoría
+de los matemáticos.
+Sus evidentes ventajas, como la buena ordenación de cualquier conjunto,
+especialmente, de los numeros reales, traen consigo comportamientos
+patológicos como la paradoja de Banach-Tarski.
+
+En el caso de los cardinales grandes, como hemos visto ya,
+el axioma de elección impone una cota superior, la menor a día de hoy,
+a la jerarquía de los cardinales grandes. Es entonces natural preguntarse
+como ha de lucir dicha jerarquía bajo la ausencia del axioma de elección,
+dicho de otra forma, ¿sigue siendo el resultado de Kunen cierto en ZF?.
+
+Esta última pregunta no tiene, por ahora, respuesta. No es tampoco
+el objetivo de este texto darle una respuesta. En su lugar,
+se explorarán algunas generalizaciones y reformulaciones del teorema
+de Kunen.
+
+\section{Generalizaciones del teorema de Kunen}
 
 \fi
 % ------------------------------------------------------------------------------
@@ -1066,7 +1269,7 @@ Para los filtros normales se tiene un resultado similar al \cref{teo:fodor} de F
 % Referencias
 % ------------------------------------------------------------------------------
 \ifreferencias
-\chapter*{Referencias}
+\ChapterNoNumber{Referencias}
 \note{Arreglar formato}
 \printbibliography[heading=mybib]
 \fi

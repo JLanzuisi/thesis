@@ -1,3 +1,3 @@
 #!/bin/sh
 
-java -jar ~/bin/textidote.jar-0.9.jar --check es --output html main.tex > report.html
+java -Dfile.encoding=UTF-8 -jar ~/bin/textidote/textidote.jar --check es --output html main.tex > report.html

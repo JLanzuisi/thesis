@@ -13,15 +13,12 @@
 \RequirePackage { geometry }
 \RequirePackage { setspace }
 \RequirePackage [ spanish ] { babel }
-\RequirePackage [ tracking=smallcaps, babel=true, disable=ifdraft ] { microtype }
+\@ifclasswith{ book } { draft } {} { \RequirePackage [ tracking=smallcaps, babel=true, ] { microtype } }
 \RequirePackage { enumitem }
-\RequirePackage { csquotes }
 \RequirePackage { biblatex }
-\RequirePackage { xcolor }
 \RequirePackage { graphicx }
 \RequirePackage { amsthm, mathtools }
 \RequirePackage { epigraph }
-\RequirePackage { hyperref }
 \RequirePackage { lineno }
 
 % Set page margins
@@ -37,22 +34,14 @@
         marginparwidth = 2cm,
     }
 
+\setlist{nosep}
+
 % Set fonts
 \usepackage{fontspec}
-\setmainfont{NewCM10-Book.otf}
-[
-    BoldFont = NewCM10-Bold.otf,
-    ItalicFont = NewCM10-BookItalic.otf,
-]
 \usepackage{unicode-math}
-\setmathfont{NewCMMath-Book.otf}
-\setmathfont{TeX Gyre Termes Math}[range={up/{greek, Greek}, cal, \prod}]
-\setmathfont{Euler Math}[range={frak}]
+\setmainfont{STIX Two Text}
+\setmathfont{STIX Two Math}
 \newcommand{\titlefont}{\bfseries}
-
-% Cref
-\RequirePackage [ spanish ] { cleveref }
-\crefname{section}{\S}{\S}
 
 % Set basic spacing
 \setlength { \parindent } { 8.46pt }
@@ -66,31 +55,25 @@
 % Bibliography
 \addbibresource{references.bib}
 
-% Hyperref
-\hypersetup
-    {
-        colorlinks = true,
-        allcolors = black,
-    }
-
 % Theorems
 \newtheoremstyle{teo}% name
     {.5\baselineskip}% Space above
     {.5\baselineskip}% Space below
     {}% Body font
     {}% Indent amount
-    {\scshape}% Theorem head font
+    {\addfontfeatures{LetterSpace=5}\scshape}% Theorem head font
     {.}% Punctuation after theorem head
     {.5em}% Space after theorem head
     {}% Theorem head spec (can be left empty, meaning ‘normal’)
 \theoremstyle{teo}
-\newtheorem{defi}{Definición}[chapter]
-\newtheorem{lem}{Lema}[chapter]
-\newtheorem{teo}{Teorema}[chapter]
-\newtheorem{cor}{Corolario}[chapter]
+\numberwithin{equation}{chapter}
+\newtheorem{defi}[equation]{Definición}
+\newtheorem{lem}[equation]{Lema}
+\newtheorem{teo}[equation]{Teorema}
+\newtheorem{cor}[equation]{Corolario}
 
 % QED symbol
-\renewcommand\qedsymbol{\rule{.30em}{1.9ex}}
+\renewcommand\qedsymbol{\textsc{q.e.d.}}
 
 % Sectioning commands
 \usepackage[explicit]{titlesec}
@@ -140,7 +123,7 @@
 \NewDocumentCommand{ \UpperCase }{ m }
     {
         \group_begin:
-        \lsstyle
+        \addfontfeatures{LetterSpace=10}
         \text_uppercase:n { #1 }
         \group_end:
     }
@@ -168,8 +151,7 @@
     \@ifclasswith{ book } { draft }
     {
         \begingroup
-            \color{blue}
-            \sffamily
+            \ttfamily
             \footnotesize
             \textlangle #1 \textrangle
         \endgroup
@@ -298,6 +280,7 @@
 \DeclareMathOperator{\Eu}{E_U}
 \DeclareMathOperator{\Ult}{Ult}
 \DeclareMathOperator{\tc}{tc}
+\DeclareMathOperator{\ot}{ot}
 
 \newcommand\model[1]{\mathfrak { #1 }}
 \newcommand\set[1]{\left\{ #1 \right\}}
@@ -309,7 +292,7 @@
     \ifnum\pdf@strcmp{\detokenize{#1}}{}=0\relax
         \mathcal{P}(#2)
     \else
-        \mathcal{P}_{#1}(#2)
+        \mathcal{P}\kern-2pt_{#1}(#2)
     \fi
 }
 \makeatother
@@ -321,6 +304,13 @@
 \newcommand\lst{\lex{L}_\in}
 \newcommand\cna[1]{\StrIfEq{#1}{.}{c.\,n.\,a.}{c.\,n.\,a.#1}}
 \newcommand\ecl[1]{{(#1)}_U^0}
+\newcommand{\id}{\symup{id}}
+\newcommand{\rest}{\kern1.5pt\vert\kern1.5pt}
+\newcommand{\ChapterNoNumber}[1]
+{
+    \chapter*{#1}
+    \addcontentsline{toc}{chapter}{\protect\numberline{} #1}%
+}
 
 \ifdefined\initex
     \dump
