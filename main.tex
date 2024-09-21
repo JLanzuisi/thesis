@@ -14,10 +14,6 @@
 \basicostrue
 \mainproofstrue
 
-% TODO:
-% demostrar 0.1 del kanamori para citarlo en la demostración del teorema de Kunen
-% de Woodin.
-
 \begin{document}
 % ------------------------------------------------------------------------------
 %                                 FRONTMATTER.
@@ -202,7 +198,7 @@ En la lista siguiente, $C$ es un conjunto y $\gamma$ un ordinal.
 
 \epigraph
 {
-Del paraíso que Cantor ha creado para nosotros, nadie ha de expulsarnos.
+Del paraíso que Cantor ha creado para nosotros nadie ha de expulsarnos.
 }
 {David Hilbert. \autocite[170]{hilbert_uber_1926}}
 
@@ -327,6 +323,12 @@ de la potencia de dicho teorema, quedan aún preguntas por explorar.
 % - Inmersiones elementales y puntos críticos, haciendo mención de cardinales medibles.
 \chapter{Nociones básicas}
 \thispagestyle{empty}
+
+\epigraph
+{
+    Un conjunto es un “muchos” que puede ser pensado como uno.
+}
+{Georg Cantor \autocite[3]{ivorra_teoria_2022}}
 
 Este capítulo establece varios conceptos básicos que serán necesarios
 más adelante. Las nociones de filtro, ultrafiltro y filtro $\kappa$-completo
@@ -509,6 +511,7 @@ $X_\alpha$ como:
 \end{teo}
 
 \begin{proof}
+    \note{Hacer esta demostración.}
 \end{proof}
 
 \begin{defi}
@@ -921,6 +924,15 @@ escapa del objetivo de este texto, sin embargo, hace falta demostrar un
 \label{cap:teorema-kunen}
 \thispagestyle{empty}
 
+\epigraph
+{
+    ZFC se levanta finalmente para forzar
+    un verdadero Götterdämmerung para los cardinales
+    grandes!
+}
+{Akihiro Kanamori. \autocite[324]{kanamori_higher_2009}}
+
+
 En la introducción se hizo alusión a la jerarquía de los cardinales grandes,
 comenzando por los distintos tipos de inaccesibilidad hasta los diversos
 grados de compacidad. El siguiente teorema, mencionado ya numerosas veces a lo largo
@@ -1219,16 +1231,18 @@ que ilustran vías distintas por las que se puede llegar al mismo
 resultado: la delimitación de la empresa de los cardinales grandes
 en la teoría de conjuntos.
 
-\chapter{El axioma de elección}
+\chapter{Generalizaciones del Teorema de Kunen}
 \thispagestyle{empty}
 
-\epigraph
-{
-    El axioma de elección es obviamente cierto;
-    el principio de buena ordenación obviamente falso;
-    y ¿quién podrá decir algo sobre el lema de Zorn?
-}
-{Jerry L. Bona. \autocite[150]{schechter_handbook_1997}}
+% \epigraph
+% {
+%     El axioma de elección es obviamente cierto;
+%     el principio de buena ordenación obviamente falso;
+%     y ¿quién podrá decir algo sobre el lema de Zorn?
+% }
+% {Jerry L. Bona. \autocite[150]{schechter_handbook_1997}}
+
+\section{El axioma de elección}
 
 El axioma de elección, que postula la existencia,
 para cada conjunto, de una función de elección,
@@ -1258,7 +1272,29 @@ el objetivo de este texto darle una respuesta. En su lugar,
 se explorarán algunas generalizaciones y reformulaciones del teorema
 de Kunen.
 
-\section{Generalizaciones del teorema de Kunen}
+\section{Inmersiones $\symbf{j\colon V_{\delta+2}\embed V_{\delta+2}}$}
+
+El siguiente resultado se sigue como una extensión de las
+demostraciones del capítulo anterior.
+
+\begin{teo}
+    Para cualquier ordinal $\delta$, no existe ninguna inmersión 
+    $j\colon V_{\delta+2}\embed V_{\delta+2}$.
+\end{teo}
+
+\note{mencionar paper sobre esto de 2024}
+
+\section{Consideraciones metamatemáticas}
+
+\note
+{
+    Escribir discusión sobre ZFC vs NBG vs KM y establecer el marco teorico
+    en el que van a desarrolarse el resto de secciones.
+}
+
+\section{Inmersiones entre $\symbf{V[G]}$ y $\symbf{V}$}
+
+\section{Inmersiones entre modelos correctamente estacionarios}
 
 \fi
 % ------------------------------------------------------------------------------
@@ -1269,6 +1305,7 @@ de Kunen.
 % Referencias
 % ------------------------------------------------------------------------------
 \ifreferencias
+\singlespacing
 \ChapterNoNumber{Referencias}
 \note{Arreglar formato}
 \printbibliography[heading=mybib]

@@ -38,7 +38,7 @@
 
 % Set fonts
 \usepackage{fontspec}
-\usepackage{unicode-math}
+\usepackage[bold-style=ISO]{unicode-math}
 \setmainfont{STIX Two Text}
 \setmathfont{STIX Two Math}
 \newcommand{\titlefont}{\bfseries}
@@ -140,8 +140,11 @@
 
 \NewDocumentCommand{ \ToC }{}
     {
+        \group_begin:
+        \renewcommand{\symbf}[1]{##1}
         \chapter*{Índice~General}
         \@starttoc{toc}
+        \group_end:
     }
 
 % Notes
