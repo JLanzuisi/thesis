@@ -20,6 +20,7 @@
 \RequirePackage { amsthm, mathtools }
 \RequirePackage { epigraph }
 \RequirePackage { lineno }
+\RequirePackage [final] { hyperref }
 
 % Set page margins
 \geometry
@@ -71,6 +72,7 @@
 \newtheorem{lem}[equation]{Lema}
 \newtheorem{teo}[equation]{Teorema}
 \newtheorem{cor}[equation]{Corolario}
+\newtheorem{ques}[equation]{Pregunta}
 
 % QED symbol
 \renewcommand\qedsymbol{\textsc{q.e.d.}}
@@ -288,7 +290,7 @@
 \newcommand\model[1]{\mathfrak { #1 }}
 \newcommand\set[1]{\left\{ #1 \right\}}
 \newcommand\lex[1]{\mathcal { #1 }}
-\newcommand\crit[1]{\Crit (\, #1\, )}
+\newcommand\crit[1]{\Crit (#1)}
 \makeatletter
 \newcommand\pwset[2][]
 {

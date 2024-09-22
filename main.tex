@@ -2,11 +2,11 @@
 \input{preamble.tex}
 
 % Secciones a incluir.
-\caratulafalse
+\caratulatrue
 \paginatitulotrue
 \resumentrue
-\dedicatoriafalse
-\agradecimientosfalse
+\dedicatoriatrue
+\agradecimientostrue
 \listastrue
 \toctrue
 \introtrue
@@ -23,7 +23,41 @@
 % Caratula.
 % ------------------------------------------------------------------------------
 \ifcaratula\newpage
-WIP: CARATULA.
+\bgroup
+    \centering
+    \thispagestyle{empty}
+
+    \PrintUsbLogo
+    {
+        Universidad Simón Bolívar\\
+        Decanato de estudios profesionales\\
+        Coordinación de \coord
+    }
+
+    \vspace{1.5cm}
+
+    \UppercaseBold{
+        \wrapto[14cm][\centering]
+        {\MainTitle}
+    }
+
+    \vspace{\fill}
+
+    Por:
+    \\
+    \autor
+
+    \vspace{\fill}
+
+    \MakeUppercase{Proyecto de Grado}\\
+    Presentado ante la Ilustre Universidad Simón Bolívar\\
+    como requisito parcial para optar al título de\\
+    Licenciatura en Matemáticas Puras
+
+    \vspace{\fill}
+
+    \textbf{Sartenejas, \today}\par
+\egroup
 \fi
 % ------------------------------------------------------------------------------
 % Página de Título.
@@ -70,11 +104,14 @@ WIP: CARATULA.
 
     \textbf{Sartenejas, \today}\par
 \egroup
+\stepcounter{page}
 \fi
 % ------------------------------------------------------------------------------
 % Resumen.
 % ------------------------------------------------------------------------------
 \ifresumen\newpage
+\thispagestyle{plain}
+\addcontentsline{toc}{chapter}{\protect\numberline{} Resumen}%
 \PrintUsbLogo
     {
         Universidad Simón Bolívar\\
@@ -133,13 +170,13 @@ y su problema abierto asociado:
 % Dedicatoria.
 % ------------------------------------------------------------------------------
 \ifdedicatoria\newpage
-WIP: DEDICATORIA.
+\ChapterNoNumber{Dedicatoria}
 \fi
 % ------------------------------------------------------------------------------
 % Agradecimientos.
 % ------------------------------------------------------------------------------
 \ifagradecimientos\newpage
-WIP: AGRADECIMIENTOS.
+\ChapterNoNumber{Agradecimientos}
 \fi
 % ------------------------------------------------------------------------------
 % Listas de símbolos y abreviaturas.
@@ -1223,7 +1260,8 @@ los razonamientos de Kunen ni de Woodin. Por su parte, el de Kunen posee
 la virtud de ser el más sencillo de los tres, en el sentido de poseer
 la menor cantidad de requisitos teóricos. Por otro lado, el de Woodin
 posee importancia histórica, pues ayudó a cimentar el resultado
-de Kunen.
+de Kunen y también puede ser extendido para demostrar versiones
+más generales de dicho resultado \ref{teo:kunen-forcing}.
 
 Además, e independientemente de las valoraciones aquí hechas,
 cada demostración tiene valor matemático intrínseco en tanto
@@ -1265,36 +1303,120 @@ En el caso de los cardinales grandes, como hemos visto ya,
 el axioma de elección impone una cota superior, la menor a día de hoy,
 a la jerarquía de los cardinales grandes. Es entonces natural preguntarse
 como ha de lucir dicha jerarquía bajo la ausencia del axioma de elección,
-dicho de otra forma, ¿sigue siendo el resultado de Kunen cierto en ZF?.
+dicho de otra forma, 
+
+\begin{ques}\label{ques:open}
+¿Sigue siendo el resultado de Kunen cierto en ZF?.
+\end{ques}
 
 Esta última pregunta no tiene, por ahora, respuesta. No es tampoco
 el objetivo de este texto darle una respuesta. En su lugar,
 se explorarán algunas generalizaciones y reformulaciones del teorema
-de Kunen.
+de Kunen, a modo de resúmen de los resultados recientes, sin demostración.
 
-\section{Inmersiones $\symbf{j\colon V_{\delta+2}\embed V_{\delta+2}}$}
-
-El siguiente resultado se sigue como una extensión de las
-demostraciones del capítulo anterior.
+\section%
+{%
+    Inmersiones \texorpdfstring{$\symbf{j\colon V_{\delta+2}\embed V_{\delta+2}}$}{j: V-> V}
+}
 
 \begin{teo}
     Para cualquier ordinal $\delta$, no existe ninguna inmersión 
     $j\colon V_{\delta+2}\embed V_{\delta+2}$.
 \end{teo}
 
-\note{mencionar paper sobre esto de 2024}
+Las 3 demostraciones ya discutidas pueden adaptarse para demostrar
+el resultado anterior, y este es el camino que sigue Kanamori
+\autocite[Corolario 23.14]{kanamori_higher_2009}.
+
+Más recientemente Schlutzenberg \autocite{schlutzenberg_consistency_2024},
+apoyándose en resultados previos de Goldberg \autocite{goldberg_even_2021},
+ha demostrado que si la teoría
+\[
+    \symup{ZF} + \text{``existe un ordinal límite $\lambda$ tal que $\lambda$-DC~+~$I_{0,\lambda}$''}
+\]
+es consistente, entonces también es consistente la siguiente teoría
+\begin{align*}
+    \symup{ZF} &+ \text{``existe un ordinal límite $\lambda$ tal que $\lambda$-DC~+~$I_{0,\lambda}$''}\\
+               &+ \text{``existe una inmersión $k\colon V_{\lambda+2}\embed V_{\lambda+2}$''}.
+\end{align*}
+
+No es pertinente en este momento dar un explicación completa de las hipótesis
+$\lambda$-DC o $I_{0,\lambda}$, basta con acotar que la primera afirma la existencia
+de ramas maximales para arboles de altura menor que $\lambda$ y la segunda es la afirmación
+de que existe una inmersión $j\colon L(V_{\lambda+1})\to L(V_{\lambda+1})$
+con $\crit{j}<\lambda$.
 
 \section{Consideraciones metamatemáticas}
 
-\note
-{
-    Escribir discusión sobre ZFC vs NBG vs KM y establecer el marco teorico
-    en el que van a desarrolarse el resto de secciones.
-}
+Hasta ahora los resultados de este texto se han desarrolado en ZFC,
+haciendo, donde fuesen necesarios, ajustes alrededor de ciertos
+temas, como las clases propias involucradas en $j\colon V\embed M$.
+Como explican Hamkins et~al. \autocite{hamkins_generalizations_2012},
+la verdadera potencia del resultado de Kunen se revela
+en un marco distinto: NBG con el axioma de elección.
+
+El cambio de una teoría de primer orden, como lo es ZFC, a una de segundo
+orden como NBG%
+\footnote{En este caso, la distinción entre primer y segundo orden
+proviene del campo de la lógica y tiene que ver con el hecho de que NBG
+admite cuantifición sobre clases propias.}
+tiene varios motivos. En primer lugar, el propio Kunen pensaba su teorema como formalizable
+en la teoría Morse-Kelley donde se admiten las clases propias \autocite[407]{kunen_elementary_1971},
+pero más importante aún es el hecho siguiente, debido a Suzuki \autocite{suzuki_no_1999}:
+
+\begin{teo}\label{teo:kunen-params}
+    En ZF no existe ninguna inmersión elemental no trivial
+    $j\colon V\embed V$ definible con parametros en $V$.
+\end{teo}
+
+El resultado anterior es la razón por la que Hamkins et~al. prefieren la teoría NBG:
+la inmersión $j$ es, igual que antes, una clase propia pero, en vez de definir
+un esquema de teoremas por cada $j$ como se hizo en los capítulos anteriores, en NBG
+se puede tratar a $j$ como un objeto más de la teoría, es decir,
+no hace falta el recurso del esquema teoremático para $j$ (aunque si hace falta
+para la fórmula $\phi$ que define a $j$) lo que permite que la demostración de \ref{teo:kunen-params}
+siga un argumento mucho más sencillo a los expuestos en el capítulo anterior:
+si $\phi$ es la fórmula, con parámetro $p$, que define a $j$ se puede entonces elegir
+$p$, de entre todos los parámetros posibles, de tal forma que $\crit{j}$ sea lo más
+pequeño posible; pero entonces $\crit{j}$ es definible en $V$ y al ser $j$ elemental
+se sigue que $j(\crit{j})$ ha de satisfacer la misma definición: contradiciendo el hecho
+básico $\crit{j} < j(\crit{j})$ \autocite[Teorema 32]{hamkins_generalizations_2012}.
+
+Por todo lo anterior, para las secciones siguientes se trabajará en NBG+AC.
 
 \section{Inmersiones entre $\symbf{V[G]}$ y $\symbf{V}$}
 
+Quizás la extensión más natural del teorema de Kunen provenga de considerar
+extensiones $V[G]$, obtenidas mediante forcing, del universo y preguntarse sobre
+$j\colon V\embed V[G]$ y $j\colon V[G]\embed V$.
+El caso de $j\colon V[G]\embed V$ tiene, en apariencia, una gran similitud con
+el teorema \ref{teo:kunen}: desde el punto de vista de $V[G]$ pareciera
+haber una inmersión del universo en una clase transitiva.
+El asunto queda resuelto en ambas direcciones gracias al teorema siguiente
+\autocite[Teoremas 5 y 7]{hamkins_generalizations_2012}.
+
+\begin{teo}\label{teo:kunen-forcing}
+    Para cualquier extensión de forcing del universo $V[G]$,
+    no existe ninguna inmersión elemental no trivial $j\colon V[G]\embed V$
+    ni tampoco $j\colon V\embed V[G]$.
+\end{teo}
+
+El teorema anterior es una generalización del teorema de Kunen
+en el sentido de que anteriormente se consideró la extensión trivial $V[G]=V$.
+La demostración para el caso $j\colon V[G]\embed V$ sigue un argumento,
+debido a Woodin, similar a la segunda demostración del capítulo anterior,
+que depende de particiones de conjuntos estacionarios \autocite[1876]{hamkins_generalizations_2012}.
+En la otra dirección, hace falta generalizar un poco más el argumento pero es, en esencia,
+el mismo \autocite[1877]{hamkins_generalizations_2012}.
+
 \section{Inmersiones entre modelos correctamente estacionarios}
+
+\section{Inmersiones de $\symbf{V}$ en HOD}
+
+\section{Volviendo a la pregunta \ref{ques:open}}
+
+El resultado anterior quizás ilumine un camino por el que resolver \ref{ques:open}
+de forma negativa.
 
 \fi
 % ------------------------------------------------------------------------------
@@ -1307,7 +1429,6 @@ demostraciones del capítulo anterior.
 \ifreferencias
 \singlespacing
 \ChapterNoNumber{Referencias}
-\note{Arreglar formato}
 \printbibliography[heading=mybib]
 \fi
 \end{document}
