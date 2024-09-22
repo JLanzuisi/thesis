@@ -5,7 +5,6 @@
 \caratulatrue
 \paginatitulotrue
 \resumentrue
-\dedicatoriatrue
 \agradecimientostrue
 \listastrue
 \toctrue
@@ -104,13 +103,13 @@
 
     \textbf{Sartenejas, \today}\par
 \egroup
-\stepcounter{page}
 \fi
 % ------------------------------------------------------------------------------
 % Resumen.
 % ------------------------------------------------------------------------------
 \ifresumen\newpage
-\thispagestyle{plain}
+\pagestyle{plain}
+\setcounter{page}{4}
 \addcontentsline{toc}{chapter}{\protect\numberline{} Resumen}%
 \PrintUsbLogo
     {
@@ -167,12 +166,6 @@ y su problema abierto asociado:
 \textbf{Palabras Clave:}
 \fi
 % ------------------------------------------------------------------------------
-% Dedicatoria.
-% ------------------------------------------------------------------------------
-\ifdedicatoria\newpage
-\ChapterNoNumber{Dedicatoria}
-\fi
-% ------------------------------------------------------------------------------
 % Agradecimientos.
 % ------------------------------------------------------------------------------
 \ifagradecimientos\newpage
@@ -221,6 +214,10 @@ En la lista siguiente, $C$ es un conjunto y $\gamma$ un ordinal.
 %                                 MAINMATTER.
 % ------------------------------------------------------------------------------
 \mainmatter
+\pagestyle{headings}
+\makeatletter
+\gdef\@oddhead{\hfil\thepage}
+\makeatother
 % ------------------------------------------------------------------------------
 % Introducción.
 % ------------------------------------------------------------------------------
@@ -1283,7 +1280,7 @@ en la teoría de conjuntos.
 \section{El axioma de elección}
 
 El axioma de elección, que postula la existencia,
-para cada conjunto, de una función de elección,
+de una función de elección para cualquier conjunto,
 es de naturaleza distinta a los demás axiomas en ZFC.
 En efecto, los otros axiomas establecen la existencia
 de ciertos conjuntos y explican como se construyen dichos
@@ -1293,26 +1290,27 @@ sobre la función cuya existencia afirma.
 Desde su concepción este axioma ha sido, y, en algunos casos,
 sigue siendo, objeto de polémica y discusión entre los matemáticos.
 Es cierto que con el tiempo las polémicas han disminuido, y el último
-axioma de la teoría de conjuntos es aceptado hoy en día por la mayoría
+axioma de la teoría de conjuntos es aceptado hoy por la mayoría
 de los matemáticos.
 Sus evidentes ventajas, como la buena ordenación de cualquier conjunto,
-especialmente, de los números reales, traen consigo comportamientos
-patológicos como la paradoja de Banach-Tarski.
+especialmente, de los números reales, se han considerado suficientemente útiles
+como para dejar pasar los comportamientos patológicos que son
+también consecuencia de AC, como la paradoja de Banach-Tarski.
 
 En el caso de los cardinales grandes, como hemos visto ya,
-el axioma de elección impone una cota superior, la menor a día de hoy,
+el axioma de elección impone una cota superior, la menor conocida hasta ahora,
 a la jerarquía de los cardinales grandes. Es entonces natural preguntarse
-como ha de lucir dicha jerarquía bajo la ausencia del axioma de elección,
+cómo ha de lucir dicha jerarquía en ZF o,
 dicho de otra forma, 
 
 \begin{ques}\label{ques:open}
-¿Sigue siendo el resultado de Kunen cierto en ZF?.
+¿Sigue siendo cierto el resultado de Kunen en la ausencia de AC?
 \end{ques}
 
 Esta última pregunta no tiene, por ahora, respuesta. No es tampoco
 el objetivo de este texto darle una respuesta. En su lugar,
 se explorarán algunas generalizaciones y reformulaciones del teorema
-de Kunen, a modo de resúmen de los resultados recientes, sin demostración.
+de Kunen, a modo de resumen de los resultados recientes, sin demostración.
 
 \section%
 {%
@@ -1324,7 +1322,7 @@ de Kunen, a modo de resúmen de los resultados recientes, sin demostración.
     $j\colon V_{\delta+2}\embed V_{\delta+2}$.
 \end{teo}
 
-Las 3 demostraciones ya discutidas pueden adaptarse para demostrar
+Las 3 demostraciones discutidas en el capítulo 2 pueden adaptarse para demostrar
 el resultado anterior, y este es el camino que sigue Kanamori
 \autocite[Corolario 23.14]{kanamori_higher_2009}.
 
@@ -1340,10 +1338,10 @@ es consistente, entonces también es consistente la siguiente teoría
                &+ \text{``existe una inmersión $k\colon V_{\lambda+2}\embed V_{\lambda+2}$''}.
 \end{align*}
 
-No es pertinente en este momento dar un explicación completa de las hipótesis
+No es pertinente en este momento dar una explicación completa de las hipótesis
 $\lambda$-DC o $I_{0,\lambda}$, basta con acotar que la primera afirma la existencia
-de ramas maximales para arboles de altura menor que $\lambda$ y la segunda es la afirmación
-de que existe una inmersión $j\colon L(V_{\lambda+1})\to L(V_{\lambda+1})$
+de ramas máximas para árboles de altura menor que $\lambda$ y la segunda afirma la existencia
+de una inmersión $j\colon L(V_{\lambda+1})\to L(V_{\lambda+1})$
 con $\crit{j}<\lambda$.
 
 \section{Consideraciones metamatemáticas}
@@ -1359,23 +1357,23 @@ El cambio de una teoría de primer orden, como lo es ZFC, a una de segundo
 orden como NBG%
 \footnote{En este caso, la distinción entre primer y segundo orden
 proviene del campo de la lógica y tiene que ver con el hecho de que NBG
-admite cuantifición sobre clases propias.}
+admite cuantificación sobre clases propias.}
 tiene varios motivos. En primer lugar, el propio Kunen pensaba su teorema como formalizable
 en la teoría Morse-Kelley donde se admiten las clases propias \autocite[407]{kunen_elementary_1971},
 pero más importante aún es el hecho siguiente, debido a Suzuki \autocite{suzuki_no_1999}:
 
 \begin{teo}\label{teo:kunen-params}
     En ZF no existe ninguna inmersión elemental no trivial
-    $j\colon V\embed V$ definible con parametros en $V$.
+    $j\colon V\embed V$ definible con parámetros en $V$.
 \end{teo}
 
-El resultado anterior es la razón por la que Hamkins et~al. prefieren la teoría NBG:
+El resultado anterior es la razón por la que Hamkins et~al. prefieren a NBG:
 la inmersión $j$ es, igual que antes, una clase propia pero, en vez de definir
 un esquema de teoremas por cada $j$ como se hizo en los capítulos anteriores, en NBG
 se puede tratar a $j$ como un objeto más de la teoría, es decir,
 no hace falta el recurso del esquema teoremático para $j$ (aunque si hace falta
-para la fórmula $\phi$ que define a $j$) lo que permite que la demostración de \ref{teo:kunen-params}
-siga un argumento mucho más sencillo a los expuestos en el capítulo anterior:
+para la fórmula $\phi$ que define a $j$) lo que le permite a la demostración de \ref{teo:kunen-params}
+seguir un argumento mucho más sencillo a los expuestos en el capítulo anterior:
 si $\phi$ es la fórmula, con parámetro $p$, que define a $j$ se puede entonces elegir
 $p$, de entre todos los parámetros posibles, de tal forma que $\crit{j}$ sea lo más
 pequeño posible; pero entonces $\crit{j}$ es definible en $V$ y al ser $j$ elemental
@@ -1401,22 +1399,84 @@ El asunto queda resuelto en ambas direcciones gracias al teorema siguiente
     ni tampoco $j\colon V\embed V[G]$.
 \end{teo}
 
-El teorema anterior es una generalización del teorema de Kunen
-en el sentido de que anteriormente se consideró la extensión trivial $V[G]=V$.
+El teorema anterior es una generalización de \ref{teo:kunen}
+en el sentido de que ahora se consideran extensiones distintas de la trivial $V[G]=V$.
 La demostración para el caso $j\colon V[G]\embed V$ sigue un argumento,
 debido a Woodin, similar a la segunda demostración del capítulo anterior,
-que depende de particiones de conjuntos estacionarios \autocite[1876]{hamkins_generalizations_2012}.
+que depende de particiones de conjuntos estacionarios (y, por tanto, de AC)
+\autocite[1876]{hamkins_generalizations_2012}.
 En la otra dirección, hace falta generalizar un poco más el argumento pero es, en esencia,
 el mismo \autocite[1877]{hamkins_generalizations_2012}.
 
-\section{Inmersiones entre modelos correctamente estacionarios}
+\section{Inmersiones entre modelos estacionariamente correctos}
+
+Un modelo transitivo de la teoría de conjuntos $M$, entendido como una clase,
+es estacionariamente correcto en un ordinal límite $\delta\in M$ si todo subconjunto
+de $\delta$ que es estacionario en $M$ sigue siendo estacionario visto en el universo.
+De forma más general, un modelo $M$ es estacionariamente correcto respecto a otro modelo
+más grande $N$ en $\delta$, si todo subconjunto estacionario de $\delta$ en $M$ es estacionario en $N$.
+
+Por ejemplo, dado cualquier forcing de tamaño menor que un cardinal regular $\delta$,
+todo subconjunto estacionario de $\delta$ en el modelo base es estacionario en la extensión,
+pues todo \cna{} de $\delta$ en la extensión contiene un \cna{} del modelo base.
+Se sigue entonces que para cualquier forcing, el modelo base es estacionariamente correcto
+respecto de la extensión en todos los cardinales regulares por encima del tamaño del forcing
+\autocite[1878]{hamkins_generalizations_2012}.
+
+La definición anterior es importante para enunciar el resultado siguiente:
+
+\begin{teo}
+    Sean $M$ y $N$ modelos transitivos (entendidos como clases) de ZFC y ambos
+    estacionariamente correctos en todos los cardinales suficientemente grandes
+    de $M$ y $N$. Entonces en $V$ no existe inmersión elemental no trivial
+    $j\colon M\embed N$.
+\end{teo}
+
+Por la discusión anterior al teorema sobre las extensiones de forcing,
+se sigue que el teorema anterior es una generalización de \ref{teo:kunen-forcing}.
 
 \section{Inmersiones de $\symbf{V}$ en HOD}
 
-\section{Volviendo a la pregunta \ref{ques:open}}
+Un conjunto $X$ es definible en ordinales si existe una fórmula $\phi$
+tal que 
+\[
+    X = \set{u\mid \phi(u, \alpha_1,\dots,\alpha_n)}
+\]
+para ordinales $\alpha_1,\dots,\alpha_n$. Sea OD la clase de todos
+los conjuntos definibles en ordinales, llamaremos HOD a la clase de
+los conjuntos hereditarios definibles en ordinales:
+\[
+    \symup{HOD} = \set{x\mid \tc(\set{x})\subset \symup{OD}}.
+\]
 
-El resultado anterior quizás ilumine un camino por el que resolver \ref{ques:open}
-de forma negativa.
+El siguiente resultado, debido a Woodin, descarta inmersiones
+como las que ya hemos visto para el modelo HOD.
+
+\begin{teo}
+    No existe ninguna inmersión elemental no trivial $j\colon V\to HOD$.
+\end{teo}
+
+\section{Volviendo a la pregunta abierta}
+
+Este texto concluye volviendo al inicio, para reformular un
+problema central aún no resuelto.
+Es claro, en vista de \ref{teo:kunen-params}, que si en la pregunta
+\ref{ques:open} se consideran solamente inmersiones $j$ definibles
+entonces la respuesta es afirmativa. Esto implica
+que el teorema \ref{teo:kunen-params} resuelve la pregunta
+en el contexto del los capítulos 1 y 2.
+
+Si se interpreta \ref{ques:open} en NBG, entonces
+ninguna de las refutaciones dadas a la existencia de la inmersión $j$
+son válidas, puesto que o bien utilizan particiones de conjuntos estacionarios
+(que dependen de AC) o asumen $j$ definible (que no ocurre necesariamente
+en NBG). La pregunta \ref{ques:open} sigue entonces abierta en este contexto
+y su resolución será probablemente uno de los resultados más importantes
+del siglo para la teoría de cardinales grandes.
+
+Hasta ese momento, es de crucial importancia seguir avanzando en resultados
+similares a los expuestos en este capítulo y seguir explorando el vasto espacio
+de los cardinales grandes.
 
 \fi
 % ------------------------------------------------------------------------------
