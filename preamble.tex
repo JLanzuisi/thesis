@@ -4,7 +4,7 @@
   letterpaper,
   openany,
   oneside,
-  draft
+  %draft
 ]{book}
 
 \ExplSyntaxOn
@@ -20,7 +20,7 @@
 \RequirePackage { amsthm, mathtools }
 \RequirePackage { epigraph }
 \RequirePackage { lineno }
-\RequirePackage [final] { hyperref }
+\RequirePackage [final, colorlinks, allcolors=black] { hyperref }
 
 % Set page margins
 \geometry
@@ -136,10 +136,15 @@
         \th_print_logo_head:n { #1 }
     }
 
+\RequirePackage{tocloft}
+\setlength{\cftchapindent}{0pt}
+\setlength{\cftsecindent}{0pt}
 \NewDocumentCommand{ \ToC }{}
     {
+        \clearpage
         \group_begin:
         \renewcommand{\symbf}[1]{##1}
+        \linespread{1}
         \chapter*{Índice~General}
         \@starttoc{toc}
         \group_end:
@@ -197,7 +202,7 @@
 
 \newcommand { \autor }
     {
-        Jhonny~Lanzuisi~Berrizbeitia
+        Jhonny~Alexander~Lanzuisi~Berrizbeitia
     }
 
 \newcommand { \tutor }
