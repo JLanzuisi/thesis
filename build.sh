@@ -3,9 +3,15 @@
 set -ex
 
 flags="-halt-on-error --interaction=nonstopmode"
-mainfile="main.tex"
-lualatex=c:/texlive/2023/bin/windows/lualatex.exe
-biber=c:/texlive/2023/bin/windows/biber.exe
+if [ -z $1 ]; then
+    mainfile=main.tex
+else
+    mainfile=$1
+fi
+lualatex=lualatex
+biber=biber
+
+bibmain=$(echo $mainfile | sed -e 's/\.tex//')
 
 # Clean up before anything
 rm -f main.pdf
@@ -15,7 +21,7 @@ if [ "$1" == "-f" ]; then
 else
     # Full build
     $lualatex -draftmode $flags $mainfile
-    $biber main
+    $biber $bibmain
     $lualatex -draftmode $flags $mainfile
     $lualatex $flags $mainfile
 fi

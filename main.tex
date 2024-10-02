@@ -1010,7 +1010,7 @@ sobre funciones $\omega$-Jónsson.
 
 \begin{proof}[Primera demostración de \ref{teo:kunen}]
     \bgroup\sloppy
-    Sea $\kappa=\crit{j}$ y $j^n$ la $n$-ésima iteración de $j$: para $x\in V$, $j^0(x)=j(x)$
+    Sea $\kappa=\crit{j}$ y $j^n$ la $n$-ésima iteración de $j$: para $x\in V$, $j^0(x)=x$
     y $j^{n+1}(x) = j(j^{n}(x))$. Sea $\lambda=\sup(\set{j^n(\kappa)\mid n\in\omega})$,
     nótese que $j(\lambda)=\lambda$ pues $j(\set{j^n(\kappa)\mid n<\omega}) = \set{j^n(\kappa)\mid 1\leq n<\omega}$.
     Además, como $\kappa$ es medible, en particular es inaccesible, y la elementalidad de $j$ implica que $j^n(\kappa)$
@@ -1022,7 +1022,7 @@ sobre funciones $\omega$-Jónsson.
     En busca de una contradicción, sea $j"\lambda\in M$ y $f$ una función $\omega$-Jónsson para $\lambda$.
     En $M$, $j(f)$ es $\omega$-Jónsson para $j(\lambda)=\lambda$ y $j"\lambda\in[\lambda]^\lambda\cap M$.
     Sea $s\in[j"\lambda]^\omega$. Existe entonces un $t\in[\lambda]^\omega$ tal que $j(t)=j"t=s$.
-    Se sigue que $j(f)(s) = j(f)j(s) = j(f)j(t) = j(f(t))\in j"\lambda$, pero esto implica
+    Se sigue que $j(f)(s) = j(f)j(t) = j(f(t))\in j"\lambda$, pero esto implica
     \[
         \lambda = j(f)[j"\lambda]^\omega \subseteq j"\lambda
     \]

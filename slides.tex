@@ -1,0 +1,76 @@
+\documentclass{beamer}
+
+% Set fonts
+\usepackage{fontspec}
+\usepackage[bold-style=ISO]{unicode-math}
+\setsansfont[Scale=MatchLowercase]{Source Sans Pro}
+\setmathfont{STIX Two Math}
+% Bib
+\RequirePackage{biblatex}
+\addbibresource{references.bib}
+
+\def\names{Jhonny Lanzuisi}
+\def\longtitle%
+{%
+    Estudio comparativo de tres demostraciones
+    del teorema de inconsistencia de Kunen%
+}
+\def\shorttitle{Short title}
+
+\author{\names}
+\title[\shorttitle]{\longtitle}
+
+\usetheme[]{Goettingen}
+\usecolortheme{dove}
+
+\begin{document}
+
+\begin{frame}
+    \hbox
+    {
+        \begin{minipage}{1.5cm}
+            \includegraphics[width=1.5cm]{resources/usblogo}
+        \end{minipage}
+        \begin{minipage}{\the\dimexpr\linewidth - 1.5cm\relax}
+            \footnotesize
+            Universidad Simon Bolivar\\
+            Coordinacion de Matematicas
+        \end{minipage}
+    }
+
+    \vspace{\fill}
+
+    \begin{minipage}{\the\dimexpr\linewidth * 8/10\relax}
+        \raggedright\large
+        \textsc{\longtitle}
+    \end{minipage}
+
+    \vspace{\fill}
+
+    \begin{minipage}{\linewidth}
+        \footnotesize
+        Realizado por:\\
+    \end{minipage}
+\end{frame}
+
+\begin{frame}
+    Math test: $x+y = 22$ some text $\bigcup X_{\alpha}$
+\end{frame}
+
+\section{Kunen}
+\begin{frame}
+    Math test: $x+y = 22$ some text $\bigcup X_{\alpha}$
+\end{frame}
+
+
+\section{Woodin}
+\begin{frame}
+    Math test: $x+y = 22$ some text $\bigcup X_{\alpha}$
+\end{frame}
+
+\section{Harada}
+\begin{frame}
+    Math test: $x+y = 22$ some text $\bigcup X_{\alpha}$
+\end{frame}
+
+\end{document}
