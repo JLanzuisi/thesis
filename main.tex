@@ -1,3 +1,12 @@
+\documentclass
+[
+  12pt,
+  letterpaper,
+  openany,
+  oneside,
+  %draft
+]{book}
+
 % Incluye el preámbulo.
 \input{preamble.tex}
 
@@ -1000,12 +1009,16 @@ sobre funciones $\omega$-Jónsson.
 \end{teo}
 
 \begin{proof}
-    Se demostrará el caso particular en el que $\lambda$ es un cardinal límite de cofinalidad $\omega$,
+    Se demostrará el caso particular en el que $\lambda$
+    es un cardinal límite de cofinalidad $\omega$,
     para el caso general véase \autocite[Teorema 23.13]{kanamori_higher_2009}.
-    Sea $\set{\op{x_\alpha,\gamma_\alpha}\mid \alpha < 2^\lambda}$ una enumeración del conjunto $[\lambda]^\lambda\times\lambda$.
-    Para $\alpha<\lambda$ se puede escoger $s_\alpha\in[x_\alpha]^\omega$ tal que $s_\alpha\neq s_\beta$ para $\beta<\alpha$,
-    debido a que $2^\lambda=\lambda^{\aleph_0}$. Entonces cualquier $f\colon[\lambda]^\omega\to\lambda$
-    tal que $f(s_\alpha)=\gamma_\alpha$ es $\omega$-Jónsson para $\lambda$.
+    Sea $\set{\op{x_\alpha,\gamma_\alpha}\mid \alpha < 2^\lambda}$
+    una enumeración del conjunto $[\lambda]^\lambda\times\lambda$.
+    Para $\alpha<\lambda$ se puede escoger $s_\alpha\in[x_\alpha]^\omega$
+    tal que $s_\alpha\neq s_\beta$ para $\beta<\alpha$,
+    debido a que $2^\lambda=\lambda^{\aleph_0}$. Entonces cualquier
+    $f\colon[\lambda]^\omega\to\lambda$ tal que $f(s_\alpha)=\gamma_\alpha$
+    es $\omega$-Jónsson para $\lambda$.
 \end{proof}
 
 \begin{proof}[Primera demostración de \ref{teo:kunen}]
@@ -1155,7 +1168,7 @@ Sea $\id\colon\pwset[\kappa]{\gamma}\to\pwset[\kappa]{\gamma}$ la función ident
     \item $\crit{j_U} = \kappa$ y $\gamma < j_U(\kappa)$.
 \end{enumerate}
 
-Para (\textsc{i}), $[\id]_U \subseteq j_U"\gamma$ se sigue de la finura de $U$ y
+Para (\textsc{i}), $j_U"\gamma \subseteq [\id]_U$ se sigue de la finura de $U$ y
 \ref{teo:normal-fodor} da la otra contención. El hecho de que ${}^\gamma M_U\subset M_U$
 se sigue ahora de \ref{teo:ultrafilters-omega1}. Para (\textsc{ii}), $\crit{j_U}\geq\kappa$
 es consecuencia de la $\kappa$-completitud. También, $\ot([\id]_U) < j_U(\kappa)$ pertenece
@@ -1167,9 +1180,9 @@ $\gamma=\ot(j_U"\gamma)=\ot([\id]_U)$.
     $j\colon V\embed M\approxeq\Ult(V, U)$ y $|\gamma|=\lambda$. Entonces,
     para $\alpha\leq\gamma$,
     \[
-        j"\alpha=[\seq{x\cap \alpha\mid x\in\pwset[\kappa]{\lambda}}]_U
+        j"\alpha=[\seq{x\cap \alpha\mid x\in\pwset[\kappa]{\gamma}}]_U
         \quad\text{y}\quad
-        \alpha = [\seq{\ot(x\cap \alpha)\mid x\in\pwset[\kappa]{\lambda}}]_U.
+        \alpha = [\seq{\ot(x\cap \alpha)\mid x\in\pwset[\kappa]{\gamma}}]_U.
     \]
 \end{teo}
 

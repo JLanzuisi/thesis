@@ -1,29 +1,26 @@
-\documentclass
-[
-  12pt,
-  letterpaper,
-  openany,
-  oneside,
-  %draft
-]{book}
-
 \ExplSyntaxOn
 \makeatletter
 
-\RequirePackage { geometry }
-\RequirePackage { setspace }
+\@ifclassloaded {book}
+{
+    \RequirePackage { geometry }
+    \RequirePackage { setspace }
+    \RequirePackage { epigraph }
+    \RequirePackage { lineno }
+    \@ifclasswith{ book } { draft } {}
+        { \RequirePackage [ tracking=smallcaps, babel=true, ] { microtype } }
+    \RequirePackage [final, colorlinks, allcolors=black] { hyperref }
+}{}
 \RequirePackage [ spanish ] { babel }
-\@ifclasswith{ book } { draft } {} { \RequirePackage [ tracking=smallcaps, babel=true, ] { microtype } }
 \RequirePackage { enumitem }
 \RequirePackage { biblatex }
 \RequirePackage { graphicx }
 \RequirePackage { amsthm, mathtools }
-\RequirePackage { epigraph }
-\RequirePackage { lineno }
-\RequirePackage [final, colorlinks, allcolors=black] { hyperref }
 
 % Set page margins
-\geometry
+\@ifclassloaded {book}
+{
+    \geometry
     {
         includehead,
         paper = letterpaper,
@@ -34,20 +31,32 @@
         marginparsep = 10pt,
         marginparwidth = 2cm,
     }
+}{}
 
 \setlist{nosep}
 
 % Set fonts
 \usepackage{fontspec}
 \usepackage[bold-style=ISO]{unicode-math}
-\setmainfont{STIX Two Text}
-\setmathfont{STIX Two Math}
+\@ifclassloaded {book}
+{
+    \setmainfont{STIX Two Text}
+    \setmathfont{STIX Two Math}
+}
+{
+    \setmainfont{Source Sans Pro}
+    \setsansfont{Source Sans Pro}
+    \setmathfont[Scale=MatchLowercase]{STIX Two Math}
+}
 \newcommand{\titlefont}{\bfseries}
 
 % Set basic spacing
-\setlength { \parindent } { 8.46pt }
-\setlength { \parskip } { 6pt }
-\onehalfspacing
+\@ifclassloaded {book}
+{
+    \setlength { \parindent } { 8.46pt }
+    \setlength { \parskip } { 6pt }
+    \onehalfspacing
+}{}
 
 % Bibliography
 \addbibresource{references.bib}
@@ -63,7 +72,9 @@
     {.5em}% Space after theorem head
     {}% Theorem head spec (can be left empty, meaning ‘normal’)
 \theoremstyle{teo}
-\numberwithin{equation}{chapter}
+\@ifclassloaded {book}
+    {\numberwithin{equation}{chapter}}
+    {\numberwithin{equation}{section}}
 \newtheorem{defi}[equation]{Definición}
 \newtheorem{lem}[equation]{Lema}
 \newtheorem{teo}[equation]{Teorema}
@@ -74,38 +85,41 @@
 \renewcommand\qedsymbol{\textsc{q.e.d.}}
 
 % Sectioning commands
-\usepackage[explicit]{titlesec}
-\titleformat
-    {\chapter}
-    [display]
-    {\titlefont}
-    {
-        \centering
-        \fontsize{14}{14}\selectfont
-        \UpperCase{Capítulo}~\thechapter\\[10pt]
-        \fontsize{12}{12}\selectfont
-        \UpperCase{#1}
-    }
-    {0ex}
-    {\centering}
-\titleformat{name=\chapter, numberless}
-    [block]
-    {\titlefont}
-    {\fontsize{14}{14}\selectfont\UpperCase{#1}}
-    {0ex}
-    {\centering}
-\titleformat
-    {\section}
-    {\titlefont}
-    {\thesection\fontsize{12}{12}\selectfont\ #1}
-    {0ex}
-    {}
-\titleformat{name=\section, numberless}
-    [block]
-    {\titlefont}
-    {\fontsize{12}{12}\selectfont #1}
-    {0ex}
-    {}
+\@ifclassloaded {book}
+{
+    \usepackage[explicit]{titlesec}
+    \titleformat
+        {\chapter}
+        [display]
+        {\titlefont}
+        {
+            \centering
+            \fontsize{14}{14}\selectfont
+            \UpperCase{Capítulo}~\thechapter\\[10pt]
+            \fontsize{12}{12}\selectfont
+            \UpperCase{#1}
+        }
+        {0ex}
+        {\centering}
+    \titleformat{name=\chapter, numberless}
+        [block]
+        {\titlefont}
+        {\fontsize{14}{14}\selectfont\UpperCase{#1}}
+        {0ex}
+        {\centering}
+        \titleformat
+        {\section}
+        {\titlefont}
+        {\thesection\fontsize{12}{12}\selectfont\ #1}
+        {0ex}
+        {}
+    \titleformat{name=\section, numberless}
+        [block]
+        {\titlefont}
+        {\fontsize{12}{12}\selectfont #1}
+        {0ex}
+        {}
+}{}
 
 % USB logo
 \cs_new:Npn \th_print_logo_head:n #1
@@ -136,10 +150,12 @@
         \th_print_logo_head:n { #1 }
     }
 
-\RequirePackage{tocloft}
-\setlength{\cftchapindent}{0pt}
-\setlength{\cftsecindent}{0pt}
-\NewDocumentCommand{ \ToC }{}
+\@ifclassloaded{book}
+{
+    \RequirePackage{tocloft}
+    \setlength{\cftchapindent}{0pt}
+    \setlength{\cftsecindent}{0pt}
+    \NewDocumentCommand{ \ToC }{}
     {
         \clearpage
         \group_begin:
@@ -149,21 +165,25 @@
         \@starttoc{toc}
         \group_end:
     }
+}{}
 
 % Notes
-\reversemarginpar
-\NewDocumentCommand{ \note }{ m }
+\@ifclassloaded {book}
 {
-    \@ifclasswith{ book } { draft }
+    \reversemarginpar
+    \NewDocumentCommand{ \note }{ m }
     {
-        \begingroup
+        \@ifclasswith{ book } { draft }
+        {
+            \begingroup
             \ttfamily
             \footnotesize
             \textlangle #1 \textrangle
-        \endgroup
-    } {}
-    \PackageWarning{Notes}{Revisar~nota}
-}
+            \endgroup
+        } {}
+        \PackageWarning{Notes}{Revisar~nota}
+    }
+}{}
 
 % Wrapping
 \newlength{\wrapwd}
@@ -200,10 +220,13 @@
         del~teorema~de~inconsistencia~de~Kunen.
     }
 
+\newcommand {\shorttitle} {El~teorema~de~inconsistencia~de~Kunen.}
+
 \newcommand { \autor }
     {
         Jhonny~Alexander~Lanzuisi~Berrizbeitia
     }
+\newcommand {\shortname} {Jhonny~Lanzuisi}
 
 \newcommand { \tutor }
     {

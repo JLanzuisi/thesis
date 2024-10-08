@@ -1,27 +1,15 @@
 \documentclass{beamer}
 
-% Set fonts
-\usepackage{fontspec}
-\usepackage[bold-style=ISO]{unicode-math}
-\setsansfont[Scale=MatchLowercase]{Source Sans Pro}
-\setmathfont{STIX Two Math}
-% Bib
-\RequirePackage{biblatex}
-\addbibresource{references.bib}
+\input{preamble.tex}
 
-\def\names{Jhonny Lanzuisi}
-\def\longtitle%
-{%
-    Estudio comparativo de tres demostraciones
-    del teorema de inconsistencia de Kunen%
-}
-\def\shorttitle{Short title}
-
-\author{\names}
-\title[\shorttitle]{\longtitle}
+\author{\shortname}
+\title[\shorttitle]{\MainTitle}
 
 \usetheme[]{Goettingen}
 \usecolortheme{dove}
+
+\linespread{1.1}
+\setlength{\parskip}{1\baselineskip}
 
 \begin{document}
 
@@ -42,35 +30,117 @@
 
     \begin{minipage}{\the\dimexpr\linewidth * 8/10\relax}
         \raggedright\large
-        \textsc{\longtitle}
+        \textsc{\MainTitle}
     \end{minipage}
 
     \vspace{\fill}
 
     \begin{minipage}{\linewidth}
         \footnotesize
-        Realizado por:\\
+        \begin{minipage}{2.7cm}
+            Realizado por:\\
+            \shortname
+        \end{minipage}
+        \begin{minipage}{3cm}
+            Con la asesoría de:\\
+            \tutor
+        \end{minipage}
     \end{minipage}
 \end{frame}
 
-\begin{frame}
-    Math test: $x+y = 22$ some text $\bigcup X_{\alpha}$
-\end{frame}
+\section{Introducción}
 
 \section{Kunen}
+
 \begin{frame}
-    Math test: $x+y = 22$ some text $\bigcup X_{\alpha}$
+    \frametitle{Demostración de Kunen}
+    \framesubtitle{Funciones $\omega$-Jónsson}
+
+    \begin{defi}
+        Sea $x$ un conjunto de ordinales,
+        $f\colon [x]^\omega\to x$ es $\omega$-Jónsson
+        si, y solo si, para cualquier $y\subseteq x$ tal que $|y|=|x|$
+        se tiene $f"[y]^\omega = x$.
+    \end{defi}
 \end{frame}
 
+\begin{frame}
+    \frametitle{Demostración de Kunen}
+    \framesubtitle{Funciones $\omega$-Jónsson}
+
+    \begin{teo}
+        Para todo $\lambda$, existe una función
+        $\omega$-Jónsson para $\lambda$.
+    \end{teo}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Demostración de Kunen}
+
+    Se definen:
+    \begin{itemize}
+        \item $\kappa=\crit{j}$,
+        \item $\lambda=\sup(\set{j^n(\kappa)\mid n\in\omega})$, donde
+            $j^0(x)=x$ y $j^{n+1}(x) = j(j^{n}(x))$.
+    \end{itemize}
+
+    \pause
+    Entonces:
+    \begin{itemize}
+        \item $j(\lambda) = \lambda$, pues
+            $j(\set{j^n(\kappa)\mid n<\omega})
+                = \set{j^n(\kappa)\mid 1\leq n<\omega}$
+        \item $j^n(\kappa)$ inaccesible $\forall n\in\omega$
+        \item $2^\lambda=\lambda^{\aleph_0}$
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Demostración de Kunen}
+
+    En busca de una contradicción, sea $j"\lambda\in M$ y
+    $f$ una función $\omega$-Jónsson para $\lambda$.
+
+    \pause
+    Entonces:
+    \begin{itemize}
+        \item $j(f)$ es $\omega$-Jónsson para $j(\lambda)=\lambda$ y,
+        \item $j"\lambda\in[\lambda]^\lambda\cap M$.
+    \end{itemize}
+
+    \pause
+    Si $\lambda = j(f)[j"\lambda]^\omega \subseteq j"\lambda$
+    se tendría una contradicción pues $\lambda\neq j"\lambda$.
+\end{frame}
+
+\begin{frame}
+    \frametitle{Demostración de Kunen}
+
+    Sea $s\in [j"\lambda]^\omega$.
+
+    \pause
+    Entonces:
+    \begin{itemize}
+        \item Existe $t\in [\lambda]^\omega$ tal que $j(t) = s$ y,
+        \item $j(f)(s) = j(f)j(t) = j(f(t)) \in j"\lambda$.
+    \end{itemize}
+
+    \pause
+    Y lo anterior implica $j(f)[j"\lambda]^\omega \subseteq j"\lambda$.
+\end{frame}
 
 \section{Woodin}
+
 \begin{frame}
     Math test: $x+y = 22$ some text $\bigcup X_{\alpha}$
 \end{frame}
 
 \section{Harada}
+
 \begin{frame}
     Math test: $x+y = 22$ some text $\bigcup X_{\alpha}$
 \end{frame}
+
+\section{Conclusiones}
 
 \end{document}
