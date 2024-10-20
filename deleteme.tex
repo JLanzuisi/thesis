@@ -1,0 +1,22 @@
+\documentclass{article}
+
+\usepackage{amsmath}
+
+\DeclareMathOperator{\ran}{ran}
+\DeclareMathOperator{\dom}{dom}
+
+\usepackage{geometry}[left=.5cm, right=.5cm]
+
+\begin{document}
+    \noindent\fontsize{16}{25}\selectfont
+    Si $i"\lambda\in\ran(i(F))$ entonces existe
+    $\delta\in\dom(i(F)) = i(\sigma) = i(2^\lambda) = 2^\lambda$
+    tal que $i(F)(\delta) = i"\lambda$. Entonces se puede tomar
+    $\alpha$ en el intervalo
+    $\delta< \alpha < 2^\lambda$ y $\delta\leq i(\delta)< i(\alpha)$
+    implica $\delta\in i(\alpha)$ pues $\alpha$ es transitivo al ser un ordinal,
+    y entonces $\delta$ es testigo de
+    $i"\lambda\in\ran(i(F)|i(\alpha)) = \ran(i(F|\alpha))$.
+
+    ¿Por qué $j"\lambda\in\ran(j(F|\alpha))$?
+\end{document}

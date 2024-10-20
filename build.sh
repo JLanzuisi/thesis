@@ -25,17 +25,19 @@ if [ -z $mainfile ]; then
 fi
 lualatex=lualatex
 biber=biber
-flags="-halt-on-error --interaction=nonstopmode"
+flags="-halt-on-error --interaction=nonstopmode -output-directory=out"
 
 bibmain=$(echo $mainfile | sed -e 's/\.tex//')
 
 # Clean up before anything
 rm -f main.pdf
 
+mkdir -p out
+
 if [ -z $fast ]; then
     # Full build
     $lualatex -draftmode $flags $mainfile
-    $biber $bibmain
+    $biber --output-directory=out $bibmain
     $lualatex -draftmode $flags $mainfile
     $lualatex $flags $mainfile
 else

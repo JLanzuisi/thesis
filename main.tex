@@ -425,7 +425,16 @@ de maximalidad:
     Sea $F$ un filtro sobre $C$. $F$ es \concept{ultrafiltro} si, y solo si, es maximal.
 \end{teo}
 
-La siguiente definición es central para la teoría de cardinales medibles.
+La siguiente distinción es central para la teoría de cardinales medibles.
+
+\begin{defi}
+	Sea $S$ un conjunto y $X_0$ un subconjunto no vacío de  $S$. Entonces
+	el conjunto $F = \set{X\subset S\mid X_0\subset X}$ es un filtro sobre $S$
+	y recibe el nombre de filtro principal.
+\end{defi}
+
+El último concepto de filtros para esta sección trata una propiedad
+de cerradura de gran importancia para el desarrollo del resto de la teoría.
 
 \begin{defi}
     Sea $\kappa$ un cardinal regular y $F$ un filtro sobre $C$.
@@ -442,7 +451,7 @@ la definición de cardinal medible.
 
 \begin{defi}
     Sea $\kappa > \omega$ un cardinal. $\kappa$ es \concept{medible} si existe
-    un ultrafiltro $\kappa\text{-completo}$ sobre $\kappa$.
+    un ultrafiltro no principal $\kappa\text{-completo}$ sobre $\kappa$.
 \end{defi}
 
 \section{Conjuntos Estacionarios}
@@ -476,12 +485,14 @@ $X_\alpha$ como:
 \]
 
 \begin{teo}\label{teo:intersection-cna}
-    Sea $\kappa$ un cardinal regular no numerable y $\set{C_\alpha}_{\alpha<\kappa}$ una familia
-    de \cna{} en $\kappa$, entonces:
+    Sea $\kappa$ un cardinal regular no numerable y $\lambda<\kappa$, entonces:
     \begin{enumerate}[label=(\roman*)]
-        \item $C_\alpha\cap C_\beta$ es \cna{} ($\alpha,\beta < \kappa$).
-        \item $\bigcap_{\alpha<\kappa}C_\alpha$ es \cna.
-        \item $\dint_{\alpha<\kappa}C_\alpha$ es \cna.
+        \item Si $C_\alpha,C_\beta$ son \cna{} en $\kappa$, su intersección
+            $C_\alpha\cap C_\beta$ es también \cna{} en $\kappa$.
+        \item Si $\seq{C_\alpha\mid\alpha<\lambda}$ es una sucesión de conjuntos \cna{}
+            en $\kappa$, su intersección $\bigcap_{\alpha<\lambda}C_\alpha$ es \cna{} en $\kappa$.
+        \item Si $\seq{C_\alpha\mid\alpha<\kappa}$ es una sucesión de conjuntos \cna{}
+            en $\kappa$, su intersección $\dint_{\alpha<\kappa}C_\alpha$ es \cna{} en $\kappa$.
     \end{enumerate}
 \end{teo}
 
@@ -997,7 +1008,7 @@ hace falta establecer un resultado, debido a Erdös-Hajnal \autocite{erdos_probl
 sobre funciones $\omega$-Jónsson.
 
 \begin{defi}
-    Sea $x$ un conjunto de ordinales, $[x]^\omega = \set{y\subseteq x\mid \text{$y$ es de orden $\omega$}}$
+    Sea $x$ un conjunto de ordinales y $\lambda$ ordinal, $[x]^\lambda = \set{y\subseteq x\mid \text{$y$ es de orden $\lambda$}}$
     y $f$ una función,
     $f$ es $\omega$-Jónsson para $x$ si, y solo si,
     $f\colon [x]^\omega\to x$ y para cualquier $y\subseteq x$
@@ -1025,7 +1036,8 @@ sobre funciones $\omega$-Jónsson.
     \bgroup\sloppy
     Sea $\kappa=\crit{j}$ y $j^n$ la $n$-ésima iteración de $j$: para $x\in V$, $j^0(x)=x$
     y $j^{n+1}(x) = j(j^{n}(x))$. Sea $\lambda=\sup(\set{j^n(\kappa)\mid n\in\omega})$,
-    nótese que $j(\lambda)=\lambda$ pues $j(\set{j^n(\kappa)\mid n<\omega}) = \set{j^n(\kappa)\mid 1\leq n<\omega}$.
+    nótese que $j(\lambda)=\lambda$ pues $j(\set{j^n(\kappa)\mid n<\omega}) = \set{j^n(\kappa)\mid 1\leq n<\omega}$,
+    es decir, $\lambda$ es el primer ordinal $\delta$ por encima de $\kappa$ tal que $j(\delta)=\delta$.
     Además, como $\kappa$ es medible, en particular es inaccesible, y la elementalidad de $j$ implica que $j^n(\kappa)$
     es inaccesible para todo $n\in\omega$ y $2^\lambda = \lambda^{\aleph_0}$, se puede aplicar entonces
     el caso especial que se demostró de \ref{teo:jonsson}.
@@ -1037,7 +1049,7 @@ sobre funciones $\omega$-Jónsson.
     Sea $s\in[j"\lambda]^\omega$. Existe entonces un $t\in[\lambda]^\omega$ tal que $j(t)=j"t=s$.
     Se sigue que $j(f)(s) = j(f)j(t) = j(f(t))\in j"\lambda$, pero esto implica
     \[
-        \lambda = j(f)[j"\lambda]^\omega \subseteq j"\lambda
+        \lambda = j(f)"[j"\lambda]^\omega \subseteq j"\lambda
     \]
     que es imposible pues $\kappa\in\lambda- j"\lambda$.
 \end{proof}
@@ -1377,11 +1389,8 @@ Como explican Hamkins et~al. \autocite{hamkins_generalizations_2012},
 la verdadera potencia del resultado de Kunen se revela
 en un marco distinto: NBG con el axioma de elección.
 
-El cambio de una teoría de primer orden, como lo es ZFC, a una de segundo
-orden como NBG%
-\footnote{En este caso, la distinción entre primer y segundo orden
-proviene del campo de la lógica y tiene que ver con el hecho de que NBG
-admite cuantificación sobre clases propias.}
+El cambio de una teoría que no admite cuantificación sobre clases propias,
+como lo es ZFC, a una que sí lo permite
 tiene varios motivos. En primer lugar, el propio Kunen pensaba su teorema como formalizable
 en la teoría Morse-Kelley donde se admiten las clases propias \autocite[407]{kunen_elementary_1971},
 pero más importante aún es el hecho siguiente, debido a Suzuki \autocite{suzuki_no_1999}:

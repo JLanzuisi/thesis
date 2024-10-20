@@ -33,7 +33,7 @@
     }
 }{}
 
-\setlist{nosep}
+\@ifclassloaded{book}{\setlist{nosep}}{}
 
 % Set fonts
 \usepackage{fontspec}
@@ -44,9 +44,9 @@
     \setmathfont{STIX Two Math}
 }
 {
-    \setmainfont{Source Sans Pro}
-    \setsansfont{Source Sans Pro}
+    \setmainfont{STIX Two Text}
     \setmathfont[Scale=MatchLowercase]{STIX Two Math}
+    \usefonttheme[]{serif}
 }
 \newcommand{\titlefont}{\bfseries}
 
@@ -220,6 +220,7 @@
         del~teorema~de~inconsistencia~de~Kunen.
     }
 
+
 \newcommand {\shorttitle} {El~teorema~de~inconsistencia~de~Kunen.}
 
 \newcommand { \autor }
@@ -305,6 +306,7 @@
 \DeclareMathOperator{\Crit}{crit}
 \DeclareMathOperator{\rank}{rank}
 \DeclareMathOperator{\ran}{ran}
+\DeclareMathOperator{\dom}{dom}
 \DeclareMathOperator{\Eu}{E_U}
 \DeclareMathOperator{\Ult}{Ult}
 \DeclareMathOperator{\tc}{tc}
